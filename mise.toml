@@ -1,0 +1,10 @@
+[tasks.hello]
+alias = "h"
+description = "Print 'hello'"
+run = "echo hello"
+
+[tools]
+"cargo:convco" = "latest"
+dprint = "latest"
+hk = "latest"
+pkl = "latest"
