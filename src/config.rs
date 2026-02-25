@@ -12,7 +12,7 @@ fn default_max_entries() -> usize {
     50
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, Clone)]
 pub struct AccountConfig {
     pub server: String,
     pub username: String,
@@ -21,7 +21,7 @@ pub struct AccountConfig {
     pub mailbox: String,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, Clone)]
 pub struct FeedConfig {
     pub title: String,
     pub account: String,
@@ -29,7 +29,7 @@ pub struct FeedConfig {
     pub max_entries: Option<usize>,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, Clone)]
 pub struct Config {
     pub output_dir: String,
     #[serde(default = "default_max_entries")]
