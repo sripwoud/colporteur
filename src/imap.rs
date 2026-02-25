@@ -1,6 +1,12 @@
 use eyre::{Context, eyre};
 use imap::{ClientBuilder, Connection, Session};
 
+pub trait EmailSource {
+    fn uid_validity(&mut self, mailbox: &str) -> eyre::Result<u32>;
+    fn search_from_since_uid(&mut self, sender: &str, last_uid: u32) -> eyre::Result<Vec<u32>>;
+    fn fetch_email(&mut self, uid: u32) -> eyre::Result<FetchedEmail>;
+}
+
 pub struct ImapClient {
     session: Session<Connection>,
 }
@@ -89,5 +95,19 @@ impl ImapClient {
     pub fn logout(&mut self) -> eyre::Result<()> {
         self.session.logout().wrap_err("IMAP logout failed")?;
         Ok(())
+    }
+}
+
+impl EmailSource for ImapClient {
+    fn uid_validity(&mut self, mailbox: &str) -> eyre::Result<u32> {
+        self.uid_validity(mailbox)
+    }
+
+    fn search_from_since_uid(&mut self, sender: &str, last_uid: u32) -> eyre::Result<Vec<u32>> {
+        self.search_from_since_uid(sender, last_uid)
+    }
+
+    fn fetch_email(&mut self, uid: u32) -> eyre::Result<FetchedEmail> {
+        self.fetch_email(uid)
     }
 }
