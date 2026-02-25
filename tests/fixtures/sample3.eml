@@ -1,0 +1,1104 @@
+Return-Path: <bounce-983990-3434-373635-alice+coolparents=example.com@em-983990.coolparentsmakehappykids.com>
+Delivered-To: alice@example.com
+Received: from mx.example.com
+	by mx.example.com with LMTP
+	id uIPkKm5Um2k4bRkAOIM6ow
+	(envelope-from <bounce-983990-3434-373635-alice+coolparents=example.com@em-983990.coolparentsmakehappykids.com>)
+	for <alice@example.com>; Sun, 22 Feb 2026 19:09:34 +0000
+Return-path: <bounce-983990-3434-373635-alice+coolparents=example.com@em-983990.coolparentsmakehappykids.com>
+Envelope-to: alice+coolparents@example.com
+Delivery-date: Sun, 22 Feb 2026 19:09:34 +0000
+Received: from mail138.euc1.acems3.com ([217.8.118.138])
+	by mx.example.com with esmtps  (TLS1.3) tls TLS_AES_256_GCM_SHA384
+	(Exim 4.98)
+	(envelope-from <bounce-983990-3434-373635-alice+coolparents=example.com@em-983990.coolparentsmakehappykids.com>)
+	id 1vuEph-00000007L0q-10Po
+	for alice+coolparents@example.com;
+	Sun, 22 Feb 2026 19:09:34 +0000
+X-KumoRef: eyJfQF8iOiJcXFxfLyIsInJlY2lwaWVudCI6ImFsaWNlK2Nvb2xwYXJlbnRzQGV4YW1wbGUuY29tIn0=
+DKIM-Signature: v=1; a=rsa-sha256; d=coolparentsmakehappykids.com; s=acdkim1;
+	c=relaxed/relaxed; bh=SbECfD1IulQGKU8kJmKSWizLlFmPRzrxQBO4Bx/GlQ0=;
+	h=from:to:subject:date:mime-version:content-type:sender:cc:date:message-id:
+		list-unsubscribe:list-unsubscribe-post; t=1771787372; x=1771873772;
+	b=L7n67NmKQOzclzpQnQ3ZPLrZyicjT2yZpcbuU2G3PEDlws3j4crvsXuJAUFdWgc7edDMCTFJn
+	E2GFJ6ceapfFR7JG42ZYp70qd5cUeMEqIFLoRFefqMI4AbhGfVbWbUUuhy5iMEYy31S9mXnofky
+	h5px2gFufN6Rj4rBGD6rNye7EgD+ZFGwL6FdMbyfND6kquf8L24l8mvQ8pXsvuDBsAIb8vzdktE
+	54CEtPIWCPv7SMuMBVOm6Vij2lObbjmvEt0UzCiDlJVZw9ACYdl7Wm0M6pfN/fD9d5NnZEi1kft
+	EWSdWri1G8zUy7gFvufhBDqgroiTdGwQ8e1bWDAGF/tg==;
+DKIM-Signature: v=1; a=rsa-sha256; d=acems3.com; s=acdkim1; c=relaxed/relaxed;
+	bh=SbECfD1IulQGKU8kJmKSWizLlFmPRzrxQBO4Bx/GlQ0=;
+	h=from:to:subject:date:mime-version:content-type:sender:cc:date:message-id:
+		list-unsubscribe:list-unsubscribe-post; t=1771787372; x=1771873772;
+	b=B69qSLSj/BDB9Tmc0v+ScoFGcicmsHivg08L9XbgcATDnTyFk8b6EF+33/UdWND+zsSdQ4NDf
+	UORyt0HkncTUx7yYOoCZwnAA4TkJIu1l+7ogTp6PZkBxJhOOCEjdUs5nHpiiD/EdG4XxKt4Mc31
+	x7hhBa05+Gw1Ufnqmkg7F5gQQsmd5NP3/N0nd3rrlq9U+v8hh8QveTLXEZgu7ppOd0YlIFsF8cp
+	s1hY/p1qwkCsmfj+vFu4Ru9WwvJlewxvg4JYpBNjprQaj0stWNYQDDLCTHCamPKVg6K9KYtQuCz
+	W/42DuojkdgNO6gEkHknia2uvumR3uo07ROpQDoruwLA==;
+CFBL-Address: fbl-report@acems1.com; report=arf
+X-Mailer: ActiveCampaign Mailer
+Received: from localhost.localdomain (10.64.102.33)
+  by acems1.com (KumoMTA 10.64.55.22) 
+  with ESMTP id 050252b5102211f19b2606be29205f25 for <alice+coolparents@example.com>;
+  Sun, 22 Feb 2026 19:09:32 +0000
+To: "Alice" <alice+coolparents@example.com>
+From: "Cool Parents Make Happy Kids"
+ <coaching@coolparentsmakehappykids.com>
+Subject: L'interview de ma fille (Joy) de 13 ans !
+Date: Sun, 22 Feb 2026 13:03:08 -0600
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="_=_swift-1788697319699b52ed485331.48985913_=_"
+Content-Transfer-Encoding: 7bit
+X-Report-Abuse: Please report abuse here: abuse@acemserv.com
+X-mid: YWxpY2UrY29vbHBhcmVudHNAZXhhbXBsZS5jb20gLCBjMzQzNCAsIG0zOTI5ICwgczY0NzgxNg==
+X-lid: YWxpY2UrY29vbHBhcmVudHNAZXhhbXBsZS5jb20gLCBjMzQzNCAsIG0zOTI5ICwgczY0NzgxNiAsIGwx
+x-virtual-mta: camp-euc1-b-c3-135-139
+Feedback-ID: 983990:983990.3434:camp-euc1-b-c3-135-139:activecampaign
+X-250ok-CID: 983990-3434
+List-Unsubscribe: <https://coolparentsmakehappykids.activehosted.com/box.php?nl=1&c=3434&m=3929&s=f7071e6188c0edd9a377ccbafac5bb29&funcml=unsub2&luha=1&runid=0>,<mailto:unsubscribe-145f763f7d8ad4269b36224bb2bcbf46-3434-f7071e6188c0edd9a377ccbafac5bb29-0@mail135.euc1.acems3.com>
+List-Unsubscribe-Post: List-Unsubscribe=One-Click
+X-DKIM-Options: s=acdkim1
+Message-ID: <20260222190932.35451.1511743223.swift@coolparentsmakehappykids.activehosted.com>
+X-DKIM: signer='coolparentsmakehappykids.com' status='pass' reason=''
+DKIMCheck: Server passes DKIM test, 0 Spam score
+X-DKIM: signer='acems3.com' status='pass' reason=''
+X-Spam-Score: 2.4 (++)
+X-Spam-Report: Spam detection software, running on the system "mx.example.com", has
+ performed the tests listed below against this email.
+ Information: https://docs.mxroute.com/docs/expert-spam-filtering.html
+ ---
+ Content analysis details:   (2.4 points)
+ ---
+  pts rule name              description
+ ---- ---------------------- -----------------------------------------
+  0.0 RCVD_IN_ZEN_BLOCKED_OPENDNS RBL: ADMINISTRATOR NOTICE: The query to
+                             zen.spamhaus.org was blocked due to usage of an
+                              open resolver. See
+                             https://www.spamhaus.org/returnc/pub/
+                             [217.8.118.138 listed in zen.spamhaus.org]
+  0.0 RCVD_IN_DNSWL_BLOCKED  RBL: ADMINISTRATOR NOTICE: The query to DNSWL
+                             was blocked.  See
+                             http://wiki.apache.org/spamassassin/DnsBlocklists#DnsBlocklists-dnsbl-block
+                              for more information.
+                             [217.8.118.138 listed in list.dnswl.org]
+ -1.0 RCVD_IN_MSPIKE_H5      RBL: Excellent reputation (+5)
+                             [217.8.118.138 listed in wl.mailspike.net]
+  0.0 URIBL_BLOCKED          ADMINISTRATOR NOTICE: The query to URIBL was blocked.
+                             See
+                             http://wiki.apache.org/spamassassin/DnsBlocklists#dnsbl-block
+                              for more information.
+                             [URI: coolparentsmakehappykids.com]
+                             [URI: fonts.googleapis.com]
+                             [URI: acems3.com]
+                             [URI: activehosted.com]
+                             [URI: coolparentsmakehappykids.emlnk9.com]
+  0.0 URIBL_DBL_BLOCKED_OPENDNS ADMINISTRATOR NOTICE: The query to
+                             dbl.spamhaus.org was blocked due to usage of an
+                              open resolver. See
+                             https://www.spamhaus.org/returnc/pub/
+                             [URI: coolparentsmakehappykids.com]
+                             [URI: fonts.googleapis.com]
+                             [URI: acems3.com]
+                             [URI: coolparentsmakehappykids.activehosted.com]
+                             [URI: coolparentsmakehappykids.emlnk9.com]
+ -0.1 DKIM_VALID             Message has at least one valid DKIM or DK signature
+  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily valid
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from author's
+                             domain
+ -0.0 RCVD_IN_MSPIKE_WL      Mailspike good senders
+  1.5 HTML_MESSAGE           BODY: HTML included in message
+  1.0 HTML_FONT_LOW_CONTRAST BODY: HTML font color similar or identical to
+                             background
+  0.0 T_KAM_HTML_FONT_INVALID Test for Invalidly Named or Formatted Colors
+                             in HTML
+  1.0 MANY_SPAN_IN_TEXT      Many <SPAN> tags embedded within text
+SpamTally: Final spam score: 24
+
+
+
+
+--_=_swift-1788697319699b52ed485331.48985913_=_
+Content-Type: text/plain; charset=utf-8
+
+Toute l'actualité de CPMHK ✨  ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ 
+
+Pour une meilleure lisibilité de cet e-mail, nous te conseillons de désactiver le mode sombre le temps de ta lecture ✨ 
+
+ 
+
+ 
+
+L'interview de ma fille de 13 ans
+sur les "limites"
+
+Rappel : neweletter précédente, un pote de mon fils fait n'importe quoi à l'anniversaire, est-ce parce que ses parents ne lui mettent
+pas assez de limites ?
+
+« Moi : Joy, est-ce que tu trouves, qu'il y a des parents qui ne mettent pas assez des limites aux enfants, toi qui connais plein d'enfants - via l'école notamment - t'en penses quoi ? 
+
+- Joy (13 ans, en 4ème au collège publique) : Hein ? Mais j'ai pas compris, ça veut dire quoi ? Pourquoi veulent-ils leur mettre des limites ???
+
+- Parce que les gens trouvent que les enfants sont trop mal élevés.
+
+- Mais moi mes potes, ils ne sont pas mal élevés, y a pas ça du tout. Au contraire, c'est trop chiant les enfants dont les parents mettent des limites. C'est ceux qui ont le moins de vie sociale, elles ne sont pas invitées aux fêtes, elles connaissent moins de monde, elles sont plus renfermées. On a certains copains par exemple, comme cela s'était mal passé un jour au parc, eh bien leur parents ne veulent plus qu'ils viennent, c'est trop dommage. Et en plus c'est au contraire quand tes parents te mettent des limites que cela se passe mal
+chez toi. Tu vois par exemple le week-end dernier, papa il n'a pas voulu que je rejoigne mes amis au parc (ndlr : nous sommes en garde alternée), eh bien du coup j'étais de mauvaise humeur tout le week-end, ça s'est mal passé, on passe de moins bons moments. Alors que mes meilleurs moments c'est justement quand je rejoins mes amis au parc. 
+
+- Mais du coup est-ce que tu ne trouves pas que les enfants qui ont des parents sévères, sont mieux élevés ? 
+
+- Non je ne pense pas, je pense que c'est l'inverse au contraire ! Parce que ces potes-là justement quand ils sortent, ils font n'importe quoi. Il y avait des gens dans le parc qui faisaient des conneries, et eux ils disaient : "venez on va avec eux !", car ils pensaient que faire du bon temps, c'était forcément faire des conneries. Car c'est vrai que parfois on leur raconte des dingueries qui nous sont arrivés, mais du coup eux ils pensent que pour passer un bon moment faut forcément faire des conneries, alors que
+juste être tous ensemble et rigoler c'est bien. C'est ces potes-là qui ont le plus de limites, qui nous disent "viens on va faire des pétards", ils pensent que c'est ça s'amuser. Je pense que quand tu as des limites, et que l'on te prive de quelque chose, tu as plus envie de les faire. C'est eux qui du coup vont faire des fugues. (ndlr : 36000 fugues / an en France d'enfants !)
+
+- Mais tu crois pas qu'il y a aussi des enfants, dont les parents ne sont pas sévères, et qui font n'importe quoi, parce qu'ils "manquent de limites" ?
+
+- Autour de moi les enfants qui font n'importe quoi au collège, c'est des enfants qui ont des problèmes. Par exemple, il y en a un qui faisait que des conneries, sa maman elle était droguée et ça n'allait pas chez lui. J'ai des amis qui pour rigoler volent des trousses, mais c'est aussi des enfants qui ont des difficultés, chez eux ça se passe pas bien.
+
+- C'est vrai que moi, je suis pas non plus un parent "doux", je m'affirme, je dis
+quand je ne suis pas d'accord avec ce que vous faites. Est-ce que tu crois que, quand les parents sont plus doux que moi, "toujours bienveillants", leur enfant, ça va pas ?
+
+- Non je ne pense pas. Je pense que le problème c'est les enfants qui se font hurler dessus quand ils ont fait un truc qui va pas. Je pense que pour les autres, à qui on ne hurle pas dessus, tu ne refais pas ta connerie, parce que justement tes parents ils te font confiance. Et t'as pas envie de les décevoir aussi. T'as envie qu'ils continuent de te faire confiance, justement aussi parce que tu sais que tu as de la chance de pas avoir de limites. »
+
+***
+
+Alors, pour revenir au copain de mon fils, qui tout à coup s'est mis à balancer son verre de jus d'orange sur un mur (la situation dont je te parlais dans la Cool News de dimanche dernier)... Eh bien je crois que c'est ça. Et ce genre de situation m'est plusieurs fois arrivé avec des enfants des autres. Quand j'organise un anniversaire, où en
+règle générale je ne suis vraiment pas sur le dos des enfants, je les laisse se gérer, je leur interdis peu de choses. Eh bien certains enfants ne sont pas du tout habitués à cette "liberté", et du coup se retrouvent à faire n'importe quoi, comme si ENFIN, ils pouvaient faire ce qu'ils voulaient, étaient libres ! 
+"Libres de faire des conneries", qui est à leur yeux la meilleure façon de s'amuser...
+
+Qu'en penses-tu ? Hâte d'avoir vos retours !! ✒️ 
+Et n'hésitez pas à transférer les newsletters à des amis !
+
+Bon du coup, la newsletter est déjà bien trop longue... Pas d'astuces pour cette fois-ci  RDV Dimanche prochain, et en attendant je te souhaite une magnifique semaine. 
+
+Charlotte
+
+ 
+
+Un ami t'a transféré cet e-mail ? inscris-toi à la Newsletter ici https://coolparentsmakehappykids.emlnk9.com/lt.php?x=4lZy~GE7JFCg58F_yNLNguCgAKApuNH1kPhijaI7UqOeDK770Uy.0ONv13BzitfwlvYwbHPHIXagT8Dvzd9MW.FxPbKRia pour recevoir les autres  On te partage des
+questions de fond, des astuces pour le quotidien, des articles en parentalité et nos actus !
+
+ 
+
+ 
+
+ 
+
+ 
+
+Cool Parents Make Happy Kids vous accompagne au quotidien, pour une vie plus douce en famille : des articles, des astuces, des coachings et du soutien  En attendant que la France soit un peu plus "Kids Friendly"... (objet du prochain livre de Charlotte !)
+
+Copyright © 2016 COOL PARENTS MAKE HAPPY KIDS,
+All rights reserved.
+
+Conformément à la Loi Informatique et Libertés du 6 janvier 1978, vous disposez d'un droit d'accès, de rectification et de suppression des données ainsi que d'un droit d'opposition au traitement automatisé des données vous concernant pour motifs légitimes en nous contactant à l'adresse suivante : coaching@coolparentsmakehappykids.com
+_________________
+
+Sent to alice+coolparents@example.com
+
+Unsubscribe:
+https://coolparentsmakehappykids.emlnk9.com/proc.php?nl=1&c=3434&m=3929&s=f7071e6188c0edd9a377ccbafac5bb29&act=unsub
+
+Cool Parents
+Make Happy Kids, CPMHK, 75009 Paris, France
+--_=_swift-1788697319699b52ed485331.48985913_=_
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html><html>=0A=0A<head>=0A<meta http-equiv=3D"Content-Type" conte=
+nt=3D"text/html; charset=3Dutf-8">=0A<meta http-equiv=3D"Content-Language" =
+content=3D"fr-fr">=0A<meta name=3D"format-detection" content=3D"telephone=
+=3Dno">=0A<meta name=3D"format-detection" content=3D"date=3Dno">=0A<meta na=
+me=3D"format-detection" content=3D"address=3Dno">=0A<meta name=3D"format-de=
+tection" content=3D"email=3Dno">=0A<meta name=3D"viewport" content=3D"width=
+=3Ddevice-width, minimal-ui, initial-scale=3D1.0, maximum-scale=3D1.0, user=
+-scalable=3D0;"> <meta http-equiv=3D"X-UA-Compatible" content=3D"IE=3Dedge"=
+>=0A <style data-ac-keep=3D"true"> .ExternalClass { width: 100%; background=
+: inherit; background-color: inherit; } .ExternalClass, .ExternalClass p, .=
+ExternalClass span, .ExternalClass font, .ExternalClass td, .ExternalClass =
+div { line-height: 100%; } .ExternalClass p, .ExternalClass ul, .ExternalCl=
+ass ol { Margin: 0; } .undoreset div p, .undoreset p { margin-bottom: 20px;=
+ } div[class^=3D"aolmail_divbody"] { overflow: auto; } [owa] #ac-footer { p=
+adding: 20px 0px !important; background: inherit; background-color: inherit=
+; } a[x-apple-data-detectors] { color: inherit !important; text-decoration:=
+ none !important; font-size: inherit !important; font-family: inherit !impo=
+rtant; font-weight: inherit !important; line-height: inherit !important; } =
+@-ms-viewport { width: device-width; } </style> <style data-ac-keep=3D"true=
+">=0A@media only screen and (max-width: 600px) { /*------------------------=
+-------------------------------------------------*\ Abandoned Cart widget \=
+*------------------------------------------------------------------------*/=
+ .td_abandoned-cart img {display: block;padding-right: 0 !important;padding=
+-bottom: 0 !important;width: 100% !important;max-width: 100% !important;hei=
+ght: auto !important;} body { padding: 0!important; font-size:1em!important=
+; } * { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-si=
+zing: border-box; } *[class].divbody {-webkit-text-size-adjust:none !import=
+ant;} *[class].td_picture img {width:auto !important;} *[class].td_text { l=
+ine-height: 110%; } *[class].td_button { width: auto; } /* Collapse all blo=
+ck elements */ :not(.body) table { display: block!important; float:none!imp=
+ortant; border-collapse:collapse !important; width:100% !important; min-wid=
+th:100% !important; clear:both!important; } :not(.body) thead, :not(.body) =
+tbody,=0A:not(.body) tr { display:block!important; float:none!important; wi=
+dth:100% !important; } :not(.body) th, :not(.body) td, :not(.body) p { disp=
+lay:block!important; float:none!important; width:100% !important; clear:bot=
+h!important; } /* Remove browser default styling for elements */ ul, ol { m=
+argin-left: 20px; margin-bottom: 10px; margin-top: 10px; -webkit-margin-bef=
+ore: 0; -webkit-margin-after: 0; -webkit-padding-start: 0; } /* Set default=
+ height for spacer once collapse */ *[class].spacer { height: auto!importan=
+t; } a[href^=3Ddate]{ color:inherit !important; text-decoration:none !impor=
+tant;} a[href^=3Dtelephone]{ color:inherit !important; text-decoration:none=
+ !important;} a[href^=3Daddress]{ color:inherit !important; text-decoration=
+:none !important;} a[href^=3Demail]{ color:inherit !important; text-decorat=
+ion:none !important;} /* Default table cell height */ td[height=3D"12"]{hei=
+ght:12px!important;font-size:12px!important;line-height:12px!important;}=0A=
+td[height=3D"13"]{height:13px!important;font-size:13px!important;line-heigh=
+t:13px!important;}=0Atd[height=3D"10"]{height:10px!important;font-size:10px=
+!important;line-height:10px!important;} /*---------------------------------=
+----------------------------------------*\ Product Widget \*---------------=
+----------------------------------------------------------*/ .td_product di=
+v, .td_product .products-display { float: none !important; display: block !=
+important; width: 100% !important; Margin-bottom: 20px !important; } .td_pr=
+oduct img { width: 100% !important; max-width: 100% !important; } /* Defaul=
+t social icons */ *[class].ac-social-icon-16 {width:16px !important; height=
+:16px !important;} *[class].ac-social-icon-24 {width:24px !important; heigh=
+t:24px !important;} *[class].ac-social-icon-28 {width:28px !important; heig=
+ht:28px !important;} *[class].__ac_social_icons { margin-right: 0px !import=
+ant; } }=0A</style> <style data-ac-keep=3D"true"> @media only screen and (m=
+ax-width: 320px) { #layout-row56732 img { width: 100% !important; height: a=
+uto !important; max-width: 320px !important; } #layout-row56737 { max-heigh=
+t: 0px!important; font-size: 0px!important; display: none!important; visibi=
+lity: hidden!important; } table, tbody, td, .divbody { display: table !impo=
+rtant; width: 100% !important; max-width: 100% !important; } .td_rss .rss-i=
+tem img.iphone_large_image { width: auto !important; } u + .body { display:=
+ table !important; width: 100vw !important; min-width: 100vw !important; } =
+u + .body table { display: table !important; width: 100% !important; min-wi=
+dth: 100% !important; } u + .body td { display: block !important; width: 10=
+0% !important; min-width: 100% !important; } u + .body img { display: inlin=
+e-block !important; margin: auto !important; width: auto !important; vertic=
+al-align: bottom !important; } u + .body center { display: block !important=
+; margin: auto=0A!important; width: 100% !important; min-width: 100% !impor=
+tant; text-align: center !important; } u + .body table._ac_social_table, u =
++ .body table._ac_social_table td, u + .body table._ac_social_table div, u =
++ .body table._ac_social_table a { display: inline-block !important; margin=
+: auto !important; width: auto !important; min-width: auto !important; text=
+-align: center !important; } u + .body table._ac_social_table img { display=
+: inline-block !important; margin: auto !important; width: 32px !important;=
+ min-width: 32px !important; max-width: 32px !important; }=0A}=0A@media onl=
+y screen and (max-width: 375px) { #layout-row56732 img { width: 100% !impor=
+tant; height: auto !important; max-width: 375px !important; } #layout-row56=
+737 { max-height: 0px!important; font-size: 0px!important; display: none!im=
+portant; visibility: hidden!important; } table, tbody, td, .divbody { displ=
+ay: table !important; width: 100% !important; max-width: 100% !important; }=
+ .td_rss .rss-item img.iphone_large_image { width: auto !important; } u + .=
+body { display: table !important; width: 100vw !important; min-width: 100vw=
+ !important; } u + .body table { display: table !important; width: 100% !im=
+portant; min-width: 100% !important; } u + .body td { display: block !impor=
+tant; width: 100% !important; min-width: 100% !important; } u + .body img {=
+ display: inline-block !important; margin: auto !important; width: auto !im=
+portant; vertical-align: bottom !important; } u + .body center { display: b=
+lock !important; margin: auto !important; width: 100% !important;=0Amin-wid=
+th: 100% !important; text-align: center !important; } u + .body table._ac_s=
+ocial_table, u + .body table._ac_social_table td, u + .body table._ac_socia=
+l_table div, u + .body table._ac_social_table a { display: inline-block !im=
+portant; margin: auto !important; width: auto !important; min-width: auto !=
+important; text-align: center !important; } u + .body table._ac_social_tabl=
+e img { display: inline-block !important; margin: auto !important; width: 3=
+2px !important; min-width: 32px !important; max-width: 32px !important; }=
+=0A}=0A@media only screen and (max-width: 414px) { #layout-row56732 img { w=
+idth: 100% !important; height: auto !important; max-width: 414px !important=
+; } #layout-row56737 { max-height: 0px!important; font-size: 0px!important;=
+ display: none!important; visibility: hidden!important; } table, tbody, td,=
+ .divbody { display: table !important; width: 100% !important; max-width: 1=
+00% !important; } .td_rss .rss-item img.iphone_large_image { width: auto !i=
+mportant; } u + .body { display: table !important; width: 100vw !important;=
+ min-width: 100vw !important; } u + .body table { display: table !important=
+; width: 100% !important; min-width: 100% !important; } u + .body td { disp=
+lay: block !important; width: 100% !important; min-width: 100% !important; =
+} u + .body img { display: inline-block !important; margin: auto !important=
+; width: auto !important; vertical-align: bottom !important; } u + .body ce=
+nter { display: block !important; margin: auto !important; width: 100% !imp=
+ortant;=0Amin-width: 100% !important; text-align: center !important; } u + =
+.body table._ac_social_table, u + .body table._ac_social_table td, u + .bod=
+y table._ac_social_table div, u + .body table._ac_social_table a { display:=
+ inline-block !important; margin: auto !important; width: auto !important; =
+min-width: auto !important; text-align: center !important; } u + .body tabl=
+e._ac_social_table img { display: inline-block !important; margin: auto !im=
+portant; width: 32px !important; min-width: 32px !important; max-width: 32p=
+x !important; }=0A}=0A@media only screen and (max-width: 667px) { #layout-r=
+ow56732 img { width: 100% !important; height: auto !important; max-width: 6=
+67px !important; } #layout-row56737 { max-height: 0px!important; font-size:=
+ 0px!important; display: none!important; visibility: hidden!important; } ta=
+ble, tbody, td, .divbody { display: table !important; width: 100% !importan=
+t; max-width: 100% !important; } .td_rss .rss-item img.iphone_large_image {=
+ width: auto !important; } u + .body { display: table !important; width: 10=
+0vw !important; min-width: 100vw !important; } u + .body table { display: t=
+able !important; width: 100% !important; min-width: 100% !important; } u + =
+.body td { display: block !important; width: 100% !important; min-width: 10=
+0% !important; } u + .body img { display: inline-block !important; margin: =
+auto !important; width: auto !important; vertical-align: bottom !important;=
+ } u + .body center { display: block !important; margin: auto !important; w=
+idth: 100% !important;=0Amin-width: 100% !important; text-align: center !im=
+portant; } u + .body table._ac_social_table, u + .body table._ac_social_tab=
+le td, u + .body table._ac_social_table div, u + .body table._ac_social_tab=
+le a { display: inline-block !important; margin: auto !important; width: au=
+to !important; min-width: auto !important; text-align: center !important; }=
+ u + .body table._ac_social_table img { display: inline-block !important; m=
+argin: auto !important; width: 32px !important; min-width: 32px !important;=
+ max-width: 32px !important; }=0A} </style> <!--[if !mso]><!-- webfonts -->=
+ <link href=3D"https://fonts.googleapis.com/css2?family=3DRoboto:ital,wght@=
+0,400;0,600;0,700;1,400;1,600;1,700&display=3Dswap" rel=3D"stylesheet"><!--=
+<![endif]-->=0A<!--[if lt mso 12]> <link href=3D"https://fonts.googleapis.c=
+om/css2?family=3DRoboto:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&displ=
+ay=3Dswap" rel=3D"stylesheet"><![endif]-->=0A<!--[if gte mso 9]>=0A<xml> <o=
+:OfficeDocumentSettings> <o:AllowPNG/> <o:PixelsPerInch>96</o:PixelsPerInch=
+> </o:OfficeDocumentSettings>=0A</xml>=0A<![endif]-->=0A</head><body id=3D"=
+ac-designer" class=3D"body" style=3D"font-family: Arial; line-height: 1.1; =
+margin: 0px; background-color: #ffffff; width: 100%; text-align: center;"> =
+       <div style=3D"display: none !important; padding: 0; height: 1px; fon=
+t-size: 1px; background-color: inherit !important; opacity: 0; color: trans=
+parent; mso-line-height-rule: exactly; line-height:1px; mso-hide:all;">=0A =
+           Toute l=E2=80=99actualit=C3=A9 de CPMHK =E2=9C=A8=0A            =
+<div style=3D"display: none; max-height: 0px; overflow: hidden;">=0A       =
+        =0A&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbs=
+p;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbs=
+p;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbs=
+p;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbs=
+p;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbs=
+p;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbs=
+p;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbs=
+p;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbs=
+p;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbs=
+p;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbs=
+p;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbs=
+p;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbs=
+p;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbs=
+p;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbs=
+p;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbs=
+p;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbs=
+p;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbs=
+p;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbs=
+p;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbs=
+p;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbs=
+p;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbs=
+p;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbs=
+p;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbs=
+p;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbs=
+p;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbs=
+p;=E2=80=8C&nbsp;=E2=80=8C=0A            </div>=0A=0A        </div>=0A<div =
+class=3D"divbody" style=3D"margin: 0px; outline: none; padding: 0px; color:=
+ #000000; font-family: arial; line-height: 1.1; width: 100%; background-col=
+or: #ffffff; background: #ffffff; text-align: center;"><table class=3D"temp=
+late-table" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%"=
+ align=3D"left" style=3D"-ms-text-size-adjust: auto; -webkit-text-size-adju=
+st: 100%; border-collapse: collapse; font-size: 14px; min-width: auto; mso-=
+table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #ffffff; backgr=
+ound: #ffffff;"><tr style=3D"mso-line-height-rule: exactly;"><td align=3D"c=
+enter" valign=3D"top" width=3D"100%" style=3D"mso-line-height-rule: exactly=
+;"><table class=3D"template-table" border=3D"0" cellpadding=3D"0" cellspaci=
+ng=3D"0" width=3D"699.969" bgcolor=3D"#ffffff" style=3D"-ms-text-size-adjus=
+t: auto; -webkit-text-size-adjust: 100%; border-collapse: collapse; font-si=
+ze: 14px; min-width: auto; mso-table-lspace: 0pt; mso-table-rspace: 0pt; ma=
+x-width: 699.969px;"><tr=0Astyle=3D"mso-line-height-rule: exactly;"><td id=
+=3D"layout_table_ea19017998db950bbabea73a3eeaad7da13a1f39" valign=3D"top" a=
+lign=3D"center" width=3D"700" style=3D"mso-line-height-rule: exactly; backg=
+round-color: #fff9f0;"><table cellpadding=3D"0" cellspacing=3D"0" border=3D=
+"0" class=3D"layout layout-table root-table" width=3D"700" style=3D"-ms-tex=
+t-size-adjust: auto; -webkit-text-size-adjust: 100%; border-collapse: colla=
+pse; font-size: 14px; min-width: 100%; mso-table-lspace: 0pt; mso-table-rsp=
+ace: 0pt; background-color: #fff9f0;"><tr style=3D"mso-line-height-rule: ex=
+actly; background-color: #fff9f0;"><td id=3D"layout-row-margin56735" valign=
+=3D"top" style=3D"mso-line-height-rule: exactly; padding: 0px; background-c=
+olor: #fff9f0;"><table width=3D"100%" border=3D"0" cellpadding=3D"0" cellsp=
+acing=3D"0" style=3D"-ms-text-size-adjust: auto; -webkit-text-size-adjust: =
+100%; border-collapse: initial !important; font-size: 14px; min-width: 100%=
+; mso-table-lspace: 0pt; mso-table-rspace: 0pt;"><tr id=3D"layout-row56735"=
+=0Aclass=3D"layout layout-row widget _widget_text style56735" style=3D"mso-=
+line-height-rule: exactly; margin: 0; padding: 0; background-color: #ffffff=
+;"><td id=3D"layout-row-padding56735" valign=3D"top" style=3D"mso-line-heig=
+ht-rule: exactly; background-color: #ffffff; padding: 15px;"><table width=
+=3D"100%" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" style=3D"-ms-tex=
+t-size-adjust: auto; -webkit-text-size-adjust: 100%; border-collapse: colla=
+pse; font-size: 14px; min-width: 100%; mso-table-lspace: 0pt; mso-table-rsp=
+ace: 0pt;"><tr style=3D"mso-line-height-rule: exactly;"><td id=3D"text_div5=
+2160" class=3D"td_text td_block" valign=3D"top" align=3D"left" width=3D"670=
+" style=3D"line-height: 180%; mso-line-height-rule: exactly; margin: 0; out=
+line: none; padding: 0; color: inherit; font-size: 12px; font-weight: inher=
+it; line-height: 1.8; text-decoration: inherit; font-family: arial;"> <div =
+style=3D"line-height: 180%; margin: 0; outline: none; padding: 0; color: in=
+herit; font-size: 12px; font-weight: inherit;=0Aline-height: 1.8; text-deco=
+ration: inherit; mso-line-height-rule: exactly;" data-line-height=3D"1.8"> =
+<div style=3D"margin: 0; outline: none; padding: 0; color: inherit; font-si=
+ze: inherit; font-weight: inherit; line-height: inherit; text-decoration: i=
+nherit; text-align: center;"> <span style=3D'color: inherit; font-size: inh=
+erit; font-weight: inherit; line-height: inherit; text-decoration: inherit;=
+ font-family: Roboto, "San Francisco", Helvetica, Arial, sans-serif;' class=
+=3D""><span style=3D"color: #000000; font-size: inherit; font-weight: 400; =
+line-height: inherit; text-decoration: inherit; font-style: normal;">Pour u=
+ne meilleure lisibilit=C3=A9 de cet e-mail, nous te conseillons de d=C3=
+=A9sactiver le mode </span><span style=3D"color: #000000; font-size: inheri=
+t; font-weight: 400; line-height: inherit; text-decoration: inherit; font-s=
+tyle: normal;">sombre </span><span style=3D"color: #000000; font-size: inhe=
+rit; font-weight: 400; line-height: inherit; text-decoration: inherit;=0Afo=
+nt-style: normal;">le temps de ta lecture =E2=9C=A8&#129303;</span></span> =
+<br></div>=0A </div>=0A<!--[if (gte mso 12)&(lte mso 15) ]>=0A<style data-a=
+c-keep=3D"true" data-ac-inline=3D"false"> #text_div52160, #text_div52160 di=
+v { line-height: 180% !important; };=0A</style>=0A<![endif]--></td>=0A</tr>=
+=0A</table>=0A</td>=0A</tr>=0A</table>=0A</td>=0A</tr>=0A<tr style=3D"mso-l=
+ine-height-rule: exactly; background-color: #fff9f0;"><td id=3D"layout-row-=
+margin56731" valign=3D"top" style=3D"mso-line-height-rule: exactly; backgro=
+und-color: #fff9f0;"><table width=3D"100%" border=3D"0" cellpadding=3D"0" c=
+ellspacing=3D"0" style=3D"-ms-text-size-adjust: auto; -webkit-text-size-adj=
+ust: 100%; border-collapse: collapse; font-size: 14px; min-width: 100%; mso=
+-table-lspace: 0pt; mso-table-rspace: 0pt;"><tr id=3D"layout-row56731" clas=
+s=3D"layout layout-row widget _widget_spacer " style=3D"mso-line-height-rul=
+e: exactly;"><td id=3D"layout-row-padding56731" valign=3D"top" style=3D"mso=
+-line-height-rule: exactly;"><table width=3D"100%" border=3D"0" cellpadding=
+=3D"0" cellspacing=3D"0" style=3D"-ms-text-size-adjust: auto; -webkit-text-=
+size-adjust: 100%; border-collapse: collapse; font-size: 14px; min-width: 1=
+00%; mso-table-lspace: 0pt; mso-table-rspace: 0pt;"><tr style=3D"mso-line-h=
+eight-rule: exactly;"><td valign=3D"top" height=3D"24.9922" style=3D"mso-li=
+ne-height-rule: exactly;"><div=0Aclass=3D"spacer" style=3D"margin: 0; outli=
+ne: none; padding: 0; height: 24.9922px;"><table cellpadding=3D"0" cellspac=
+ing=3D"0" border=3D"0" width=3D"100%" style=3D"-ms-text-size-adjust: auto; =
+-webkit-text-size-adjust: 100%; border-collapse: collapse; font-size: 14px;=
+ min-width: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt;"><tr style=
+=3D"mso-line-height-rule: exactly;"><td class=3D"spacer-body" valign=3D"top=
+" height=3D"24.9922" width=3D"700" style=3D"mso-line-height-rule: exactly;"=
+>=C2=A0</td>=0A</tr>=0A</table>=0A</div>=0A</td>=0A</tr>=0A</table>=0A</td>=
+=0A</tr>=0A</table>=0A</td>=0A</tr>=0A<tr style=3D"mso-line-height-rule: ex=
+actly; background-color: #fff9f0;"><td id=3D"layout-row-margin56732" valign=
+=3D"top" style=3D"mso-line-height-rule: exactly; background-color: #fff9f0;=
+"><table width=3D"100%" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" st=
+yle=3D"-ms-text-size-adjust: auto; -webkit-text-size-adjust: 100%; border-c=
+ollapse: collapse; font-size: 14px; min-width: 100%; mso-table-lspace: 0pt;=
+ mso-table-rspace: 0pt;"><tr id=3D"layout-row56732" class=3D"layout layout-=
+row widget _widget_picture " align=3D"center" style=3D"mso-line-height-rule=
+: exactly;"><td id=3D"layout-row-padding56732" valign=3D"top" style=3D"mso-=
+line-height-rule: exactly;"><table width=3D"100%" border=3D"0" cellpadding=
+=3D"0" cellspacing=3D"0" style=3D"-ms-text-size-adjust: auto; -webkit-text-=
+size-adjust: 100%; border-collapse: collapse; font-size: 14px; min-width: 1=
+00%; mso-table-lspace: 0pt; mso-table-rspace: 0pt;"><tr style=3D"mso-line-h=
+eight-rule: exactly;"><td class=3D"image-td" align=3D"center" valign=3D"top=
+" width=3D"700"=0Astyle=3D"mso-line-height-rule: exactly;"><img src=3D"http=
+s://coolparentsmakehappykids.activehosted.com/cdn-cgi/image/format=3Dauto,o=
+nerror=3Dredirect,width=3D650,dpr=3D2,fit=3Dscale-down/content/bkuZi0T1uvuw=
+/2024/09/27/2dc3a01e-a3ce-49b9-bd8e-7d9556b8dd15.png?r=3D1729388479" width=
+=3D"699" style=3D"display: block; border: none; outline: none; width: 699px=
+; opacity: 1; max-width: 100%;"></td>=0A</tr>=0A</table>=0A</td>=0A</tr>=0A=
+</table>=0A</td>=0A</tr>=0A<tr style=3D"mso-line-height-rule: exactly; back=
+ground-color: #fff9f0;"><td id=3D"layout-row-margin56736" valign=3D"top" st=
+yle=3D"mso-line-height-rule: exactly; background-color: #fff9f0;"><table wi=
+dth=3D"100%" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" style=3D"-ms-=
+text-size-adjust: auto; -webkit-text-size-adjust: 100%; border-collapse: co=
+llapse; font-size: 14px; min-width: 100%; mso-table-lspace: 0pt; mso-table-=
+rspace: 0pt;"><tr id=3D"layout-row56736" class=3D"layout layout-row widget =
+_widget_spacer " style=3D"mso-line-height-rule: exactly;"><td id=3D"layout-=
+row-padding56736" valign=3D"top" style=3D"mso-line-height-rule: exactly;"><=
+table width=3D"100%" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" style=
+=3D"-ms-text-size-adjust: auto; -webkit-text-size-adjust: 100%; border-coll=
+apse: collapse; font-size: 14px; min-width: 100%; mso-table-lspace: 0pt; ms=
+o-table-rspace: 0pt;"><tr style=3D"mso-line-height-rule: exactly;"><td vali=
+gn=3D"top" height=3D"9.99219" style=3D"mso-line-height-rule: exactly;"><div=
+=0Aclass=3D"spacer" style=3D"margin: 0; outline: none; padding: 0; height: =
+9.99219px;"><table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" width=
+=3D"100%" style=3D"-ms-text-size-adjust: auto; -webkit-text-size-adjust: 10=
+0%; border-collapse: collapse; font-size: 14px; min-width: 100%; mso-table-=
+lspace: 0pt; mso-table-rspace: 0pt;"><tr style=3D"mso-line-height-rule: exa=
+ctly;"><td class=3D"spacer-body" valign=3D"top" height=3D"9.99219" width=3D=
+"700" style=3D"mso-line-height-rule: exactly;">=C2=A0</td>=0A</tr>=0A</tabl=
+e>=0A</div>=0A</td>=0A</tr>=0A</table>=0A</td>=0A</tr>=0A</table>=0A</td>=
+=0A</tr>=0A<tr id=3D"layout-row56738" class=3D"layout layout-row clear-this=
+ " style=3D"mso-line-height-rule: exactly; background-color: #fff9f0;"><td =
+id=3D"layout-row-padding56738" valign=3D"top" style=3D"mso-line-height-rule=
+: exactly; background-color: #fff9f0;"><table width=3D"100%" border=3D"0" c=
+ellpadding=3D"0" cellspacing=3D"0" style=3D"-ms-text-size-adjust: auto; -we=
+bkit-text-size-adjust: 100%; border-collapse: collapse; font-size: 14px; mi=
+n-width: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt;"><tr style=3D"=
+mso-line-height-rule: exactly;"><td id=3D"layout_table_80a81c3644b4f92c7ac8=
+03f37eb9de619f4c42f9" valign=3D"top" width=3D"25" style=3D"mso-line-height-=
+rule: exactly;"><table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" cla=
+ss=3D"layout layout-table " width=3D"25" style=3D"-ms-text-size-adjust: aut=
+o; -webkit-text-size-adjust: 100%; border-collapse: collapse; font-size: 14=
+px; min-width: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt;"></table=
+>=0A</td>=0A<td id=3D"layout_table_daa9c4169fcdd76237bf92be460f27b9da7daeb9=
+" valign=3D"top" width=3D"675" style=3D"mso-line-height-rule: exactly;"><ta=
+ble cellpadding=3D"0" cellspacing=3D"0" border=3D"0" class=3D"layout layout=
+-table " width=3D"675" style=3D"-ms-text-size-adjust: auto; -webkit-text-si=
+ze-adjust: 100%; border-collapse: collapse; font-size: 14px; min-width: 100=
+%; mso-table-lspace: 0pt; mso-table-rspace: 0pt;"><tr id=3D"layout-row56739=
+" class=3D"layout layout-row clear-this " style=3D"mso-line-height-rule: ex=
+actly;"><td id=3D"layout-row-padding56739" valign=3D"top" style=3D"mso-line=
+-height-rule: exactly;"><table width=3D"100%" border=3D"0" cellpadding=3D"0=
+" cellspacing=3D"0" style=3D"-ms-text-size-adjust: auto; -webkit-text-size-=
+adjust: 100%; border-collapse: collapse; font-size: 14px; min-width: 100%; =
+mso-table-lspace: 0pt; mso-table-rspace: 0pt;"><tr style=3D"mso-line-height=
+-rule: exactly;"><td id=3D"layout_table_1b42228a4b88971ed0935029ff5aa319edc=
+944ad" valign=3D"top" width=3D"650" style=3D"mso-line-height-rule:=0Aexactl=
+y;"><table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" class=3D"layout=
+ layout-table " width=3D"650" style=3D"-ms-text-size-adjust: auto; -webkit-=
+text-size-adjust: 100%; border-collapse: collapse; font-size: 14px; min-wid=
+th: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt;"><tr style=3D"mso-l=
+ine-height-rule: exactly;"><td id=3D"layout-row-margin56734" valign=3D"top"=
+ style=3D"mso-line-height-rule: exactly; padding: 5px;"><table width=3D"100=
+%" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" style=3D"-ms-text-size-=
+adjust: auto; -webkit-text-size-adjust: 100%; border-collapse: initial !imp=
+ortant; font-size: 14px; min-width: 100%; mso-table-lspace: 0pt; mso-table-=
+rspace: 0pt;"><tr id=3D"layout-row56734" class=3D"layout layout-row widget =
+_widget_text style56734" style=3D"mso-line-height-rule: exactly; margin: 0;=
+ padding: 0;"><td id=3D"layout-row-padding56734" valign=3D"top" style=3D"ms=
+o-line-height-rule: exactly; padding: 5px 10px 5px 10px;"><table width=3D"1=
+00%" border=3D"0" cellpadding=3D"0"=0Acellspacing=3D"0" style=3D"-ms-text-s=
+ize-adjust: auto; -webkit-text-size-adjust: 100%; border-collapse: collapse=
+; font-size: 14px; min-width: 100%; mso-table-lspace: 0pt; mso-table-rspace=
+: 0pt;"><tr style=3D"mso-line-height-rule: exactly;"><td id=3D"text_div5215=
+9" class=3D"td_text td_block" valign=3D"top" align=3D"left" width=3D"620" s=
+tyle=3D"line-height: 180%; mso-line-height-rule: exactly; margin: 0; outlin=
+e: none; padding: 0; color: inherit; font-size: 12px; font-weight: inherit;=
+ line-height: 1.8; text-decoration: inherit; font-family: arial;"> <div sty=
+le=3D"line-height: 180%; margin: 0; outline: none; padding: 0; color: inher=
+it; font-size: inherit; font-weight: inherit; line-height: 1.8; text-decora=
+tion: inherit; text-align: justify; mso-line-height-rule: exactly;" class=
+=3D"" data-line-height=3D"1.8"><b style=3D'margin: 0; outline: none; paddin=
+g: 0; font-family: Roboto, "San Francisco", Helvetica, Arial, sans-serif; f=
+ont-size: 13px; color: #000000; font-weight: normal;' class=3D""></b><b=0As=
+tyle=3D'margin: 0; outline: none; padding: 0; font-family: Roboto, "San Fra=
+ncisco", Helvetica, Arial, sans-serif; font-size: 16px; font-style: normal;=
+' class=3D""><div style=3D"margin: 0; outline: none; padding: 0; color: inh=
+erit; font-size: inherit; font-weight: inherit; line-height: inherit; text-=
+decoration: inherit; text-align: center;" class=3D""><span style=3D'color: =
+inherit; font-size: inherit; font-weight: inherit; line-height: inherit; te=
+xt-decoration: inherit; font-family: Roboto, "San Francisco", Helvetica, Ar=
+ial, sans-serif; font-style: normal;' class=3D""><b style=3D"margin: 0; out=
+line: none; padding: 0;" class=3D""><span style=3D'color: #000000; font-siz=
+e: 16px; font-weight: inherit; line-height: inherit; text-decoration: inher=
+it; font-family: Roboto, "San Francisco", Helvetica, Arial, sans-serif; fon=
+t-style: normal;' class=3D""><b style=3D"margin: 0; outline: none; padding:=
+ 0;" class=3D""><span style=3D'color: #000000; font-size: 16px; font-weight=
+: inherit; line-height:=0Ainherit; text-decoration: inherit; text-align: ce=
+nter; font-family: Roboto, "San Francisco", Helvetica, Arial, sans-serif; f=
+ont-style: normal;' class=3D"">L'interview de ma fille de 13 ans</span><br =
+class=3D""><span style=3D'color: #000000; font-size: 16px; font-weight: inh=
+erit; line-height: inherit; text-decoration: inherit; text-align: center; f=
+ont-family: Roboto, "San Francisco", Helvetica, Arial, sans-serif; font-sty=
+le: normal;' class=3D"">sur les "limites"</span></b><br class=3D""></span><=
+/b><div style=3D'margin: 0; outline: none; padding: 0; color: #000000; font=
+-size: 13px; font-weight: 400; line-height: inherit; text-decoration: inher=
+it; font-family: Roboto, "San Francisco", Helvetica, Arial, sans-serif; tex=
+t-align: justify;' class=3D""><br style=3D'color: #000000; font-family: Rob=
+oto, "San Francisco", Helvetica, Arial, sans-serif; font-weight: 400;' clas=
+s=3D""></div>=0A</span></div>=0A</b><b style=3D'margin: 0; outline: none; p=
+adding: 0; font-family: Roboto, "San Francisco", Helvetica, Arial, sans-ser=
+if; font-size: 13px; font-weight: bold;' class=3D""><span style=3D'color: #=
+000000; font-size: 13px; font-weight: inherit; line-height: inherit; text-d=
+ecoration: inherit; font-family: Roboto, "San Francisco", Helvetica, Arial,=
+ sans-serif;' class=3D""><span style=3D"color: inherit; font-size: inherit;=
+ font-weight: 400; line-height: inherit; text-decoration: inherit; font-sty=
+le: italic;" class=3D"">Rappel : neweletter pr=C3=A9c=C3=A9dente, un pote d=
+e mon fils fait n'importe quoi =C3=A0 l'anniversaire, est-ce parce que ses =
+parents ne lui mettent pas assez de limites ?<br class=3D""><br class=3D"">=
+=C2=AB Moi : </span><span style=3D"color: inherit; font-size: inherit; font=
+-weight: 400; line-height: inherit; text-decoration: inherit;" class=3D"">J=
+oy, est-ce que tu trouves, qu'il y a des parents qui ne mettent </span>pas =
+assez des limites <span style=3D"color: inherit; font-size: inherit;=0Afont=
+-weight: 400; line-height: inherit; text-decoration: inherit;" class=3D"">a=
+ux enfants, toi qui connais plein d'enfants - via l=E2=80=99=C3=A9cole nota=
+mment - t=E2=80=99en penses quoi ? </span><br class=3D""></span><br class=
+=3D""><span style=3D'color: #000000; font-size: 13px; font-weight: 400; lin=
+e-height: inherit; text-decoration: inherit; font-family: Roboto, "San Fran=
+cisco", Helvetica, Arial, sans-serif;' class=3D""><span style=3D"color: inh=
+erit; font-size: inherit; font-weight: inherit; line-height: inherit; text-=
+decoration: inherit; font-style: italic;" class=3D""><b style=3D'margin: 0;=
+ outline: none; padding: 0; --tw-shadow: 0 0 transparent; --tw-ring-inset: =
+; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-colo=
+r: rgba(59,130,246,0.5); --tw-ring-offset-shadow: 0 0 transparent; --tw-rin=
+g-shadow: 0 0 transparent; font-family: Roboto, "San Francisco", Helvetica,=
+ Arial, sans-serif; color: #000000; font-size: 13px; font-style: normal; fo=
+nt-weight: normal;' class=3D""><b=0Astyle=3D'margin: 0; outline: none; padd=
+ing: 0; --tw-shadow: 0 0 transparent; --tw-ring-inset: ; --tw-ring-offset-w=
+idth: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgba(59,130,246,0=
+.5); --tw-ring-offset-shadow: 0 0 transparent; --tw-ring-shadow: 0 0 transp=
+arent; font-family: Roboto, "San Francisco", Helvetica, Arial, sans-serif; =
+font-weight: normal;' class=3D""><span style=3D'color: inherit; font-size: =
+13px; font-weight: inherit; line-height: inherit; text-decoration: inherit;=
+ --tw-shadow: 0 0 transparent; --tw-ring-inset: ; --tw-ring-offset-width: 0=
+px; --tw-ring-offset-color: #fff; --tw-ring-color: rgba(59,130,246,0.5); --=
+tw-ring-offset-shadow: 0 0 transparent; --tw-ring-shadow: 0 0 transparent; =
+font-family: Roboto, "San Francisco", Helvetica, Arial, sans-serif; font-st=
+yle: italic;' class=3D"">=E2=80=94 </span></b></b>Joy (13 ans, en 4=C3=
+=A8me au coll=C3=A8ge publique)</span> : Hein ? Mais j=E2=80=99ai pas compr=
+is, =C3=A7a veut dire quoi ? Pourquoi veulent-ils leur mettre des limites=
+=0A???</span><br class=3D""><span style=3D'color: #000000; font-size: 13px;=
+ font-weight: 400; line-height: inherit; text-decoration: inherit; font-fam=
+ily: Roboto, "San Francisco", Helvetica, Arial, sans-serif; font-style: nor=
+mal;' class=3D""><br class=3D""><b style=3D'margin: 0; outline: none; paddi=
+ng: 0; --tw-shadow: 0 0 transparent; --tw-ring-inset: ; --tw-ring-offset-wi=
+dth: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgba(59,130,246,0.=
+5); --tw-ring-offset-shadow: 0 0 transparent; --tw-ring-shadow: 0 0 transpa=
+rent; font-family: Roboto, "San Francisco", Helvetica, Arial, sans-serif; c=
+olor: #000000; font-size: 13px; font-style: normal; font-weight: normal;' c=
+lass=3D""><b style=3D'margin: 0; outline: none; padding: 0; --tw-shadow: 0 =
+0 transparent; --tw-ring-inset: ; --tw-ring-offset-width: 0px; --tw-ring-of=
+fset-color: #fff; --tw-ring-color: rgba(59,130,246,0.5); --tw-ring-offset-s=
+hadow: 0 0 transparent; --tw-ring-shadow: 0 0 transparent; font-family: Rob=
+oto, "San Francisco",=0AHelvetica, Arial, sans-serif; font-weight: normal;'=
+ class=3D""><span style=3D'color: inherit; font-size: 13px; font-weight: in=
+herit; line-height: inherit; text-decoration: inherit; --tw-shadow: 0 0 tra=
+nsparent; --tw-ring-inset: ; --tw-ring-offset-width: 0px; --tw-ring-offset-=
+color: #fff; --tw-ring-color: rgba(59,130,246,0.5); --tw-ring-offset-shadow=
+: 0 0 transparent; --tw-ring-shadow: 0 0 transparent; font-family: Roboto, =
+"San Francisco", Helvetica, Arial, sans-serif; font-style: italic;' class=
+=3D"">=E2=80=94 </span></b></b>Parce que les gens trouvent que les enfants =
+sont trop mal =C3=A9lev=C3=A9s.</span><br class=3D""><span style=3D'color: =
+#000000; font-size: 13px; font-weight: inherit; line-height: inherit; text-=
+decoration: inherit; font-family: Roboto, "San Francisco", Helvetica, Arial=
+, sans-serif; font-style: normal;' class=3D""><br class=3D""><b style=3D'ma=
+rgin: 0; outline: none; padding: 0; font-weight: normal; --tw-shadow: 0 0 t=
+ransparent; --tw-ring-inset: ; --tw-ring-offset-width: 0px;=0A--tw-ring-off=
+set-color: #fff; --tw-ring-color: rgba(59,130,246,0.5); --tw-ring-offset-sh=
+adow: 0 0 transparent; --tw-ring-shadow: 0 0 transparent; font-family: Robo=
+to, "San Francisco", Helvetica, Arial, sans-serif; color: #000000; font-siz=
+e: 13px; font-style: normal;' class=3D""><b style=3D'margin: 0; outline: no=
+ne; padding: 0; --tw-shadow: 0 0 transparent; --tw-ring-inset: ; --tw-ring-=
+offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgba(59,1=
+30,246,0.5); --tw-ring-offset-shadow: 0 0 transparent; --tw-ring-shadow: 0 =
+0 transparent; font-family: Roboto, "San Francisco", Helvetica, Arial, sans=
+-serif; font-weight: normal;' class=3D""><span style=3D'color: inherit; fon=
+t-size: 13px; font-weight: inherit; line-height: inherit; text-decoration: =
+inherit; --tw-shadow: 0 0 transparent; --tw-ring-inset: ; --tw-ring-offset-=
+width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgba(59,130,246,=
+0.5); --tw-ring-offset-shadow: 0 0 transparent; --tw-ring-shadow: 0 0=0Atra=
+nsparent; font-family: Roboto, "San Francisco", Helvetica, Arial, sans-seri=
+f; font-style: italic;' class=3D"">=E2=80=94 </span></b></b><span style=3D"=
+color: inherit; font-size: inherit; font-weight: 400; line-height: inherit;=
+ text-decoration: inherit;" class=3D"">Mais moi mes potes, ils ne sont pas =
+mal =C3=A9lev=C3=A9s, y a pas =C3=A7a du tout. Au contraire, c=E2=80=99est =
+trop chiant les enfants dont les parents mettent des limites. C=E2=80=99est=
+ ceux qui ont le </span>moins de vie sociale<span style=3D"color: inherit; =
+font-size: inherit; font-weight: 400; line-height: inherit; text-decoration=
+: inherit;" class=3D"">, elles ne sont pas invit=C3=A9es aux f=C3=AAtes, el=
+les connaissent moins de monde, elles sont plus renferm=C3=A9es. On a certa=
+ins copains par exemple, comme cela s=E2=80=99=C3=A9tait mal pass=C3=A9 un =
+jour au parc, eh bien leur parents ne veulent plus qu'ils viennent, c=
+=E2=80=99est trop dommage. </span></span><span style=3D'color: #000000; fon=
+t-size: 13px; font-weight: inherit; line-height: inherit; text-decoration:=
+=0Ainherit; font-family: Roboto, "San Francisco", Helvetica, Arial, sans-se=
+rif; font-style: normal;' class=3D"">Et en plus c=E2=80=99est au contraire =
+quand tes parents te mettent des limites que cela se passe mal chez toi<spa=
+n style=3D"color: inherit; font-size: inherit; font-weight: 400; line-heigh=
+t: inherit; text-decoration: inherit;" class=3D"">. Tu vois par exemple le =
+week-end dernier, papa il n=E2=80=99a pas voulu que je rejoigne mes amis au=
+ parc (ndlr : nous sommes en garde altern=C3=A9e), eh bien du coup j=
+=E2=80=99=C3=A9tais de mauvaise humeur tout le week-end, =C3=A7a s=E2=80=
+=99est mal pass=C3=A9, on passe de moins bons moments. Alors que mes meille=
+urs moments c=E2=80=99est justement quand je rejoins mes amis au parc. </sp=
+an><br class=3D""><br class=3D""><span style=3D"color: inherit; font-size: =
+inherit; font-weight: 400; line-height: inherit; text-decoration: inherit;"=
+ class=3D"">=E2=80=94 </span></span><span style=3D'color: #000000; font-siz=
+e: 13px; font-weight: inherit; line-height: inherit; text-decoration: inher=
+it;=0Afont-family: Roboto, "San Francisco", Helvetica, Arial, sans-serif; f=
+ont-style: normal;' class=3D""><span style=3D"color: inherit; font-size: in=
+herit; font-weight: 400; line-height: inherit; text-decoration: inherit;" c=
+lass=3D"">Mais du coup est-ce que tu ne trouves pas que les enfants qui ont=
+ des </span>parents s=C3=A9v=C3=A8res<span style=3D"color: inherit; font-si=
+ze: inherit; font-weight: 400; line-height: inherit; text-decoration: inher=
+it;" class=3D"">, sont </span>mieux =C3=A9lev=C3=A9s<span style=3D"color: i=
+nherit; font-size: inherit; font-weight: 400; line-height: inherit; text-de=
+coration: inherit;" class=3D""> ? </span><br class=3D""></span></b><br clas=
+s=3D""><b style=3D'margin: 0; outline: none; padding: 0; font-family: Robot=
+o, "San Francisco", Helvetica, Arial, sans-serif; font-size: 13px; font-wei=
+ght: bold;' class=3D""><span style=3D'color: #000000; font-size: 13px; font=
+-weight: inherit; line-height: inherit; text-decoration: inherit; font-fami=
+ly: Roboto, "San Francisco", Helvetica, Arial,=0Asans-serif; font-style: no=
+rmal;' class=3D""><span style=3D"color: inherit; font-size: inherit; font-w=
+eight: 400; line-height: inherit; text-decoration: inherit;" class=3D"">=
+=E2=80=94 Non je ne pense pas, </span>je pense que c=E2=80=99est l=E2=80=
+=99inverse au contraire<span style=3D"color: inherit; font-size: inherit; f=
+ont-weight: 400; line-height: inherit; text-decoration: inherit;" class=3D"=
+"> ! </span></span><span style=3D'color: #000000; font-size: 13px; font-wei=
+ght: inherit; line-height: inherit; text-decoration: inherit; font-family: =
+Roboto, "San Francisco", Helvetica, Arial, sans-serif; font-style: normal;'=
+ class=3D""><span style=3D"color: inherit; font-size: inherit; font-weight:=
+ 400; line-height: inherit; text-decoration: inherit;" class=3D"">Parce que=
+ ces potes-l=C3=A0 justement </span>quand ils sortent, ils font n=E2=80=
+=99importe quoi<span style=3D"color: inherit; font-size: inherit; font-weig=
+ht: 400; line-height: inherit; text-decoration: inherit;" class=3D"">. Il y=
+ avait des gens dans le parc qui=0Afaisaient des conneries, et eux ils disa=
+ient : "venez on va avec eux !", car ils pensaient que faire du bon temps, =
+c'=C3=A9tait forc=C3=A9ment faire des conneries. Car c=E2=80=99est vrai que=
+ parfois on leur raconte des dingueries qui nous sont arriv=C3=A9s, mais du=
+ coup </span>eux ils pensent que pour passer un bon moment faut forc=C3=
+=A9ment faire des conneries<span style=3D"color: inherit; font-size: inheri=
+t; font-weight: 400; line-height: inherit; text-decoration: inherit;" class=
+=3D"">, alors que juste =C3=AAtre tous ensemble et rigoler c=E2=80=99est bi=
+en. C'est ces potes-l=C3=A0 qui ont le plus de limites, qui nous disent "vi=
+ens on va faire des p=C3=A9tards", ils pensent que c=E2=80=99est =C3=A7a s=
+=E2=80=99amuser. </span></span><span style=3D'color: #000000; font-size: 13=
+px; font-weight: inherit; line-height: inherit; text-decoration: inherit; f=
+ont-family: Roboto, "San Francisco", Helvetica, Arial, sans-serif; font-sty=
+le: normal;' class=3D""><span style=3D"color: inherit; font-size: inherit; =
+font-weight: 400; line-height:=0Ainherit; text-decoration: inherit;" class=
+=3D"">Je pense que quand </span>tu as des limites, et que l=E2=80=99on te p=
+rive de quelque chose, tu as plus envie de les faire<span style=3D"color: i=
+nherit; font-size: inherit; font-weight: 400; line-height: inherit; text-de=
+coration: inherit;" class=3D"">. C=E2=80=99est eux qui du coup vont faire d=
+es </span>fugues<span style=3D"color: inherit; font-size: inherit; font-wei=
+ght: 400; line-height: inherit; text-decoration: inherit;" class=3D"">. (nd=
+lr : 36000 fugues / an en France d'enfants !)</span><br class=3D""></span><=
+br class=3D""><span style=3D'color: #000000; font-size: 13px; font-weight: =
+inherit; line-height: inherit; text-decoration: inherit; font-family: Robot=
+o, "San Francisco", Helvetica, Arial, sans-serif; font-style: normal;' clas=
+s=3D""><span style=3D"color: inherit; font-size: inherit; font-weight: 400;=
+ line-height: inherit; text-decoration: inherit;" class=3D"">=E2=80=94 Mais=
+ tu crois pas qu=E2=80=99il y a aussi des enfants, dont les parents ne sont=
+ pas=0As=C3=A9v=C3=A8res, et </span>qui font n'importe quoi, parce qu=
+=E2=80=99ils "manquent de limites<span style=3D"color: inherit; font-size: =
+inherit; font-weight: 400; line-height: inherit; text-decoration: inherit;"=
+ class=3D"">" ?</span><br class=3D""></span><br class=3D""><span style=3D'c=
+olor: #000000; font-size: 13px; font-weight: inherit; line-height: inherit;=
+ text-decoration: inherit; font-family: Roboto, "San Francisco", Helvetica,=
+ Arial, sans-serif; font-style: normal;' class=3D""><span style=3D"color: i=
+nherit; font-size: inherit; font-weight: 400; line-height: inherit; text-de=
+coration: inherit;" class=3D"">=E2=80=94 Autour de moi les enfants qui font=
+ n=E2=80=99importe quoi au coll=C3=A8ge, c=E2=80=99est des enfants qui </sp=
+an>ont des probl=C3=A8mes<span style=3D"color: inherit; font-size: inherit;=
+ font-weight: 400; line-height: inherit; text-decoration: inherit;" class=
+=3D"">. Par exemple, il y en a un qui faisait que des conneries, sa maman e=
+lle =C3=A9tait drogu=C3=A9e et =C3=A7a n=E2=80=99allait pas chez lui. J=
+=E2=80=99ai des amis qui pour=0Arigoler volent des trousses, mais c'est aus=
+si des enfants qui ont des difficult=C3=A9s, chez eux =C3=A7a se passe pas =
+bien.</span><br class=3D""></span><br class=3D""><span style=3D'color: #000=
+000; font-size: 13px; font-weight: inherit; line-height: inherit; text-deco=
+ration: inherit; font-family: Roboto, "San Francisco", Helvetica, Arial, sa=
+ns-serif; font-style: normal;' class=3D""><span style=3D"color: inherit; fo=
+nt-size: inherit; font-weight: 400; line-height: inherit; text-decoration: =
+inherit;" class=3D"">=E2=80=94 C=E2=80=99est vrai que moi, je suis pas non =
+plus un parent "doux", je m=E2=80=99affirme, je dis quand je ne suis pas d=
+=E2=80=99accord avec ce que vous faites. Est-ce que tu crois que, quand les=
+ parents sont plus doux que moi, "</span>toujours bienveillants<span style=
+=3D"color: inherit; font-size: inherit; font-weight: 400; line-height: inhe=
+rit; text-decoration: inherit;" class=3D"">", leur enfant, =C3=A7a va pas ?=
+</span><br class=3D""></span><br class=3D""><span style=3D'color: #000000; =
+font-size: 13px;=0Afont-weight: inherit; line-height: inherit; text-decorat=
+ion: inherit; font-family: Roboto, "San Francisco", Helvetica, Arial, sans-=
+serif; font-style: normal;' class=3D""><span style=3D"color: inherit; font-=
+size: inherit; font-weight: 400; line-height: inherit; text-decoration: inh=
+erit;" class=3D"">=E2=80=94 Non je ne pense pas. Je pense que le probl=
+=C3=A8me c=E2=80=99est les enfants qui se font </span>hurler <span style=3D=
+"color: inherit; font-size: inherit; font-weight: 400; line-height: inherit=
+; text-decoration: inherit;" class=3D"">dessus quand ils ont fait un truc q=
+ui va pas. Je pense que pour les autres, =C3=A0 qui on ne hurle pas dessus,=
+ tu ne refais pas ta connerie, parce que justement tes parents ils te font =
+</span></span></b><span style=3D'color: inherit; font-size: 13px; font-weig=
+ht: bold; line-height: inherit; text-decoration: inherit; font-family: Robo=
+to, "San Francisco", Helvetica, Arial, sans-serif;' class=3D"">confiance</s=
+pan><span style=3D'color: #000000; font-size: 13px; font-weight:=0A400; lin=
+e-height: inherit; text-decoration: inherit; font-family: Roboto, "San Fran=
+cisco", Helvetica, Arial, sans-serif; font-style: normal;' class=3D"">. Et =
+t=E2=80=99as pas envie de les d=C3=A9cevoir aussi. T'as envie qu=E2=80=
+=99ils continuent de te faire confiance, justement aussi parce que tu sais =
+que tu as de</span><span style=3D'color: inherit; font-size: 13px; font-wei=
+ght: bold; line-height: inherit; text-decoration: inherit; font-family: Rob=
+oto, "San Francisco", Helvetica, Arial, sans-serif;' class=3D""> la chance =
+de pas avoir de limites</span><span style=3D'color: #000000; font-size: 13p=
+x; font-weight: 400; line-height: inherit; text-decoration: inherit; font-f=
+amily: Roboto, "San Francisco", Helvetica, Arial, sans-serif; font-style: n=
+ormal;' class=3D"">. =C2=BB</span><br class=3D""><div style=3D"margin: 0; o=
+utline: none; padding: 0; color: inherit; font-size: inherit; font-weight: =
+inherit; line-height: inherit; text-decoration: inherit; text-align: center=
+;" class=3D""><span style=3D'color:=0Ainherit; font-size: 13px; font-weight=
+: inherit; line-height: inherit; text-decoration: inherit; font-family: Rob=
+oto, "San Francisco", Helvetica, Arial, sans-serif;' class=3D""><br>***</sp=
+an></div>=0A<span style=3D'color: #000000; font-size: 13px; font-weight: in=
+herit; line-height: inherit; text-decoration: inherit; font-family: Roboto,=
+ "San Francisco", Helvetica, Arial, sans-serif; font-style: normal;' class=
+=3D"">Alors, pour revenir au copain de mon fils, qui tout =C3=A0 coup s=
+=E2=80=99est mis =C3=A0 balancer son verre de jus d=E2=80=99orange sur un m=
+ur (la situation dont je te parlais dans la Cool News de dimanche dernier)=
+=E2=80=A6 Eh bien je crois que c=E2=80=99est =C3=A7a. Et ce genre de situat=
+ion m=E2=80=99est plusieurs fois arriv=C3=A9 avec des enfants des autres. Q=
+uand j=E2=80=99organise un anniversaire, o=C3=B9 en r=C3=A8gle g=C3=A9n=
+=C3=A9rale je ne suis vraiment pas sur le dos des enfants, je les laisse se=
+ g=C3=A9rer, je leur interdis peu de choses. Eh bien certains enfants ne so=
+nt pas du tout habitu=C3=A9s =C3=A0 cette "libert=C3=A9", et du coup se ret=
+rouvent =C3=A0 faire n=E2=80=99importe quoi, comme si ENFIN, ils pouvaient =
+faire ce qu=E2=80=99ils voulaient, =C3=A9taient libres ! <br class=3D""><sp=
+an style=3D"color: inherit; font-size: inherit; font-weight:=0Abold; line-h=
+eight: inherit; text-decoration: inherit;" class=3D"">"Libres de faire des =
+conneries", qui est =C3=A0 leur yeux la meilleure fa=C3=A7on de s=E2=80=
+=99amuser=E2=80=A6</span><br class=3D""></span><br class=3D""><span style=
+=3D'color: #000000; font-size: 13px; font-weight: inherit; line-height: inh=
+erit; text-decoration: inherit; font-family: Roboto, "San Francisco", Helve=
+tica, Arial, sans-serif;' class=3D"">Qu=E2=80=99en penses-tu ? H=C3=A2te d=
+=E2=80=99avoir vos retours !! &#129321;&#127752;=E2=9C=92=EF=B8=8F <span st=
+yle=3D'color: #000000; font-size: 13px; font-weight: inherit; line-height: =
+inherit; text-decoration: inherit; font-family: Roboto, "San Francisco", He=
+lvetica, Arial, sans-serif;'>&#129321;&#128039;&#128140;<br>Et n'h=C3=A9sit=
+ez pas =C3=A0 <span style=3D"color: inherit; font-size: inherit; font-weigh=
+t: inherit; line-height: inherit; text-decoration: inherit; font-style: ita=
+lic;" class=3D"">transf=C3=A9rer </span>les newsletters =C3=A0 des amis !</=
+span><br class=3D""></span><br class=3D""><span style=3D'color: #000000; fo=
+nt-size:=0A13px; font-weight: 400; line-height: inherit; text-decoration: i=
+nherit; font-family: Roboto, "San Francisco", Helvetica, Arial, sans-serif;=
+ font-style: normal;' class=3D"">Bon du coup, la newsletter est d=C3=A9j=
+=C3=A0 bien trop longue=E2=80=A6 Pas d=E2=80=99astuces pour cette fois-ci &=
+#128522; RDV Dimanche prochain, et en attendant je te souhaite une magnifiq=
+ue semaine. <br class=3D""><br class=3D""><div style=3D"margin: 0; outline:=
+ none; padding: 0; color: inherit; font-size: inherit; font-weight: inherit=
+; line-height: inherit; text-decoration: inherit; text-align: center;" clas=
+s=3D""><span style=3D'color: #000000; font-size: inherit; font-weight: 400;=
+ line-height: inherit; text-decoration: inherit; font-family: Roboto, "San =
+Francisco", Helvetica, Arial, sans-serif;' class=3D"">Charlotte</span></div=
+>=0A</span></div>=0A<!--[if (gte mso 12)&(lte mso 15) ]>=0A<style data-ac-k=
+eep=3D"true" data-ac-inline=3D"false"> #text_div52159, #text_div52159 div {=
+ line-height: 180% !important; };=0A</style>=0A<![endif]--></td>=0A</tr>=0A=
+</table>=0A</td>=0A</tr>=0A</table>=0A</td>=0A</tr>=0A<tr style=3D"mso-line=
+-height-rule: exactly;"><td id=3D"layout-row-margin56936" valign=3D"top" st=
+yle=3D"mso-line-height-rule: exactly;"><table width=3D"100%" border=3D"0" c=
+ellpadding=3D"0" cellspacing=3D"0" style=3D"-ms-text-size-adjust: auto; -we=
+bkit-text-size-adjust: 100%; border-collapse: collapse; font-size: 14px; mi=
+n-width: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt;"><tr id=3D"lay=
+out-row56936" class=3D"layout layout-row widget _widget_spacer " style=3D"m=
+so-line-height-rule: exactly;"><td id=3D"layout-row-padding56936" valign=3D=
+"top" style=3D"mso-line-height-rule: exactly;"><table width=3D"100%" border=
+=3D"0" cellpadding=3D"0" cellspacing=3D"0" style=3D"-ms-text-size-adjust: a=
+uto; -webkit-text-size-adjust: 100%; border-collapse: collapse; font-size: =
+14px; min-width: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt;"><tr s=
+tyle=3D"mso-line-height-rule: exactly;"><td valign=3D"top" height=3D"30" st=
+yle=3D"mso-line-height-rule: exactly;"><div class=3D"spacer" style=3D"margi=
+n: 0; outline: none; padding: 0;=0Aheight: 30px;"><table cellpadding=3D"0" =
+cellspacing=3D"0" border=3D"0" width=3D"100%" style=3D"-ms-text-size-adjust=
+: auto; -webkit-text-size-adjust: 100%; border-collapse: collapse; font-siz=
+e: 14px; min-width: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt;"><t=
+r style=3D"mso-line-height-rule: exactly;"><td class=3D"spacer-body" valign=
+=3D"top" height=3D"30" width=3D"650" style=3D"mso-line-height-rule: exactly=
+;">=C2=A0</td>=0A</tr>=0A</table>=0A</div>=0A</td>=0A</tr>=0A</table>=0A</t=
+d>=0A</tr>=0A</table>=0A</td>=0A</tr>=0A<tr style=3D"mso-line-height-rule: =
+exactly;"><td id=3D"layout-row-margin56935" valign=3D"top" style=3D"mso-lin=
+e-height-rule: exactly; padding: 5px;"><table width=3D"100%" border=3D"0" c=
+ellpadding=3D"0" cellspacing=3D"0" style=3D"-ms-text-size-adjust: auto; -we=
+bkit-text-size-adjust: 100%; border-collapse: initial !important; font-size=
+: 14px; min-width: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt;"><tr=
+ id=3D"layout-row56935" class=3D"layout layout-row widget _widget_text styl=
+e56935" style=3D"mso-line-height-rule: exactly; margin: 0; padding: 0;"><td=
+ id=3D"layout-row-padding56935" valign=3D"top" style=3D"mso-line-height-rul=
+e: exactly; padding: 5px 10px 5px 10px;"><table width=3D"100%" border=3D"0"=
+ cellpadding=3D"0" cellspacing=3D"0" style=3D"-ms-text-size-adjust: auto; -=
+webkit-text-size-adjust: 100%; border-collapse: collapse; font-size: 14px; =
+min-width: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt;"><tr style=
+=3D"mso-line-height-rule: exactly;"><td id=3D"text_div52348" class=3D"td_te=
+xt td_block"=0Avalign=3D"top" align=3D"left" width=3D"620" style=3D"line-he=
+ight: 180%; mso-line-height-rule: exactly; margin: 0; outline: none; paddin=
+g: 0; color: inherit; font-size: 12px; font-weight: inherit; line-height: 1=
+.8; text-decoration: inherit; font-family: arial;"> <div style=3D"line-heig=
+ht: 180%; margin: 0; outline: none; padding: 0; color: inherit; font-size: =
+inherit; font-weight: inherit; line-height: 1.8; text-decoration: inherit; =
+text-align: justify; mso-line-height-rule: exactly;" class=3D"" data-line-h=
+eight=3D"1.8"><b style=3D'margin: 0; outline: none; padding: 0; font-family=
+: Roboto, "San Francisco", Helvetica, Arial, sans-serif; font-size: 13px; c=
+olor: #000000; font-weight: normal;' class=3D""></b><b style=3D'margin: 0; =
+outline: none; padding: 0; font-family: Roboto, "San Francisco", Helvetica,=
+ Arial, sans-serif; font-size: 16px; font-style: normal;' class=3D""><div s=
+tyle=3D"margin: 0; outline: none; padding: 0; color: inherit; font-size: in=
+herit; font-weight: inherit; line-height:=0Ainherit; text-decoration: inher=
+it; text-align: center;" class=3D""><b class=3D"" style=3D'margin: 0; outli=
+ne: none; padding: 0; text-align: justify; text-decoration: inherit; font-f=
+amily: Roboto, "San Francisco", Helvetica, Arial, sans-serif; font-size: 13=
+px; font-weight: bold;'><span style=3D'color: #000000; font-size: inherit; =
+font-weight: 400; line-height: inherit; text-decoration: inherit; font-fami=
+ly: Roboto, "San Francisco", Helvetica, Arial, sans-serif;' class=3D"">Un a=
+mi t'a transf=C3=A9r=C3=A9 cet e-mail ? <a href=3D"https://coolparentsmakeh=
+appykids.emlnk9.com/lt.php?x=3D4lZy~GE7JFCg58F_yNLNguCgAKApuNH1kPhijaI7UqOe=
+DK770Uy.0ONv13BzitfwlvYwbHPHIXagT8Dvzd9MW.FxPbKRia" data-ac-default-color=
+=3D"1" style=3D"margin: 0; outline: none; padding: 0; color: #ed6c45; text-=
+decoration: underline;"><span style=3D"color: ; font-size: inherit; font-we=
+ight: inherit; line-height: inherit; text-decoration: inherit;">inscris-toi=
+ =C3=A0 la Newsletter ici</span></a> pour recevoir les autres <b style=3D'm=
+argin: 0; outline: none; padding: 0; --tw-shadow: 0 0 transparent; --tw-rin=
+g-inset: ; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff;=0A--t=
+w-ring-color: rgba(59,130,246,0.5); --tw-ring-offset-shadow: 0 0 transparen=
+t; --tw-ring-shadow: 0 0 transparent; font-family: Roboto, "San Francisco",=
+ Helvetica, Arial, sans-serif; color: #000000; font-style: normal; font-siz=
+e: 13px; font-weight: bold;'><span style=3D'color: #000000; font-size: inhe=
+rit; font-weight: inherit; line-height: inherit; text-decoration: inherit; =
+--tw-shadow: 0 0 transparent; --tw-ring-inset: ; --tw-ring-offset-width: 0p=
+x; --tw-ring-offset-color: #fff; --tw-ring-color: rgba(59,130,246,0.5); --t=
+w-ring-offset-shadow: 0 0 transparent; --tw-ring-shadow: 0 0 transparent; f=
+ont-family: Roboto, "San Francisco", Helvetica, Arial, sans-serif;'>&#12932=
+1; On te partage des questions de fond, des astuces pour le quotidien, des =
+articles en parentalit=C3=A9 et nos actus !</span></b></span></b></div>=0A<=
+/b></div>=0A<!--[if (gte mso 12)&(lte mso 15) ]>=0A<style data-ac-keep=3D"t=
+rue" data-ac-inline=3D"false"> #text_div52348, #text_div52348 div { line-he=
+ight: 180% !important; };=0A</style>=0A<![endif]--></td>=0A</tr>=0A</table>=
+=0A</td>=0A</tr>=0A</table>=0A</td>=0A</tr>=0A<tr style=3D"mso-line-height-=
+rule: exactly;"><td id=3D"layout-row-margin56742" valign=3D"top" style=3D"m=
+so-line-height-rule: exactly;"><table width=3D"100%" border=3D"0" cellpaddi=
+ng=3D"0" cellspacing=3D"0" style=3D"-ms-text-size-adjust: auto; -webkit-tex=
+t-size-adjust: 100%; border-collapse: collapse; font-size: 14px; min-width:=
+ 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt;"><tr id=3D"layout-row5=
+6742" class=3D"layout layout-row widget _widget_spacer " style=3D"mso-line-=
+height-rule: exactly;"><td id=3D"layout-row-padding56742" valign=3D"top" st=
+yle=3D"mso-line-height-rule: exactly;"><table width=3D"100%" border=3D"0" c=
+ellpadding=3D"0" cellspacing=3D"0" style=3D"-ms-text-size-adjust: auto; -we=
+bkit-text-size-adjust: 100%; border-collapse: collapse; font-size: 14px; mi=
+n-width: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt;"><tr style=3D"=
+mso-line-height-rule: exactly;"><td valign=3D"top" height=3D"10" style=3D"f=
+ont-size: 10px; height: 10px; line-height: 10px; mso-line-height-rule: exac=
+tly;"><div=0Aclass=3D"spacer" style=3D"margin: 0; outline: none; padding: 0=
+; height: 10px;"><table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" wi=
+dth=3D"100%" style=3D"-ms-text-size-adjust: auto; -webkit-text-size-adjust:=
+ 100%; border-collapse: collapse; font-size: 14px; min-width: 100%; mso-tab=
+le-lspace: 0pt; mso-table-rspace: 0pt;"><tr style=3D"mso-line-height-rule: =
+exactly;"><td class=3D"spacer-body" valign=3D"top" height=3D"10" width=3D"6=
+50" style=3D"font-size: 10px; height: 10px; line-height: 10px; mso-line-hei=
+ght-rule: exactly;">=C2=A0</td>=0A</tr>=0A</table>=0A</div>=0A</td>=0A</tr>=
+=0A</table>=0A</td>=0A</tr>=0A</table>=0A</td>=0A</tr>=0A</table>=0A</td>=
+=0A<td id=3D"layout_table_9b774ade065e3a7a837eaf9b7fadde71382d32fe" valign=
+=3D"top" width=3D"25" style=3D"mso-line-height-rule: exactly;"><table cellp=
+adding=3D"0" cellspacing=3D"0" border=3D"0" class=3D"layout layout-table " =
+width=3D"25" style=3D"-ms-text-size-adjust: auto; -webkit-text-size-adjust:=
+ 100%; border-collapse: collapse; font-size: 14px; min-width: 100%; mso-tab=
+le-lspace: 0pt; mso-table-rspace: 0pt;"><tr style=3D"mso-line-height-rule: =
+exactly;"><td id=3D"layout-row-margin56737" valign=3D"top" style=3D"mso-lin=
+e-height-rule: exactly;"><table width=3D"100%" border=3D"0" cellpadding=3D"=
+0" cellspacing=3D"0" style=3D"-ms-text-size-adjust: auto; -webkit-text-size=
+-adjust: 100%; border-collapse: collapse; font-size: 14px; min-width: 100%;=
+ mso-table-lspace: 0pt; mso-table-rspace: 0pt;"><tr id=3D"layout-row56737" =
+class=3D"layout layout-row widget _widget_spacer " style=3D"mso-line-height=
+-rule: exactly;"><td id=3D"layout-row-padding56737" valign=3D"top" style=3D=
+"mso-line-height-rule: exactly;"><table width=3D"100%"=0Aborder=3D"0" cellp=
+adding=3D"0" cellspacing=3D"0" style=3D"-ms-text-size-adjust: auto; -webkit=
+-text-size-adjust: 100%; border-collapse: collapse; font-size: 14px; min-wi=
+dth: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt;"><tr style=3D"mso-=
+line-height-rule: exactly;"><td valign=3D"top" height=3D"49.9844" style=3D"=
+mso-line-height-rule: exactly;"><div class=3D"spacer" style=3D"margin: 0; o=
+utline: none; padding: 0; height: 49.9844px;"><table cellpadding=3D"0" cell=
+spacing=3D"0" border=3D"0" width=3D"100%" style=3D"-ms-text-size-adjust: au=
+to; -webkit-text-size-adjust: 100%; border-collapse: collapse; font-size: 1=
+4px; min-width: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt;"><tr st=
+yle=3D"mso-line-height-rule: exactly;"><td class=3D"spacer-body" valign=3D"=
+top" height=3D"49.9844" width=3D"25" style=3D"mso-line-height-rule: exactly=
+;">=C2=A0</td>=0A</tr>=0A</table>=0A</div>=0A</td>=0A</tr>=0A</table>=0A</t=
+d>=0A</tr>=0A</table>=0A</td>=0A</tr>=0A</table>=0A</td>=0A</tr>=0A</table>=
+=0A</td>=0A</tr>=0A</table>=0A</td>=0A</tr>=0A</table>=0A</td>=0A</tr>=0A<t=
+r style=3D"mso-line-height-rule: exactly; background-color: #fff9f0;"><td i=
+d=3D"layout-row-margin56741" valign=3D"top" style=3D"mso-line-height-rule: =
+exactly; background-color: #fff9f0;"><table width=3D"100%" border=3D"0" cel=
+lpadding=3D"0" cellspacing=3D"0" style=3D"-ms-text-size-adjust: auto; -webk=
+it-text-size-adjust: 100%; border-collapse: collapse; font-size: 14px; min-=
+width: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt;"><tr id=3D"layou=
+t-row56741" class=3D"layout layout-row widget _widget_spacer " style=3D"mso=
+-line-height-rule: exactly;"><td id=3D"layout-row-padding56741" valign=3D"t=
+op" style=3D"mso-line-height-rule: exactly;"><table width=3D"100%" border=
+=3D"0" cellpadding=3D"0" cellspacing=3D"0" style=3D"-ms-text-size-adjust: a=
+uto; -webkit-text-size-adjust: 100%; border-collapse: collapse; font-size: =
+14px; min-width: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt;"><tr s=
+tyle=3D"mso-line-height-rule: exactly;"><td valign=3D"top" height=3D"10" st=
+yle=3D"font-size: 10px; height: 10px; line-height:=0A10px; mso-line-height-=
+rule: exactly;"><div class=3D"spacer" style=3D"margin: 0; outline: none; pa=
+dding: 0; height: 10px;"><table cellpadding=3D"0" cellspacing=3D"0" border=
+=3D"0" width=3D"100%" style=3D"-ms-text-size-adjust: auto; -webkit-text-siz=
+e-adjust: 100%; border-collapse: collapse; font-size: 14px; min-width: 100%=
+; mso-table-lspace: 0pt; mso-table-rspace: 0pt;"><tr style=3D"mso-line-heig=
+ht-rule: exactly;"><td class=3D"spacer-body" valign=3D"top" height=3D"10" w=
+idth=3D"700" style=3D"font-size: 10px; height: 10px; line-height: 10px; mso=
+-line-height-rule: exactly;">=C2=A0</td>=0A</tr>=0A</table>=0A</div>=0A</td=
+>=0A</tr>=0A</table>=0A</td>=0A</tr>=0A</table>=0A</td>=0A</tr>=0A<tr style=
+=3D"mso-line-height-rule: exactly; background-color: #fff9f0;"><td id=3D"la=
+yout-row-margin56740" valign=3D"top" style=3D"mso-line-height-rule: exactly=
+; background-color: #fff9f0;"><table width=3D"100%" border=3D"0" cellpaddin=
+g=3D"0" cellspacing=3D"0" style=3D"-ms-text-size-adjust: auto; -webkit-text=
+-size-adjust: 100%; border-collapse: collapse; font-size: 14px; min-width: =
+100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt;"><tr id=3D"layout-row56=
+740" class=3D"layout layout-row widget _widget_spacer " style=3D"mso-line-h=
+eight-rule: exactly;"><td id=3D"layout-row-padding56740" valign=3D"top" sty=
+le=3D"mso-line-height-rule: exactly;"><table width=3D"100%" border=3D"0" ce=
+llpadding=3D"0" cellspacing=3D"0" style=3D"-ms-text-size-adjust: auto; -web=
+kit-text-size-adjust: 100%; border-collapse: collapse; font-size: 14px; min=
+-width: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt;"><tr style=3D"m=
+so-line-height-rule: exactly;"><td valign=3D"top" height=3D"10" style=3D"fo=
+nt-size: 10px; height: 10px; line-height:=0A10px; mso-line-height-rule: exa=
+ctly;"><div class=3D"spacer" style=3D"margin: 0; outline: none; padding: 0;=
+ height: 10px;"><table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" wid=
+th=3D"100%" style=3D"-ms-text-size-adjust: auto; -webkit-text-size-adjust: =
+100%; border-collapse: collapse; font-size: 14px; min-width: 100%; mso-tabl=
+e-lspace: 0pt; mso-table-rspace: 0pt;"><tr style=3D"mso-line-height-rule: e=
+xactly;"><td class=3D"spacer-body" valign=3D"top" height=3D"10" width=3D"70=
+0" style=3D"font-size: 10px; height: 10px; line-height: 10px; mso-line-heig=
+ht-rule: exactly;">=C2=A0</td>=0A</tr>=0A</table>=0A</div>=0A</td>=0A</tr>=
+=0A</table>=0A</td>=0A</tr>=0A</table>=0A</td>=0A</tr>=0A<tr style=3D"mso-l=
+ine-height-rule: exactly; background-color: #fff9f0;"><td id=3D"layout-row-=
+margin56730" valign=3D"top" style=3D"mso-line-height-rule: exactly; padding=
+: 0px; background-color: #fff9f0;"><table width=3D"100%" border=3D"0" cellp=
+adding=3D"0" cellspacing=3D"0" style=3D"-ms-text-size-adjust: auto; -webkit=
+-text-size-adjust: 100%; border-collapse: initial !important; font-size: 14=
+px; min-width: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt;"><tr id=
+=3D"layout-row56730" class=3D"layout layout-row widget _widget_text style56=
+730" style=3D"mso-line-height-rule: exactly; margin: 0; padding: 0; backgro=
+und-color: #ffffff;"><td id=3D"layout-row-padding56730" valign=3D"top" styl=
+e=3D"mso-line-height-rule: exactly; background-color: #ffffff; padding: 20p=
+x 15px 20px 15px;"><table width=3D"100%" border=3D"0" cellpadding=3D"0" cel=
+lspacing=3D"0" style=3D"-ms-text-size-adjust: auto; -webkit-text-size-adjus=
+t: 100%; border-collapse: collapse; font-size: 14px; min-width: 100%; mso-t=
+able-lspace: 0pt;=0Amso-table-rspace: 0pt;"><tr style=3D"mso-line-height-ru=
+le: exactly;"><td id=3D"text_div52155" class=3D"td_text td_block" valign=3D=
+"top" align=3D"left" width=3D"670" style=3D"line-height: 160%; mso-line-hei=
+ght-rule: exactly; margin: 0; outline: none; padding: 0; color: inherit; fo=
+nt-size: 12px; font-weight: inherit; line-height: 1.6; text-decoration: inh=
+erit; font-family: arial;"> <div style=3D"line-height: 160%; margin: 0; out=
+line: none; padding: 0; color: #999999; font-size: 10px; font-weight: inher=
+it; line-height: 1.6; text-decoration: inherit; mso-line-height-rule: exact=
+ly;" data-line-height=3D"1.6"> <div style=3D"margin: 0; outline: none; padd=
+ing: 0; color: #999999; font-size: inherit; font-weight: inherit; line-heig=
+ht: inherit; text-decoration: inherit; text-align: justify;"><span class=3D=
+"" style=3D'color: #999999; font-size: inherit; font-weight: inherit; line-=
+height: inherit; text-decoration: inherit; font-family: Roboto, "San Franci=
+sco", Helvetica, Arial, sans-serif;'> <span=0Astyle=3D'color: #999999; font=
+-size: 10px; font-weight: 400; line-height: inherit; text-decoration: inher=
+it; --tw-shadow: 0 0 transparent; --tw-ring-inset: ; --tw-ring-offset-width=
+: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgba(59,130,246,0.5);=
+ --tw-ring-offset-shadow: 0 0 transparent; --tw-ring-shadow: 0 0 transparen=
+t; font-family: Roboto, "San Francisco", Helvetica, Arial, sans-serif; font=
+-style: normal;'>Cool Parents Make Happy Kids vous accompagne au quotidien,=
+ pour une vie plus douce en famille : des articles, des astuces, des coachi=
+ngs et du soutien &#129782; En attendant que la France soit un peu plus "Ki=
+ds Friendly"... (objet du prochain livre de Charlotte !)</span><br style=3D=
+""><br style=3D""><span style=3D'color: #999999; font-size: 10px; font-weig=
+ht: 400; line-height: inherit; text-decoration: inherit; --tw-shadow: 0 0 t=
+ransparent; --tw-ring-inset: ; --tw-ring-offset-width: 0px; --tw-ring-offse=
+t-color: #fff; --tw-ring-color: rgba(59,130,246,0.5);=0A--tw-ring-offset-sh=
+adow: 0 0 transparent; --tw-ring-shadow: 0 0 transparent; font-family: Robo=
+to, "San Francisco", Helvetica, Arial, sans-serif; font-style: normal;'>Cop=
+yright =C2=A9 2016 COOL PARENTS MAKE HAPPY KIDS,<br style=3D"">All rights r=
+eserved.</span><br style=3D""><br style=3D""><span style=3D'color: #999999;=
+ font-size: 10px; font-weight: 400; line-height: inherit; text-decoration: =
+inherit; font-family: Roboto, "San Francisco", Helvetica, Arial, sans-serif=
+; font-style: normal;'>Conform=C3=A9ment =C3=A0 la Loi Informatique et Libe=
+rt=C3=A9s du 6 janvier 1978, vous disposez d=E2=80=99un droit d=E2=80=99acc=
+=C3=A8s, de rectification et de suppression des donn=C3=A9es ainsi que d=
+=E2=80=99un droit d=E2=80=99opposition au traitement automatis=C3=A9 des do=
+nn=C3=A9es vous concernant pour motifs l=C3=A9gitimes en nous contactant =
+=C3=A0 l=E2=80=99adresse suivante : coaching@coolparentsmakehappykids.com</=
+span><div style=3D"margin: 0; outline: none; padding: 0; color: inherit; fo=
+nt-size: inherit; font-weight: inherit; line-height: inherit;=0Atext-decora=
+tion: inherit; text-align: center;"> </div>=0A </span></div>=0A </div>=0A<!=
+--[if (gte mso 12)&(lte mso 15) ]>=0A<style data-ac-keep=3D"true" data-ac-i=
+nline=3D"false"> #text_div52155, #text_div52155 div { line-height: 160% !im=
+portant; };=0A</style>=0A<![endif]--></td>=0A</tr>=0A</table>=0A</td>=0A</t=
+r>=0A</table>=0A</td>=0A</tr>=0A</table>=0A</td>=0A</tr>=0A</table>=0A</td>=
+=0A</tr>=0A</table>=0A</div>=0A<img src=3D"https://coolparentsmakehappykids=
+.emlnk9.com/lt.php?x=3D4TZy~GE7JFCg58F_yNLNguCgAKApuNH1kPhijaI7UqOeDK770U2D=
+jFFsPa.UitLxklZs05PMI3oKEwJ_z_HNUObcCOBfyAQs_yugXU" border=3D"0" width=3D"1=
+" height=3D"1" alt=3D"" style=3D"display:block;width:1px!important;min-widt=
+h:1px!important;max-width:1px!important;height:1px!important;border:0;overf=
+low:hidden;" /><br /><div id=3D"ac-footer" style=3D"clear:both;background-c=
+olor:inherit;background:inherit;min-width:100%;mso-table-lspace:0pt;mso-tab=
+le-rspace:0pt;padding:20px;color:#000000;font-size:11px;font-family:arial,h=
+elvetica,sans-serif;line-height:140%;line-height:1.4;text-align:center;box-=
+sizing:border-box;"><center>Sent to: <span style=3D"font-size:11px;font-fam=
+ily:arial,helvetica,sans-serif;font-weight:normal;text-decoration:none;outl=
+ine:none;">alice+coolparents@example.com</span><br><br><a href=3D"https://c=
+oolparentsmakehappykids.emlnk9.com/proc.php?nl=3D1&c=3D3434&m=3D3929&s=3Df7=
+071e6188c0edd9a377ccbafac5bb29&act=3Dunsub" style=3D"font-size:11px;font-fa=
+mily:arial,helvetica,sans-serif;font-weight:bold;text-decoration:underline;=
+"><span=0Astyle=3D"font-weight:bold;text-decoration:underline;">Unsubscribe=
+</span></a><br><br>Cool Parents Make Happy Kids, CPMHK, 75009 Paris, France=
+</center></div>=0A<br clear=3D"all" /></body>=0A</html>
+--_=_swift-1788697319699b52ed485331.48985913_=_--
+
+

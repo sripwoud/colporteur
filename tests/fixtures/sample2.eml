@@ -1,0 +1,2041 @@
+Return-Path: <bounces-6jmwc-noreply=gesundheitsportal-privat.de@shared-p100-i6.d.sp1-brevo.net>
+Delivered-To: alice@example.com
+Received: from mx.example.com
+	by mx.example.com with LMTP
+	id UBkDIHrql2ks2w8AOIM6ow
+	(envelope-from <bounces-6jmwc-noreply=gesundheitsportal-privat.de@shared-p100-i6.d.sp1-brevo.net>)
+	for <alice@example.com>; Fri, 20 Feb 2026 05:00:42 +0000
+Return-path: <bounces-6jmwc-noreply=gesundheitsportal-privat.de@shared-p100-i6.d.sp1-brevo.net>
+Envelope-to: alice+hansemerkur@example.com
+Delivery-date: Fri, 20 Feb 2026 05:00:42 +0000
+Received: from shared-p100-i6.d.sp1-brevo.net ([77.32.149.6])
+	by mx.example.com with esmtps  (TLS1.3) tls TLS_AES_256_GCM_SHA384
+	(Exim 4.98)
+	(envelope-from <bounces-6jmwc-noreply=gesundheitsportal-privat.de@shared-p100-i6.d.sp1-brevo.net>)
+	id 1vtId7-00000004mXS-0iuS
+	for alice+hansemerkur@example.com;
+	Fri, 20 Feb 2026 05:00:42 +0000
+DKIM-Signature: a=rsa-sha256; bh=EEnHqcrfndNMovRbWKHCnGr09A+vduvLzH95MeVlBrk=;
+ c=relaxed/relaxed; d=gesundheitsportal-privat.de;
+ h=to:cc:from:reply-to:subject:date:mime-version:content-type:list-id:list-unsubscribe:x-csa-complaints:list-unsubscribe-post:message-id:sender:x-sib-id:x-mailin-client:x-mailin-campaign:feedback-id:bimi-selector;
+ q=dns/txt; s=mail; t=1771563639; v=1;
+ b=jPQv5zKxBVcCuFmSSZSR4OPbSdVnqw0bvM19G8XNMp0QaVWDzyEP7SAzeetnAvVxfOFNqoOe
+ zOVPr3A+yGXFEsMlDVEuK+eZXCdTC3qjWv1nbJM/5xRUMXiea/lKEAOu+Jy9MfzQR822iVZa2uL
+ LnNsPfpIOOg24h6sOOZt1h8g=
+To: <alice+hansemerkur@example.com>
+Subject: Gesundheitsportal: News vom 20.02.2026
+Content-Type: multipart/alternative; boundary="-------?=_42826-3354295438507"
+Date: Fri, 20 Feb 2026 05:00:39 +0000
+Feedback-ID: 77.32.149.6:3822210_12664:3822210:Sendinblue
+From: hansemerkur.gesundheitsportal-privat.de <noreply@gesundheitsportal-privat.de>
+List-Id: MzgyMjIxMC0yNzgzOTUtMTA= <MzgyMjIxMC0yNzgzOTUtMTA=.list-id.mailin.fr>
+List-Unsubscribe: <mailto:unsubscribe@shared-p100-i6.d.sp1-brevo.net?subject=unsub-92vqiqftynijlfj&body=92vqiqftynijlfj>,<https://6jmwc.r.sp1-brevo.net/mk/un/li/sh/7nVTPdbLJ2bPbSiQot96E9tByWk62CJ/M4zD3i8_OyYG>
+List-Unsubscribe-Post: List-Unsubscribe=One-Click
+MIME-Version: 1.0
+Message-Id: <202620020500.92vqiqftynijlfj@shared-p100-i6.d.sp1-brevo.net>
+Reply-To: <noreply@gesundheitsportal-privat.de>
+X-Csa-Complaints: csa-complaints@eco.de
+X-Mailer: Sendinblue
+X-Mailin-Campaign: 12664
+X-Mailin-Client: 3822210
+X-sib-id: dNMslfS5nejfKQCxKB2BA5x9S_KDTo0Y3FPsS4w-REXQ8atbT3JPQQUX1o6rGb99p9vNZc65ELmmDuei0SzYiz2a8vgpVSR90D3lP4kaX1Zelo2O4-srOpGbOWrQjRE5GZs_IODsk31lSAFJipcJnAT0R3nx13vIybvcII2TRh9RnI6lPQnQkuBohTH4vUO_WBKVsDonN1cwIMXDnFdqzuV0nwwS9iAppA0bYSTJ9LY0NSPv6pg
+X-DKIM: signer='gesundheitsportal-privat.de' status='pass' reason=''
+DKIMCheck: Server passes DKIM test, 0 Spam score
+X-Spam-Score: 2.9 (++)
+X-Spam-Report: Spam detection software, running on the system "mx.example.com", has
+ performed the tests listed below against this email.
+ Information: https://docs.mxroute.com/docs/expert-spam-filtering.html
+ ---
+ Content analysis details:   (2.9 points)
+ ---
+  pts rule name              description
+ ---- ---------------------- -----------------------------------------
+  0.0 RCVD_IN_ZEN_BLOCKED_OPENDNS RBL: ADMINISTRATOR NOTICE: The query to
+                             zen.spamhaus.org was blocked due to usage of an
+                              open resolver. See
+                             https://www.spamhaus.org/returnc/pub/
+                             [77.32.149.6 listed in zen.spamhaus.org]
+  0.0 RCVD_IN_MSPIKE_H3      RBL: Good reputation (+3)
+                             [77.32.149.6 listed in wl.mailspike.net]
+  0.0 URIBL_BLOCKED          ADMINISTRATOR NOTICE: The query to URIBL was blocked.
+                             See
+                             http://wiki.apache.org/spamassassin/DnsBlocklists#dnsbl-block
+                              for more information.
+                             [URI: gesundheitsportal-privat.de]
+                             [URI: sp1-brevo.net]
+  0.0 URIBL_DBL_BLOCKED_OPENDNS ADMINISTRATOR NOTICE: The query to
+                             dbl.spamhaus.org was blocked due to usage of an
+                              open resolver. See
+                             https://www.spamhaus.org/returnc/pub/
+                             [URI: hansemerkur.gesundheitsportal-privat.de]
+                             [URI: 6jmwc.img.sp1-brevo.net]
+                             [URI: 6jmwc.r.sp1-brevo.net]
+                             [URI: gesundheitsportal-privat.de]
+  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily valid
+ -0.1 DKIM_VALID             Message has at least one valid DKIM or DK signature
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from author's
+                             domain
+  0.0 RCVD_IN_MSPIKE_WL      Mailspike good senders
+  1.5 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level mail
+                             domains are different
+  1.5 HTML_MESSAGE           BODY: HTML included in message
+SpamTally: Final spam score: 29
+
+---------?=_42826-3354295438507
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=UTF-8
+
+Sollte der=C2=A0Newsletter=C2=A0nicht korrekt dargestellt werden, klicken S=
+ie bitte hier ( https://6jmwc.r.sp1-brevo.net/mk/mr/sh/7nVTPdZCTJDXPBcJkopd=
+n3TQk5n1aa3/g0imfTgoB6A_?utm_source=3Dsendinblue&utm_campaign=3D&utm_medium=
+=3Demail )
+
+( https://6jmwc.r.sp1-brevo.net/mk/cl/f/sh/7nVU1aA2nfsTSsSco2Xz4eBaYjSyVjH/=
+qdIVEPM-6ry9 )
+
+Gesundheitsportal: News vom 20.02.2026
+
+( https://6jmwc.r.sp1-brevo.net/mk/cl/f/sh/7nVU1aA2nfuMSOxvmbmR70VOj5xlFfn/=
+Dtr6biRhvF7T )
+
+---------------------------------------------------------------------------=
+---------------------------------------------------------------------------=
+------------------------------------
+*Haferflocken senken Cholesterinwerte* ( https://6jmwc.r.sp1-brevo.net/mk/c=
+l/f/sh/7nVU1aA2nfwFRvTElB0t9MpCtSSXzcJ/5e5ntS1Onrgn )
+---------------------------------------------------------------------------=
+---------------------------------------------------------------------------=
+------------------------------------
+
+Nichts als Haferbrei auf dem Teller =E2=80=93 kann das die Cholesterinwerte=
+ senken? Eine Studie der Uni Bonn legt das nahe: Bei Menschen mit metabolis=
+chem Syndrom sinkt das =E2=80=9Eschlechte=E2=80=9C LDL=E2=80=91Cholesterin =
+deutlich. *mehr* ( https://6jmwc.r.sp1-brevo.net/mk/cl/f/sh/7nVU1aA2nfy8RRy=
+XjkFLBj913oxKjYp/3rYjjyNPGNnT )
+
+( https://6jmwc.r.sp1-brevo.net/mk/cl/f/sh/7nVU1aA2ng01QyTqiJTnE5SpEBS7TVL/=
+7sD0-fAG9Fvd )
+
+---------------------------------------------------------------------------=
+---------------------------------------------------------------------------=
+------------------------------------------------------------
+*Kaffee sch=C3=BCtzt vor Demenz =E2=80=93 m=C3=B6glicherweise* ( https://6j=
+mwc.r.sp1-brevo.net/mk/cl/f/sh/7nVU1aA2ng1uQUz9gsiFGRmdOXwuDRr/xE0Ye9yHOR9i=
+ )
+---------------------------------------------------------------------------=
+---------------------------------------------------------------------------=
+------------------------------------------------------------
+
+Moderater Konsum von Kaffee oder Schwarztee kann offenbar l=C3=A4nger geist=
+ig fit halten. Doch was hei=C3=9Ft moderat? Und wie verl=C3=A4sslich sind d=
+ie Ergebnisse? *mehr* ( https://6jmwc.r.sp1-brevo.net/mk/cl/f/sh/7nVU1aA2ng=
+3nQ1USfRwhIo6RYuRgxON/URT7d4vABr2O )
+
+( https://6jmwc.r.sp1-brevo.net/mk/cl/f/sh/7nVU1aA2ng5gPXzle1B9LAQFjGwThKt/=
+qlOgf7lDppa3 )
+
+---------------------------------------------------------------------------=
+---------------------------------------------------------------------------=
+-----------------------------
+*Amyotrophe Lateralsklerose (ALS)* ( https://6jmwc.r.sp1-brevo.net/mk/cl/f/=
+sh/7nVU1aA2ng7ZP4V4caPbNWk3tdRGRHP/n_rGSv6QbY5u )
+---------------------------------------------------------------------------=
+---------------------------------------------------------------------------=
+-----------------------------
+
+ALS (Amyotrophe Lateralsklerose) ist eine seltene Erkrankung, bei der motor=
+ische Nervenzellen irreversibel absterben. Lesen Sie mehr! *mehr* ( https:/=
+/6jmwc.r.sp1-brevo.net/mk/cl/f/sh/7nVU1aA2ng9SOb0Nb9e3Pt3s3zw3BDv/gUEUnPILV=
+GPE )
+
+( https://6jmwc.r.sp1-brevo.net/mk/cl/f/sh/WCPzyXJTZ6vLwtl92IBFmefOizcudK8h=
+/hQC82nP7OUzG )
+
+---------------------------------------------------------------------------=
+---------------------------------------------------------------------------=
+--------------------------------------
+*Bauch, Beine, Po-Training: die besten =C3=9Cbungen* ( https://6jmwc.r.sp1-=
+brevo.net/mk/cl/f/sh/WCPzyXJTZ7390vyPONevYOpBrmW1t1kp/d1Ie-vCP9M1u )
+---------------------------------------------------------------------------=
+---------------------------------------------------------------------------=
+--------------------------------------
+
+Bauchtwist, Beckenlift, Wagenheber: Lesen Sie, mit welchen =C3=9Cbungen Sie=
+ Bauch, Beine und Po trainieren, Muskeln aufbauen und Ihre Figur straffen. =
+*mehr* ( https://6jmwc.r.sp1-brevo.net/mk/cl/f/sh/WCPzyXJTZ7Aw4yBfkT8bK8yz0=
+ZP98jMx/1yBd5rHBBfpU )
+
+( https://6jmwc.r.sp1-brevo.net/mk/cl/f/sh/WCPzyXJTZ7Ij90Ow6YcH5t8m9MIGOQz5=
+/aPx6kuozD9-H )
+
+---------------------------------------------------------------------------=
+---------------------------------------------------------------------------=
+--------
+*Embolie: Definition & Ursachen* ( https://6jmwc.r.sp1-brevo.net/mk/cl/f/sh=
+/WCPzyXJTZ7QWD2cCSe5wrdIZI9BNe8bD/lC6FwSWDPTaH )
+---------------------------------------------------------------------------=
+---------------------------------------------------------------------------=
+--------
+
+Eine Embolie ist ein Verschluss eines Blutgef=C3=A4=C3=9Fes durch eingeschw=
+emmtes Material. Hier mehr zu Definition, Ursachen und Therapie! *mehr* ( h=
+ttps://6jmwc.r.sp1-brevo.net/mk/cl/f/sh/WCPzyXJTZ7YJH4pSojZcdNSMQw4UtqDL/I7=
+fSTDVT969s )
+
+( https://6jmwc.r.sp1-brevo.net/mk/cl/f/sh/WCPzyXJTZ7g6L72jAp3IP7c9Zixc9XpT=
+/3rMY4MhDb_oU )
+
+---------------------------------------------------------------------------=
+---------------------------------------------------------------------------=
+-----------
+*Was ist eine Leberzirrhose?* ( https://6jmwc.r.sp1-brevo.net/mk/cl/f/sh/WC=
+PzyXJTZ7ntP9FzWuWyArlwiVqjPFRb/FvaiCDRuhjpL )
+---------------------------------------------------------------------------=
+---------------------------------------------------------------------------=
+-----------
+
+Bei einer Leberzirrhose (Schrumpfleber) geht Lebergewebe zugrunde und wande=
+lt sich nach und nach in Bindegewebe um. Lesen Sie hier au=C3=9Ferdem, wie =
+Sie der Erkrankung vorbeugen k=C3=B6nnen! *mehr* ( https://6jmwc.r.sp1-brev=
+o.net/mk/cl/f/sh/WCPzyXJTZ7vgTBTFt00dwbvjrIjqex3j/UNJ39gpMyyh4 )
+
+( https://6jmwc.r.sp1-brevo.net/mk/cl/f/sh/WCPzyXJTZ83TXDgWF5UJiM5X05cxuefr=
+/kl4lwr7ws3Os )
+
+---------------------------------------------------------------------------=
+---------------------------------------------------------------------------=
+---------------------------------------
+*Was passiert bei einer Leberzirrhose?* ( https://6jmwc.r.sp1-brevo.net/mk/=
+cl/f/sh/WCPzyXJTZ6vNptHeLGkUEh1iX9zPQ45D/fuw0r0-3eZsL )
+---------------------------------------------------------------------------=
+---------------------------------------------------------------------------=
+---------------------------------------
+
+Leberzirrhose =E2=80=93 woher sie kommt und welche gef=C3=A4hrlichen Folgen=
+ die Leberschrumpfung hat. *mehr* ( https://6jmwc.r.sp1-brevo.net/mk/cl/f/s=
+h/WCPzyXJTZ73AtvUuhMEA0RBVfwsWflhL/OkGpqLpvjsTm )
+
+( https://6jmwc.r.sp1-brevo.net/mk/cl/f/sh/WCPzyXJTZ7AxxxiB3RhpmBLIojldvTJT=
+/vdR0H5rOBARN )
+
+---------------------------------------------------------------------------=
+---------------------------------------------------------------------------=
+---------
+*Gut f=C3=BCr die Leber!* ( https://6jmwc.r.sp1-brevo.net/mk/cl/f/sh/WCPzyX=
+JTZ7Il1zvRPXBVXvV5xWelBAvb/vDBPtlYMfvPi )
+---------------------------------------------------------------------------=
+---------------------------------------------------------------------------=
+---------
+
+Ohne die Leber l=C3=A4uft nichts im K=C3=B6rper =C2=96 Zeit, ihr etwas Gute=
+s zu tun! Hier finden Sie die besten Tipps f=C3=BCr eine Leber-Verw=C3=B6hn=
+kur. *mehr* ( https://6jmwc.r.sp1-brevo.net/mk/cl/f/sh/WCPzyXJTZ7QY628hlcfB=
+Jfet6JXsQsXj/8ux0N4yuw3jE )
+
+Der Newsletter wird Ihnen gesendet von: hansemerkur.gesundheitsportal-priva=
+t.de ( https://6jmwc.r.sp1-brevo.net/mk/cl/f/sh/WCPzyXJTZ7YLA4Ly7i8r5PogF6Q=
+zga9r/SFdgxNsDmsdX ) ( Impressum ( https://6jmwc.r.sp1-brevo.net/mk/cl/f/sh=
+/WCPzyXJTZ7g8E6ZETncWr9yTNtK6wHlz/lRastCvflyd5 ) )
+Datenschutzerkl=C3=A4rung ( https://6jmwc.r.sp1-brevo.net/mk/cl/f/sh/WCPzyX=
+JTZ7nvI8mUpt6Ccu8GWgDEBzO7/dWZU8Cz-aTIJ )
+
+*vom Newsletter abmelden* ( https://6jmwc.r.sp1-brevo.net/mk/un/v2/sh/7nVTP=
+dbLJ2bPbSiQot96E9tByWk62CJ/M4zD3i8_OyYG?utm_source=3Dsendinblue&utm_campaig=
+n=3D&utm_medium=3Demail )
+
+
+---------?=_42826-3354295438507
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html; charset=UTF-8
+
+<!DOCTYPE html>
+<html xmlns=3D"http://www.w3.org/1999/xhtml" xmlns:v=3D"urn:schemas-microso=
+ft-com:vml" xmlns:o=3D"urn:schemas-microsoft-com:office:office">
+<head>
+	<!-- NAME: 1 COLUMN -->
+	<!--[if gte mso 15]>
+	<xml>
+		<o:OfficeDocumentSettings>
+		<o:AllowPNG/>
+		<o:PixelsPerInch>96</o:PixelsPerInch>
+		</o:OfficeDocumentSettings>
+	</xml>
+	<![endif]-->
+	<meta charset=3D"UTF-8">
+	<meta http-equiv=3D"X-UA-Compatible" content=3D"IE=3Dedge">
+	<meta name=3D"viewport" content=3D"width=3Ddevice-width, initial-scale=3D1=
+">
+	<title>Gesundheitsportal: News vom 20.02.2026</title>
+
+    <style type=3D"text/css">
+		p{
+			margin:10px 0;
+			padding:0;
+		}
+		table{
+			border-collapse:collapse;
+		}
+		h1,h2,h3,h4,h5,h6{
+			display:block;
+			margin:0;
+			padding:0;
+		}
+		img,a img{
+			border:0;
+			height:auto;
+			outline:none;
+			text-decoration:none;
+		}
+		body,#bodyTable,#bodyCell{
+			height:100%;
+			margin:0;
+			padding:0;
+			width:100%;
+		}
+		.mcnPreviewText{
+			display:none !important;
+		}
+		#outlook a{
+			padding:0;
+		}
+		img{
+			-ms-interpolation-mode:bicubic;
+		}
+		table{
+			mso-table-lspace:0pt;
+			mso-table-rspace:0pt;
+		}
+		.ReadMsgBody{
+			width:100%;
+		}
+		.ExternalClass{
+			width:100%;
+		}
+		p,a,li,td,blockquote{
+			mso-line-height-rule:exactly;
+		}
+		a[href^=3Dtel],a[href^=3Dsms]{
+			color:inherit;
+			cursor:default;
+			text-decoration:none;
+		}
+		p,a,li,td,body,table,blockquote{
+			-ms-text-size-adjust:100%;
+			-webkit-text-size-adjust:100%;
+		}
+		.ExternalClass,.ExternalClass p,.ExternalClass td,.ExternalClass div,.Ext=
+ernalClass span,.ExternalClass font{
+			line-height:100%;
+		}
+		a[x-apple-data-detectors]{
+			color:inherit !important;
+			text-decoration:none !important;
+			font-size:inherit !important;
+			font-family:inherit !important;
+			font-weight:inherit !important;
+			line-height:inherit !important;
+		}
+		#bodyCell{
+			padding:10px;
+		}
+		.templateContainer{
+			max-width:600px !important;
+		}
+		a.mcnButton{
+			display:block;
+		}
+		a.mcnLinkTextButton{
+			padding: 8px 16px;
+    		margin-top: 16px;
+			background-color: #00bef7;
+    		color: #fff;
+			font-weight: bold;
+    		font-size: 14px;
+			min-height: 36px;
+    		min-width: 88px;
+			text-transform: uppercase;
+			line-height: 36px;
+    		vertical-align: middle;
+			border-radius: 2px;
+			border: 0;
+			text-decoration: none;
+			letter-spacing: 0.010em;
+		}
+		.mcnImage{
+			vertical-align:bottom;
+		}
+		.mcnTextContent{
+			word-break:break-word;
+		}
+		.mcnTextContent img{
+			height:auto !important;
+		}
+		.mcnDividerBlock{
+			table-layout:fixed !important;
+		}
+		/*
+		@tab Page
+		@section Background Style
+		@tip Set the background color and top border for your email. You may want=
+ to choose colors that match your company's branding.
+		*/
+		body,#bodyTable{
+			/*@editable*/background-color:#ffffff;
+		}
+		/*
+		@tab Page
+		@section Background Style
+		@tip Set the background color and top border for your email. You may want=
+ to choose colors that match your company's branding.
+		*/
+		#bodyCell{
+			/*@editable*/border-top:0;
+		}
+		/*
+		@tab Page
+		@section Email Border
+		@tip Set the border for your email.
+		*/
+		.templateContainer{
+			/*@editable*/border:0;
+		}
+		/*
+		@tab Page
+		@section Heading 1
+		@tip Set the styling for all first-level headings in your emails. These s=
+hould be the largest of your headings.
+		@style heading 1
+		*/
+		h1{
+			/*@editable*/color:#005E52;
+			/*@editable*/font-family:Helvetica;
+			/*@editable*/font-size:24px;
+			/*@editable*/font-style:normal;
+			/*@editable*/font-weight:bold;
+			/*@editable*/line-height:125%;
+			/*@editable*/letter-spacing:normal;
+			/*@editable*/text-align:left;
+		}
+		/*
+		@tab Page
+		@section Heading 2
+		@tip Set the styling for all second-level headings in your emails.
+		@style heading 2
+		*/
+		h2{
+			/*@editable*/color:#005E52;
+			/*@editable*/font-family:Helvetica;
+			/*@editable*/font-size:20px;
+			/*@editable*/font-style:normal;
+			/*@editable*/font-weight:bold;
+			/*@editable*/line-height:125%;
+			/*@editable*/letter-spacing:normal;
+			/*@editable*/text-align:left;
+		}
+		/*
+		@tab Page
+		@section Heading 3
+		@tip Set the styling for all third-level headings in your emails.
+		@style heading 3
+		*/
+		h3{
+			/*@editable*/color:#202020;
+			/*@editable*/font-family:Helvetica;
+			/*@editable*/font-size:20px;
+			/*@editable*/font-style:normal;
+			/*@editable*/font-weight:bold;
+			/*@editable*/line-height:125%;
+			/*@editable*/letter-spacing:normal;
+			/*@editable*/text-align:left;
+		}
+		/*
+		@tab Page
+		@section Heading 4
+		@tip Set the styling for all fourth-level headings in your emails. These =
+should be the smallest of your headings.
+		@style heading 4
+		*/
+		h4{
+			/*@editable*/color:#202020;
+			/*@editable*/font-family:Helvetica;
+			/*@editable*/font-size:18px;
+			/*@editable*/font-style:normal;
+			/*@editable*/font-weight:bold;
+			/*@editable*/line-height:125%;
+			/*@editable*/letter-spacing:normal;
+			/*@editable*/text-align:left;
+		}
+		/*
+		@tab Preheader
+		@section Preheader Style
+		@tip Set the background color and borders for your email's preheader area=
+.
+		*/
+		#templatePreheader{
+			/*@editable*/background-color:#ffffff;
+			/*@editable*/background-image:none;
+			/*@editable*/background-repeat:no-repeat;
+			/*@editable*/background-position:center;
+			/*@editable*/background-size:cover;
+			/*@editable*/border-top:0;
+			/*@editable*/border-bottom:0;
+			/*@editable*/padding-top:9px;
+			/*@editable*/padding-bottom:9px;
+		}
+		/*
+		@tab Preheader
+		@section Preheader Text
+		@tip Set the styling for your email's preheader text. Choose a size and c=
+olor that is easy to read.
+		*/
+		#templatePreheader .mcnTextContent,#templatePreheader .mcnTextContent p{
+			/*@editable*/color:#656565;
+			/*@editable*/font-family:Helvetica;
+			/*@editable*/font-size:12px;
+			/*@editable*/line-height:150%;
+			/*@editable*/text-align:left;
+		}
+		/*
+		@tab Preheader
+		@section Preheader Link
+		@tip Set the styling for your email's preheader links. Choose a color tha=
+t helps them stand out from your text.
+		*/
+		#templatePreheader .mcnTextContent a,#templatePreheader .mcnTextContent p=
+ a{
+			/*@editable*/color:#005E52;
+			/*@editable*/font-weight:normal;
+			/*@editable*/text-decoration:underline;
+		}
+		/*
+		@tab Header
+		@section Header Style
+		@tip Set the background color and borders for your email's header area.
+		*/
+		#templateHeader{
+			/*@editable*/background-color:#ffffff;
+			/*@editable*/background-image:none;
+			/*@editable*/background-repeat:no-repeat;
+			/*@editable*/background-position:center;
+			/*@editable*/background-size:cover;
+			/*@editable*/border-top:0;
+			/*@editable*/border-bottom:0;
+			/*@editable*/padding-top:9px;
+			/*@editable*/padding-bottom:0;
+		}
+		/*
+		@tab Header
+		@section Header Text
+		@tip Set the styling for your email's header text. Choose a size and colo=
+r that is easy to read.
+		*/
+		#templateHeader .mcnTextContent,#templateHeader .mcnTextContent p{
+			/*@editable*/color:#202020;
+			/*@editable*/font-family:Helvetica;
+			/*@editable*/font-size:16px;
+			/*@editable*/line-height:150%;
+			/*@editable*/text-align:left;
+		}
+		/*
+		@tab Header
+		@section Header Link
+		@tip Set the styling for your email's header links. Choose a color that h=
+elps them stand out from your text.
+		*/
+		#templateHeader .mcnTextContent a,#templateHeader .mcnTextContent p a{
+			/*@editable*/color:#2BAADF;
+			/*@editable*/font-weight:normal;
+			/*@editable*/text-decoration:underline;
+		}
+		/*
+		@tab Body
+		@section Body Style
+		@tip Set the background color and borders for your email's body area.
+		*/
+		#templateBody{
+			/*@editable*/background-color:#ffffff;
+			/*@editable*/background-image:none;
+			/*@editable*/background-repeat:no-repeat;
+			/*@editable*/background-position:center;
+			/*@editable*/background-size:cover;
+			/*@editable*/border-top:0;
+			/*@editable*/border-bottom:0;
+			/*@editable*/padding-top:0;
+			/*@editable*/padding-bottom:9px;
+		}
+		/*
+		@tab Body
+		@section Body Text
+		@tip Set the styling for your email's body text. Choose a size and color =
+that is easy to read.
+		*/
+		#templateBody .mcnTextContent,#templateBody .mcnTextContent p{
+			/*@editable*/color:#444444;
+			/*@editable*/font-family:Helvetica;
+			/*@editable*/font-size:14px;
+			/*@editable*/line-height:150%;
+			/*@editable*/text-align:left;
+		}
+        /*
+		@tab Body
+		@section Body Text
+		@tip Set the styling for your email's body text. Choose a size and color =
+that is easy to read.
+		*/
+		#templateBody .mcnCaptionBlock .mcnTextContent p{
+			/*@editable*/margin: 0;
+            /*@editable*/display: inline;
+		}
+		/*
+		@tab Body
+		@section Body Link
+		@tip Set the styling for your email's body links. Choose a color that hel=
+ps them stand out from your text.
+		*/
+		#templateBody .mcnTextContent a,#templateBody .mcnTextContent p a{
+			/*@editable*/color:#005E52;
+			/*@editable*/font-weight:normal;
+			/*@editable*/text-decoration:underline;
+		}
+		/*
+		@tab Footer
+		@section Footer Style
+		@tip Set the background color and borders for your email's footer area.
+		*/
+		#templateFooter{
+			/*@editable*/background-color:#ffffff;
+			/*@editable*/background-image:none;
+			/*@editable*/background-repeat:no-repeat;
+			/*@editable*/background-position:center;
+			/*@editable*/background-size:cover;
+			/*@editable*/border-top:0;
+			/*@editable*/border-bottom:0;
+			/*@editable*/padding-top:9px;
+			/*@editable*/padding-bottom:9px;
+		}
+		/*
+		@tab Footer
+		@section Footer Text
+		@tip Set the styling for your email's footer text. Choose a size and colo=
+r that is easy to read.
+		*/
+		#templateFooter .mcnTextContent,#templateFooter .mcnTextContent p{
+			/*@editable*/color:#656565;
+			/*@editable*/font-family:Helvetica;
+			/*@editable*/font-size:12px;
+			/*@editable*/line-height:150%;
+			/*@editable*/text-align:center;
+		}
+		/*
+		@tab Footer
+		@section Footer Link
+		@tip Set the styling for your email's footer links. Choose a color that h=
+elps them stand out from your text.
+		*/
+		#templateFooter .mcnTextContent a,#templateFooter .mcnTextContent p a{
+			/*@editable*/color:#005E52;
+			/*@editable*/font-weight:normal;
+			/*@editable*/text-decoration:underline;
+		}
+		@media only screen and (min-width:768px){
+			.templateContainer{
+				width:600px !important;
+			}
+		}
+		@media only screen and (max-width: 480px){
+			body,table,td,p,a,li,blockquote{
+				-webkit-text-size-adjust:none !important;
+			}
+		}
+		@media only screen and (max-width: 480px){
+			body{
+				width:100% !important;
+				min-width:100% !important;
+			}
+		}
+		@media only screen and (max-width: 480px){
+			#bodyCell{
+				padding-top:10px !important;
+			}
+		}
+		@media only screen and (max-width: 480px){
+			.mcnImage{
+				width:100% !important;
+			}
+		}
+		@media only screen and (max-width: 480px){
+			.mcnCartContainer,.mcnCaptionTopContent,.mcnRecContentContainer,.mcnCapt=
+ionBottomContent,.mcnTextContentContainer,.mcnBoxedTextContentContainer,.mc=
+nImageGroupContentContainer,.mcnCaptionLeftTextContentContainer,.mcnCaption=
+RightTextContentContainer,.mcnCaptionLeftImageContentContainer,.mcnCaptionR=
+ightImageContentContainer,.mcnImageCardLeftTextContentContainer,.mcnImageCa=
+rdRightTextContentContainer,.mcnImageCardLeftImageContentContainer,.mcnImag=
+eCardRightImageContentContainer{
+				max-width:100% !important;
+				width:100% !important;
+			}
+		}
+		@media only screen and (max-width: 480px){
+			.mcnBannerImageDesktopContainer{
+				display:none;
+			}
+			.mcnBannerImageMobileContainer{
+				display:block !important;
+			}
+		}
+		@media only screen and (max-width: 480px){
+			.mcnBoxedTextContentContainer{
+				min-width:100% !important;
+			}
+		}
+		@media only screen and (max-width: 480px){
+			.mcnImageGroupContent{
+				padding:9px !important;
+			}
+		}
+		@media only screen and (max-width: 480px){
+			.mcnCaptionLeftContentOuter .mcnTextContent,.mcnCaptionRightContentOuter=
+ .mcnTextContent{
+				padding-top:9px !important;
+			}
+		}
+		@media only screen and (max-width: 480px){
+			.mcnImageCardTopImageContent,.mcnCaptionBottomContent:last-child .mcnCap=
+tionBottomImageContent,.mcnCaptionBlockInner .mcnCaptionTopContent:last-chi=
+ld .mcnTextContent{
+				padding-top:18px !important;
+			}
+		}
+		@media only screen and (max-width: 480px){
+			.mcnImageCardBottomImageContent{
+				padding-bottom:9px !important;
+			}
+		}
+		@media only screen and (max-width: 480px){
+			.mcnImageGroupBlockInner{
+				padding-top:0 !important;
+				padding-bottom:0 !important;
+			}
+		}
+		@media only screen and (max-width: 480px){
+			.mcnImageGroupBlockOuter{
+				padding-top:9px !important;
+				padding-bottom:9px !important;
+			}
+		}
+		@media only screen and (max-width: 480px){
+			.mcnImageCardLeftImageContent,.mcnImageCardRightImageContent{
+				padding-right:18px !important;
+				padding-bottom:0 !important;
+				padding-left:18px !important;
+			}
+		}
+		@media only screen and (max-width: 480px){
+			.mcpreview-image-uploader{
+				display:none !important;
+				width:100% !important;
+			}
+		}
+		@media only screen and (max-width: 480px){
+			/*
+			@tab Mobile Styles
+			@section Heading 1
+			@tip Make the first-level headings larger in size for better readability=
+ on small screens.
+			*/
+			h1{
+				/*@editable*/font-size:22px !important;
+				/*@editable*/line-height:125% !important;
+			}
+		}
+		@media only screen and (max-width: 480px){
+			/*
+			@tab Mobile Styles
+			@section Heading 2
+			@tip Make the second-level headings larger in size for better readabilit=
+y on small screens.
+			*/
+			h2{
+				/*@editable*/font-size:20px !important;
+				/*@editable*/line-height:125% !important;
+			}
+		}
+		@media only screen and (max-width: 480px){
+			/*
+			@tab Mobile Styles
+			@section Heading 3
+			@tip Make the third-level headings larger in size for better readability=
+ on small screens.
+			*/
+			h3{
+				/*@editable*/font-size:18px !important;
+				/*@editable*/line-height:125% !important;
+			}
+		}
+		@media only screen and (max-width: 480px){
+			/*
+			@tab Mobile Styles
+			@section Heading 4
+			@tip Make the fourth-level headings larger in size for better readabilit=
+y on small screens.
+			*/
+			h4{
+				/*@editable*/font-size:16px !important;
+				/*@editable*/line-height:150% !important;
+			}
+		}
+		@media only screen and (max-width: 480px){
+			/*
+			@tab Mobile Styles
+			@section Boxed Text
+			@tip Make the boxed text larger in size for better readability on small =
+screens. We recommend a font size of at least 16px.
+			*/
+			.mcnBoxedTextContentContainer .mcnTextContent,.mcnBoxedTextContentContai=
+ner .mcnTextContent p{
+				/*@editable*/font-size:14px !important;
+				/*@editable*/line-height:150% !important;
+			}
+		}
+		@media only screen and (max-width: 480px){
+			/*
+			@tab Mobile Styles
+			@section Preheader Visibility
+			@tip Set the visibility of the email's preheader on small screens. You c=
+an hide it to save space.
+			*/
+			#templatePreheader{
+				/*@editable*/display:block !important;
+			}
+		}
+		@media only screen and (max-width: 480px){
+			/*
+			@tab Mobile Styles
+			@section Preheader Text
+			@tip Make the preheader text larger in size for better readability on sm=
+all screens.
+			*/
+			#templatePreheader .mcnTextContent,#templatePreheader .mcnTextContent p{
+				/*@editable*/font-size:14px !important;
+				/*@editable*/line-height:150% !important;
+			}
+		}
+		@media only screen and (max-width: 480px){
+			/*
+			@tab Mobile Styles
+			@section Header Text
+			@tip Make the header text larger in size for better readability on small=
+ screens.
+			*/
+			#templateHeader .mcnTextContent,#templateHeader .mcnTextContent p{
+				/*@editable*/font-size:16px !important;
+				/*@editable*/line-height:150% !important;
+			}
+		}
+		@media only screen and (max-width: 480px){
+			/*
+			@tab Mobile Styles
+			@section Body Text
+			@tip Make the body text larger in size for better readability on small s=
+creens. We recommend a font size of at least 16px.
+			*/
+			#templateBody .mcnTextContent,#templateBody .mcnTextContent p{
+				/*@editable*/font-size:16px !important;
+				/*@editable*/line-height:150% !important;
+			}
+		}
+		@media only screen and (max-width: 480px){
+			/*
+			@tab Mobile Styles
+			@section Footer Text
+			@tip Make the footer content text larger in size for better readability =
+on small screens.
+			*/
+			#templateFooter .mcnTextContent,#templateFooter .mcnTextContent p{
+				/*@editable*/font-size:14px !important;
+				/*@editable*/line-height:150% !important;
+			}
+		}
+    @media only screen and (min-width: 480px) {
+        .mobile-first {
+            width: 264px;
+            margin-bottom: inherit !important;
+        }
+
+        .mobile-first td {
+            max-width: inherit;
+        }
+
+        .mobile-first.mcnCaptionRightTextContentContainer {
+            float: right;
+        }
+
+        .mobile-first.mcnCaptionRightImageContentContainer {
+            float: left;
+        }
+    }
+	</style>
+</head>
+
+<body>  <!--[if mso]> <img width=3D"1" height=3D"1" src=3D"https://6jmwc.r.=
+sp1-brevo.net/mk/op/sh/7nVTPddU8lzHnjoXsxSYfGIxCxhAToZ/EXuxTbMXg0EY" /> <![=
+endif]-->
+	<!--[if !mso]> <!----> <img style=3D"display:none" src=3D"https://6jmwc.r.=
+sp1-brevo.net/mk/op/sh/7nVTPddU8lzHnjoXsxSYfGIxCxhAToZ/EXuxTbMXg0EY" /> <!-=
+- <![endif]-->=20
+<center>
+	<table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" h=
+eight=3D"100%" width=3D"100%" id=3D"bodyTable">
+		<tr>
+			<td align=3D"center" valign=3D"top" id=3D"bodyCell">
+				<!-- BEGIN TEMPLATE // -->
+				<!--[if (gte mso 9)|(IE)]>
+				<table align=3D"center" border=3D"0" cellspacing=3D"0" cellpadding=3D"0=
+" width=3D"600" style=3D"width:600px;">
+				<tr>
+				<td align=3D"center" valign=3D"top" width=3D"600" style=3D"width:600px;=
+">
+				<![endif]-->
+				<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" =
+class=3D"templateContainer">
+
+				=09
+	<!--=3D=3D=3D=3D=3D Start top =3D=3D=3D=3D=3D-->
+<tr>
+	<td valign=3D"top" id=3D"templatePreheader">
+		<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" cl=
+ass=3D"mcnTextBlock" style=3D"min-width:100%;">
+    		<tbody class=3D"mcnTextBlockOuter">
+				<tr>
+					<td valign=3D"top" class=3D"mcnTextBlockInner" style=3D"padding-top:9p=
+x;">
+						<!--[if mso]>
+						<table align=3D"left" border=3D"0" cellspacing=3D"0" cellpadding=3D"0=
+" width=3D"100%" style=3D"width:100%;">
+						<tr>
+						<![endif]-->
+
+						<!--[if mso]>
+						<td valign=3D"top" width=3D"600" style=3D"width:600px;">
+						<![endif]-->
+						<table align=3D"left" border=3D"0" cellpadding=3D"0" cellspacing=3D"0=
+" style=3D"max-width:100%; min-width:100%;" width=3D"100%" class=3D"mcnText=
+ContentContainer">
+							<tbody>
+								<tr>
+
+									<td valign=3D"top" class=3D"mcnTextContent" style=3D"padding-top:0=
+; padding-right:18px; padding-bottom:9px; padding-left:18px;">
+
+										<div style=3D"text-align: center; font-size: 14px; color: #656565=
+; line-height: 24px">Sollte der=C2=A0Newsletter=C2=A0nicht korrekt dargeste=
+llt werden, klicken Sie bitte <a style=3D"color:#005E52" href=3D"https://6j=
+mwc.r.sp1-brevo.net/mk/mr/sh/7nVTPdZCTJDXPBcJkopdn3TQk5n1aa3/g0imfTgoB6A_?u=
+tm_source=3Dsendinblue&utm_campaign=3D&utm_medium=3Demail">hier</a></div>
+
+									</td>
+								</tr>
+							</tbody>
+						</table>
+						<!--[if mso]>
+						</td>
+						<![endif]-->
+
+						<!--[if mso]>
+						</tr>
+						</table>
+						<![endif]-->
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</td>
+</tr>
+
+<tr>
+	<td valign=3D"top" id=3D"templateHeader">
+		<!-- Start Logo -->
+		<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" cl=
+ass=3D"mcnImageBlock" style=3D"min-width:100%;">
+			<tbody class=3D"mcnImageBlockOuter">
+				<tr>
+					<td valign=3D"top" style=3D"padding:9px" class=3D"mcnImageBlockInner">
+						<table align=3D"left" width=3D"100%" border=3D"0" cellpadding=3D"0" c=
+ellspacing=3D"0" class=3D"mcnImageContentContainer" style=3D"min-width:100%=
+;">
+							<tbody>
+								<tr>
+									<td class=3D"mcnImageContent" valign=3D"top" style=3D"padding-righ=
+t: 9px; padding-left: 9px; padding-top: 0; padding-bottom: 0; text-align:ce=
+nter;">
+
+										<a href=3D"https://6jmwc.r.sp1-brevo.net/mk/cl/f/sh/7nVU1aA2nfsTS=
+sSco2Xz4eBaYjSyVjH/qdIVEPM-6ry9" target=3D"_blank" sib_link_id=3D"0" templa=
+ting=3D"n">
+											<img align=3D"center" alt=3D"" src=3D"https://6jmwc.img.sp1-brev=
+o.net/im/sh/PmkJ9-KJMfZh.png?u=3D2BpAyz2gMiWnccbikFKhYpsvXdxkFv4ijD" width=
+=3D"300" style=3D"max-width:300px; padding-bottom: 0; display: inline !impo=
+rtant; vertical-align: bottom;" class=3D"mcnImage" sib_img_id=3D"0">
+										</a>
+
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<!-- End Logo -->
+		<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" cl=
+ass=3D"mcnDividerBlock" style=3D"min-width:100%;">
+			<tbody class=3D"mcnDividerBlockOuter">
+				<tr>
+					<td class=3D"mcnDividerBlockInner" style=3D"min-width: 100%; padding: =
+8px 18px;">
+						<table class=3D"mcnDividerContent" border=3D"0" cellpadding=3D"0" cel=
+lspacing=3D"0" width=3D"100%" style=3D"min-width: 100%;border-top: 2px soli=
+d #EAEAEA;">
+							<tbody><tr>
+								<td>
+									<span></span>
+								</td>
+							</tr>
+						</tbody></table>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<!-- Start Title -->
+		<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" cl=
+ass=3D"mcnTextBlock" style=3D"min-width:100%;">
+			<tbody class=3D"mcnTextBlockOuter">
+				<tr>
+					<td valign=3D"top" class=3D"mcnTextBlockInner" style=3D"padding-top:9p=
+x;">
+						<!--[if mso]>
+						<table align=3D"left" border=3D"0" cellspacing=3D"0" cellpadding=3D"0=
+" width=3D"100%" style=3D"width:100%;">
+						<tr>
+						<![endif]-->
+
+						<!--[if mso]>
+						<td valign=3D"top" width=3D"600" style=3D"width:600px;">
+						<![endif]-->
+						<table align=3D"left" border=3D"0" cellpadding=3D"0" cellspacing=3D"0=
+" style=3D"max-width:100%; min-width:100%;" width=3D"100%" class=3D"mcnText=
+ContentContainer">
+							<tbody>
+								<tr>
+
+									<td valign=3D"top" class=3D"mcnTextContent" style=3D"padding-top:0=
+; padding-right:18px; padding-bottom:9px; padding-left:18px;">
+
+										<div style=3D"text-align: center;">Gesundheitsportal: News vom 20=
+.02.2026</div>
+
+									</td>
+								</tr>
+							</tbody>
+						</table>
+						<!--[if mso]>
+						</td>
+						<![endif]-->
+
+						<!--[if mso]>
+						</tr>
+						</table>
+						<![endif]-->
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<!-- End Title -->
+		<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" cl=
+ass=3D"mcnDividerBlock" style=3D"min-width:100%;">
+    		<tbody class=3D"mcnDividerBlockOuter">
+				<tr>
+					<td class=3D"mcnDividerBlockInner" style=3D"min-width: 100%; padding: =
+8px 18px 16px;">
+						<table class=3D"mcnDividerContent" border=3D"0" cellpadding=3D"0" cel=
+lspacing=3D"0" width=3D"100%" style=3D"min-width: 100%;border-top: 2px soli=
+d #EAEAEA;">
+							<tbody><tr>
+								<td>
+									<span></span>
+								</td>
+							</tr>
+						</tbody></table>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</td>
+</tr>
+<!--=3D=3D=3D=3D=3D End top =3D=3D=3D=3D=3D-->
+
+
+					<tr>
+						<td valign=3D"top" id=3D"templateBody">
+						=09
+								<!--=3D=3D=3D=3D=3D Start Article =3D=3D=3D=3D=3D-->
+
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" clas=
+s=3D"mcnCaptionBlock">
+    <tbody class=3D"mcnCaptionBlockOuter">
+        <tr>
+            <td class=3D"mcnCaptionBlockInner" valign=3D"top" style=3D"font=
+-size: 16px">
+				<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=3D"mcnCap=
+tionRightContentOuter" width=3D"100%">
+					<tbody>
+					<tr>
+						<td valign=3D"top" class=3D"mcnCaptionRightContentInner" style=3D"pad=
+ding:0 16px; font-size: 16px">
+							<!-- Start Image -->
+							<table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=
+=3D"0" class=3D"mobile-first mcnCaptionRightImageContentContainer" width=3D=
+"100%" style=3D"margin-bottom: 9px">
+								<tbody>
+								<tr>
+									<td class=3D"mcnCaptionRightImageContent" align=3D"center" valign=
+=3D"top">
+										<a href=3D"https://6jmwc.r.sp1-brevo.net/mk/cl/f/sh/7nVU1aA2nfuMS=
+OxvmbmR70VOj5xlFfn/Dtr6biRhvF7T" title=3D"" class=3D"" target=3D"_blank" si=
+b_link_id=3D"1" templating=3D"n">
+											<img alt=3D"" src=3D"https://6jmwc.img.sp1-brevo.net/im/sh/0ey5Y=
+Lz7S-GR.jpg?u=3D2BpAyz2gMiWnceUiGkdg84KxtxlucPrSfj" width=3D"216" style=3D"=
+max-width:216px;" class=3D"mcnImage" sib_img_id=3D"1">
+										</a>
+									</td>
+								</tr>
+								</tbody>
+							</table>
+							<!-- End Image -->
+							<!-- Start Teaser -->
+							<table class=3D"mobile-first mcnCaptionRightTextContentContainer" al=
+ign=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"28=
+3">
+								<tbody>
+								<tr>
+									<td valign=3D"top" class=3D"mcnTextContent" style=3D"font-size: 16=
+px; line-height: 24px">
+										<!-- Start Title -->
+                                        <h2 class=3D"null">
+                                            <span style=3D"font-family:aria=
+l,helvetica neue,helvetica,sans-serif">
+                                                <span style=3D"font-size:19=
+px">
+                                                    <a style=3D"color:#005E=
+52;text-decoration: none;" href=3D"https://6jmwc.r.sp1-brevo.net/mk/cl/f/sh=
+/7nVU1aA2nfwFRvTElB0t9MpCtSSXzcJ/5e5ntS1Onrgn" target=3D"_blank" sib_link_i=
+d=3D"2" templating=3D"n"><strong>Haferflocken senken Cholesterinwerte</stro=
+ng></a>
+                                                </span>
+                                            </span>
+                                        </h2>
+										<!-- End Title -->
+										<span style=3D"font-family:roboto,helvetica neue,helvetica,arial,=
+sans-serif">
+                                            <p>
+                                                Nichts als Haferbrei auf de=
+m Teller =E2=80=93 kann das die Cholesterinwerte senken? Eine Studie der Un=
+i Bonn legt das nahe: Bei Menschen mit metabolischem Syndrom sinkt das =E2=
+=80=9Eschlechte=E2=80=9C LDL=E2=80=91Cholesterin deutlich.
+                                                <a style=3D"color:#005E52" =
+href=3D"https://6jmwc.r.sp1-brevo.net/mk/cl/f/sh/7nVU1aA2nfy8RRyXjkFLBj913o=
+xKjYp/3rYjjyNPGNnT" target=3D"_blank" sib_link_id=3D"3" templating=3D"n"><s=
+trong>mehr</strong></a>
+                                            </p>
+                                        </span>
+									</td>
+								</tr>
+								</tbody>
+							</table>
+							<!-- End Teaser -->
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</td>
+		</tr>
+	</tbody>
+</table>
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" clas=
+s=3D"mcnDividerBlock" style=3D"min-width:100%;">
+    <tbody class=3D"mcnDividerBlockOuter">
+        <tr>
+            <td class=3D"mcnDividerBlockInner" style=3D"min-width: 100%; pa=
+dding: 24px 0;">
+                <table class=3D"mcnDividerContent" border=3D"0" cellpadding=
+=3D"0" cellspacing=3D"0" width=3D"100%" style=3D"min-width: 100%;border-top=
+: 2px solid #EAEAEA;">
+                    <tbody>
+					<tr>
+                        <td>
+                            <span></span>
+                        </td>
+                    </tr>
+					</tbody>
+				</table>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<!--=3D=3D=3D=3D=3D End Article =3D=3D=3D=3D=3D-->
+						=09
+								<!--=3D=3D=3D=3D=3D Start Article =3D=3D=3D=3D=3D-->
+
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" clas=
+s=3D"mcnCaptionBlock">
+    <tbody class=3D"mcnCaptionBlockOuter">
+        <tr>
+            <td class=3D"mcnCaptionBlockInner" valign=3D"top" style=3D"font=
+-size: 16px">
+				<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=3D"mcnCap=
+tionRightContentOuter" width=3D"100%">
+					<tbody>
+					<tr>
+						<td valign=3D"top" class=3D"mcnCaptionRightContentInner" style=3D"pad=
+ding:0 16px; font-size: 16px">
+							<!-- Start Image -->
+							<table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=
+=3D"0" class=3D"mobile-first mcnCaptionRightImageContentContainer" width=3D=
+"100%" style=3D"margin-bottom: 9px">
+								<tbody>
+								<tr>
+									<td class=3D"mcnCaptionRightImageContent" align=3D"center" valign=
+=3D"top">
+										<a href=3D"https://6jmwc.r.sp1-brevo.net/mk/cl/f/sh/7nVU1aA2ng01Q=
+yTqiJTnE5SpEBS7TVL/7sD0-fAG9Fvd" title=3D"" class=3D"" target=3D"_blank" si=
+b_link_id=3D"4" templating=3D"n">
+											<img alt=3D"" src=3D"https://6jmwc.img.sp1-brevo.net/im/sh/050cY=
+rhNifH6.jpg?u=3D2BpAyz2gMiWncgNhnFwehIn0GHa4yueCcF" width=3D"216" style=3D"=
+max-width:216px;" class=3D"mcnImage" sib_img_id=3D"2">
+										</a>
+									</td>
+								</tr>
+								</tbody>
+							</table>
+							<!-- End Image -->
+							<!-- Start Teaser -->
+							<table class=3D"mobile-first mcnCaptionRightTextContentContainer" al=
+ign=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"28=
+3">
+								<tbody>
+								<tr>
+									<td valign=3D"top" class=3D"mcnTextContent" style=3D"font-size: 16=
+px; line-height: 24px">
+										<!-- Start Title -->
+                                        <h2 class=3D"null">
+                                            <span style=3D"font-family:aria=
+l,helvetica neue,helvetica,sans-serif">
+                                                <span style=3D"font-size:19=
+px">
+                                                    <a style=3D"color:#005E=
+52;text-decoration: none;" href=3D"https://6jmwc.r.sp1-brevo.net/mk/cl/f/sh=
+/7nVU1aA2ng1uQUz9gsiFGRmdOXwuDRr/xE0Ye9yHOR9i" target=3D"_blank" sib_link_i=
+d=3D"5" templating=3D"n"><strong>Kaffee sch=C3=BCtzt vor Demenz =E2=80=93 m=
+=C3=B6glicherweise</strong></a>
+                                                </span>
+                                            </span>
+                                        </h2>
+										<!-- End Title -->
+										<span style=3D"font-family:roboto,helvetica neue,helvetica,arial,=
+sans-serif">
+                                            <p>
+                                                Moderater Konsum von Kaffee=
+ oder Schwarztee kann offenbar l=C3=A4nger geistig fit halten. Doch was hei=
+=C3=9Ft moderat? Und wie verl=C3=A4sslich sind die Ergebnisse?
+                                                <a style=3D"color:#005E52" =
+href=3D"https://6jmwc.r.sp1-brevo.net/mk/cl/f/sh/7nVU1aA2ng3nQ1USfRwhIo6RYu=
+RgxON/URT7d4vABr2O" target=3D"_blank" sib_link_id=3D"6" templating=3D"n"><s=
+trong>mehr</strong></a>
+                                            </p>
+                                        </span>
+									</td>
+								</tr>
+								</tbody>
+							</table>
+							<!-- End Teaser -->
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</td>
+		</tr>
+	</tbody>
+</table>
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" clas=
+s=3D"mcnDividerBlock" style=3D"min-width:100%;">
+    <tbody class=3D"mcnDividerBlockOuter">
+        <tr>
+            <td class=3D"mcnDividerBlockInner" style=3D"min-width: 100%; pa=
+dding: 24px 0;">
+                <table class=3D"mcnDividerContent" border=3D"0" cellpadding=
+=3D"0" cellspacing=3D"0" width=3D"100%" style=3D"min-width: 100%;border-top=
+: 2px solid #EAEAEA;">
+                    <tbody>
+					<tr>
+                        <td>
+                            <span></span>
+                        </td>
+                    </tr>
+					</tbody>
+				</table>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<!--=3D=3D=3D=3D=3D End Article =3D=3D=3D=3D=3D-->
+						=09
+								<!--=3D=3D=3D=3D=3D Start Article =3D=3D=3D=3D=3D-->
+
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" clas=
+s=3D"mcnCaptionBlock">
+    <tbody class=3D"mcnCaptionBlockOuter">
+        <tr>
+            <td class=3D"mcnCaptionBlockInner" valign=3D"top" style=3D"font=
+-size: 16px">
+				<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=3D"mcnCap=
+tionRightContentOuter" width=3D"100%">
+					<tbody>
+					<tr>
+						<td valign=3D"top" class=3D"mcnCaptionRightContentInner" style=3D"pad=
+ding:0 16px; font-size: 16px">
+							<!-- Start Image -->
+							<table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=
+=3D"0" class=3D"mobile-first mcnCaptionRightImageContentContainer" width=3D=
+"100%" style=3D"margin-bottom: 9px">
+								<tbody>
+								<tr>
+									<td class=3D"mcnCaptionRightImageContent" align=3D"center" valign=
+=3D"top">
+										<a href=3D"https://6jmwc.r.sp1-brevo.net/mk/cl/f/sh/7nVU1aA2ng5gP=
+Xzle1B9LAQFjGwThKt/qlOgf7lDppa3" title=3D"" class=3D"" target=3D"_blank" si=
+b_link_id=3D"7" templating=3D"n">
+											<img alt=3D"" src=3D"https://6jmwc.img.sp1-brevo.net/im/sh/5mmdd=
+NQMJB8P.jpg?u=3D2BpAyz2gMiWnciGhJlFdGXF2cbOFLPQwYl" width=3D"216" style=3D"=
+max-width:216px;" class=3D"mcnImage" sib_img_id=3D"3">
+										</a>
+									</td>
+								</tr>
+								</tbody>
+							</table>
+							<!-- End Image -->
+							<!-- Start Teaser -->
+							<table class=3D"mobile-first mcnCaptionRightTextContentContainer" al=
+ign=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"28=
+3">
+								<tbody>
+								<tr>
+									<td valign=3D"top" class=3D"mcnTextContent" style=3D"font-size: 16=
+px; line-height: 24px">
+										<!-- Start Title -->
+                                        <h2 class=3D"null">
+                                            <span style=3D"font-family:aria=
+l,helvetica neue,helvetica,sans-serif">
+                                                <span style=3D"font-size:19=
+px">
+                                                    <a style=3D"color:#005E=
+52;text-decoration: none;" href=3D"https://6jmwc.r.sp1-brevo.net/mk/cl/f/sh=
+/7nVU1aA2ng7ZP4V4caPbNWk3tdRGRHP/n_rGSv6QbY5u" target=3D"_blank" sib_link_i=
+d=3D"8" templating=3D"n"><strong>Amyotrophe Lateralsklerose (ALS)</strong><=
+/a>
+                                                </span>
+                                            </span>
+                                        </h2>
+										<!-- End Title -->
+										<span style=3D"font-family:roboto,helvetica neue,helvetica,arial,=
+sans-serif">
+                                            <p>
+                                                ALS (Amyotrophe Lateralskle=
+rose) ist eine seltene Erkrankung, bei der motorische Nervenzellen irrevers=
+ibel absterben. Lesen Sie mehr!
+                                                <a style=3D"color:#005E52" =
+href=3D"https://6jmwc.r.sp1-brevo.net/mk/cl/f/sh/7nVU1aA2ng9SOb0Nb9e3Pt3s3z=
+w3BDv/gUEUnPILVGPE" target=3D"_blank" sib_link_id=3D"9" templating=3D"n"><s=
+trong>mehr</strong></a>
+                                            </p>
+                                        </span>
+									</td>
+								</tr>
+								</tbody>
+							</table>
+							<!-- End Teaser -->
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</td>
+		</tr>
+	</tbody>
+</table>
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" clas=
+s=3D"mcnDividerBlock" style=3D"min-width:100%;">
+    <tbody class=3D"mcnDividerBlockOuter">
+        <tr>
+            <td class=3D"mcnDividerBlockInner" style=3D"min-width: 100%; pa=
+dding: 24px 0;">
+                <table class=3D"mcnDividerContent" border=3D"0" cellpadding=
+=3D"0" cellspacing=3D"0" width=3D"100%" style=3D"min-width: 100%;border-top=
+: 2px solid #EAEAEA;">
+                    <tbody>
+					<tr>
+                        <td>
+                            <span></span>
+                        </td>
+                    </tr>
+					</tbody>
+				</table>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<!--=3D=3D=3D=3D=3D End Article =3D=3D=3D=3D=3D-->
+						=09
+								<!--=3D=3D=3D=3D=3D Start Article =3D=3D=3D=3D=3D-->
+
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" clas=
+s=3D"mcnCaptionBlock">
+    <tbody class=3D"mcnCaptionBlockOuter">
+        <tr>
+            <td class=3D"mcnCaptionBlockInner" valign=3D"top" style=3D"font=
+-size: 16px">
+				<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=3D"mcnCap=
+tionRightContentOuter" width=3D"100%">
+					<tbody>
+					<tr>
+						<td valign=3D"top" class=3D"mcnCaptionRightContentInner" style=3D"pad=
+ding:0 16px; font-size: 16px">
+							<!-- Start Image -->
+							<table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=
+=3D"0" class=3D"mobile-first mcnCaptionRightImageContentContainer" width=3D=
+"100%" style=3D"margin-bottom: 9px">
+								<tbody>
+								<tr>
+									<td class=3D"mcnCaptionRightImageContent" align=3D"center" valign=
+=3D"top">
+										<a href=3D"https://6jmwc.r.sp1-brevo.net/mk/cl/f/sh/WCPzyXJTZ6vLw=
+tl92IBFmefOizcudK8h/hQC82nP7OUzG" title=3D"" class=3D"" target=3D"_blank" s=
+ib_link_id=3D"10" templating=3D"n">
+											<img alt=3D"" src=3D"https://6jmwc.img.sp1-brevo.net/im/sh/2okOx=
+c5KIu2a.jpg?u=3D2BpAyz2gMiWnck9gqGYbplh4yvCPhuDgVH" width=3D"216" style=3D"=
+max-width:216px;" class=3D"mcnImage" sib_img_id=3D"4">
+										</a>
+									</td>
+								</tr>
+								</tbody>
+							</table>
+							<!-- End Image -->
+							<!-- Start Teaser -->
+							<table class=3D"mobile-first mcnCaptionRightTextContentContainer" al=
+ign=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"28=
+3">
+								<tbody>
+								<tr>
+									<td valign=3D"top" class=3D"mcnTextContent" style=3D"font-size: 16=
+px; line-height: 24px">
+										<!-- Start Title -->
+                                        <h2 class=3D"null">
+                                            <span style=3D"font-family:aria=
+l,helvetica neue,helvetica,sans-serif">
+                                                <span style=3D"font-size:19=
+px">
+                                                    <a style=3D"color:#005E=
+52;text-decoration: none;" href=3D"https://6jmwc.r.sp1-brevo.net/mk/cl/f/sh=
+/WCPzyXJTZ7390vyPONevYOpBrmW1t1kp/d1Ie-vCP9M1u" target=3D"_blank" sib_link_=
+id=3D"11" templating=3D"n"><strong>Bauch, Beine, Po-Training: die besten =
+=C3=9Cbungen</strong></a>
+                                                </span>
+                                            </span>
+                                        </h2>
+										<!-- End Title -->
+										<span style=3D"font-family:roboto,helvetica neue,helvetica,arial,=
+sans-serif">
+                                            <p>
+                                                Bauchtwist, Beckenlift, Wag=
+enheber: Lesen Sie, mit welchen =C3=9Cbungen Sie Bauch, Beine und Po traini=
+eren, Muskeln aufbauen und Ihre Figur straffen.
+                                                <a style=3D"color:#005E52" =
+href=3D"https://6jmwc.r.sp1-brevo.net/mk/cl/f/sh/WCPzyXJTZ7Aw4yBfkT8bK8yz0Z=
+P98jMx/1yBd5rHBBfpU" target=3D"_blank" sib_link_id=3D"12" templating=3D"n">=
+<strong>mehr</strong></a>
+                                            </p>
+                                        </span>
+									</td>
+								</tr>
+								</tbody>
+							</table>
+							<!-- End Teaser -->
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</td>
+		</tr>
+	</tbody>
+</table>
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" clas=
+s=3D"mcnDividerBlock" style=3D"min-width:100%;">
+    <tbody class=3D"mcnDividerBlockOuter">
+        <tr>
+            <td class=3D"mcnDividerBlockInner" style=3D"min-width: 100%; pa=
+dding: 24px 0;">
+                <table class=3D"mcnDividerContent" border=3D"0" cellpadding=
+=3D"0" cellspacing=3D"0" width=3D"100%" style=3D"min-width: 100%;border-top=
+: 2px solid #EAEAEA;">
+                    <tbody>
+					<tr>
+                        <td>
+                            <span></span>
+                        </td>
+                    </tr>
+					</tbody>
+				</table>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<!--=3D=3D=3D=3D=3D End Article =3D=3D=3D=3D=3D-->
+						=09
+								<!--=3D=3D=3D=3D=3D Start Article =3D=3D=3D=3D=3D-->
+
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" clas=
+s=3D"mcnCaptionBlock">
+    <tbody class=3D"mcnCaptionBlockOuter">
+        <tr>
+            <td class=3D"mcnCaptionBlockInner" valign=3D"top" style=3D"font=
+-size: 16px">
+				<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=3D"mcnCap=
+tionRightContentOuter" width=3D"100%">
+					<tbody>
+					<tr>
+						<td valign=3D"top" class=3D"mcnCaptionRightContentInner" style=3D"pad=
+ding:0 16px; font-size: 16px">
+							<!-- Start Image -->
+							<table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=
+=3D"0" class=3D"mobile-first mcnCaptionRightImageContentContainer" width=3D=
+"100%" style=3D"margin-bottom: 9px">
+								<tbody>
+								<tr>
+									<td class=3D"mcnCaptionRightImageContent" align=3D"center" valign=
+=3D"top">
+										<a href=3D"https://6jmwc.r.sp1-brevo.net/mk/cl/f/sh/WCPzyXJTZ7Ij9=
+0Ow6YcH5t8m9MIGOQz5/aPx6kuozD9-H" title=3D"" class=3D"" target=3D"_blank" s=
+ib_link_id=3D"13" templating=3D"n">
+											<img alt=3D"" src=3D"https://6jmwc.img.sp1-brevo.net/im/sh/9esqw=
+j-BVfRA.jpg?u=3D2BpAyz2gMiWncm2gMlraP097LF0a4P0QRn" width=3D"216" style=3D"=
+max-width:216px;" class=3D"mcnImage" sib_img_id=3D"5">
+										</a>
+									</td>
+								</tr>
+								</tbody>
+							</table>
+							<!-- End Image -->
+							<!-- Start Teaser -->
+							<table class=3D"mobile-first mcnCaptionRightTextContentContainer" al=
+ign=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"28=
+3">
+								<tbody>
+								<tr>
+									<td valign=3D"top" class=3D"mcnTextContent" style=3D"font-size: 16=
+px; line-height: 24px">
+										<!-- Start Title -->
+                                        <h2 class=3D"null">
+                                            <span style=3D"font-family:aria=
+l,helvetica neue,helvetica,sans-serif">
+                                                <span style=3D"font-size:19=
+px">
+                                                    <a style=3D"color:#005E=
+52;text-decoration: none;" href=3D"https://6jmwc.r.sp1-brevo.net/mk/cl/f/sh=
+/WCPzyXJTZ7QWD2cCSe5wrdIZI9BNe8bD/lC6FwSWDPTaH" target=3D"_blank" sib_link_=
+id=3D"14" templating=3D"n"><strong>Embolie: Definition & Ursachen</strong><=
+/a>
+                                                </span>
+                                            </span>
+                                        </h2>
+										<!-- End Title -->
+										<span style=3D"font-family:roboto,helvetica neue,helvetica,arial,=
+sans-serif">
+                                            <p>
+                                                Eine Embolie ist ein Versch=
+luss eines Blutgef=C3=A4=C3=9Fes durch eingeschwemmtes Material. Hier mehr =
+zu Definition, Ursachen und Therapie!
+                                                <a style=3D"color:#005E52" =
+href=3D"https://6jmwc.r.sp1-brevo.net/mk/cl/f/sh/WCPzyXJTZ7YJH4pSojZcdNSMQw=
+4UtqDL/I7fSTDVT969s" target=3D"_blank" sib_link_id=3D"15" templating=3D"n">=
+<strong>mehr</strong></a>
+                                            </p>
+                                        </span>
+									</td>
+								</tr>
+								</tbody>
+							</table>
+							<!-- End Teaser -->
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</td>
+		</tr>
+	</tbody>
+</table>
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" clas=
+s=3D"mcnDividerBlock" style=3D"min-width:100%;">
+    <tbody class=3D"mcnDividerBlockOuter">
+        <tr>
+            <td class=3D"mcnDividerBlockInner" style=3D"min-width: 100%; pa=
+dding: 24px 0;">
+                <table class=3D"mcnDividerContent" border=3D"0" cellpadding=
+=3D"0" cellspacing=3D"0" width=3D"100%" style=3D"min-width: 100%;border-top=
+: 2px solid #EAEAEA;">
+                    <tbody>
+					<tr>
+                        <td>
+                            <span></span>
+                        </td>
+                    </tr>
+					</tbody>
+				</table>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<!--=3D=3D=3D=3D=3D End Article =3D=3D=3D=3D=3D-->
+						=09
+								<!--=3D=3D=3D=3D=3D Start Article =3D=3D=3D=3D=3D-->
+
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" clas=
+s=3D"mcnCaptionBlock">
+    <tbody class=3D"mcnCaptionBlockOuter">
+        <tr>
+            <td class=3D"mcnCaptionBlockInner" valign=3D"top" style=3D"font=
+-size: 16px">
+				<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=3D"mcnCap=
+tionRightContentOuter" width=3D"100%">
+					<tbody>
+					<tr>
+						<td valign=3D"top" class=3D"mcnCaptionRightContentInner" style=3D"pad=
+ding:0 16px; font-size: 16px">
+							<!-- Start Image -->
+							<table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=
+=3D"0" class=3D"mobile-first mcnCaptionRightImageContentContainer" width=3D=
+"100%" style=3D"margin-bottom: 9px">
+								<tbody>
+								<tr>
+									<td class=3D"mcnCaptionRightImageContent" align=3D"center" valign=
+=3D"top">
+										<a href=3D"https://6jmwc.r.sp1-brevo.net/mk/cl/f/sh/WCPzyXJTZ7g6L=
+72jAp3IP7c9Zixc9XpT/3rMY4MhDb_oU" title=3D"" class=3D"" target=3D"_blank" s=
+ib_link_id=3D"16" templating=3D"n">
+											<img alt=3D"" src=3D"https://6jmwc.img.sp1-brevo.net/im/sh/grf_3=
+5ihFTFy.jpg?u=3D2BpAyz2gMiWncnvftHAYyEb9hYokQtnAOJ" width=3D"216" style=3D"=
+max-width:216px;" class=3D"mcnImage" sib_img_id=3D"6">
+										</a>
+									</td>
+								</tr>
+								</tbody>
+							</table>
+							<!-- End Image -->
+							<!-- Start Teaser -->
+							<table class=3D"mobile-first mcnCaptionRightTextContentContainer" al=
+ign=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"28=
+3">
+								<tbody>
+								<tr>
+									<td valign=3D"top" class=3D"mcnTextContent" style=3D"font-size: 16=
+px; line-height: 24px">
+										<!-- Start Title -->
+                                        <h2 class=3D"null">
+                                            <span style=3D"font-family:aria=
+l,helvetica neue,helvetica,sans-serif">
+                                                <span style=3D"font-size:19=
+px">
+                                                    <a style=3D"color:#005E=
+52;text-decoration: none;" href=3D"https://6jmwc.r.sp1-brevo.net/mk/cl/f/sh=
+/WCPzyXJTZ7ntP9FzWuWyArlwiVqjPFRb/FvaiCDRuhjpL" target=3D"_blank" sib_link_=
+id=3D"17" templating=3D"n"><strong>Was ist eine Leberzirrhose?</strong></a>
+                                                </span>
+                                            </span>
+                                        </h2>
+										<!-- End Title -->
+										<span style=3D"font-family:roboto,helvetica neue,helvetica,arial,=
+sans-serif">
+                                            <p>
+                                                Bei einer Leberzirrhose (Sc=
+hrumpfleber) geht Lebergewebe zugrunde und wandelt sich nach und nach in Bi=
+ndegewebe um. Lesen Sie hier au=C3=9Ferdem, wie Sie der Erkrankung vorbeuge=
+n k=C3=B6nnen!
+                                                <a style=3D"color:#005E52" =
+href=3D"https://6jmwc.r.sp1-brevo.net/mk/cl/f/sh/WCPzyXJTZ7vgTBTFt00dwbvjrI=
+jqex3j/UNJ39gpMyyh4" target=3D"_blank" sib_link_id=3D"18" templating=3D"n">=
+<strong>mehr</strong></a>
+                                            </p>
+                                        </span>
+									</td>
+								</tr>
+								</tbody>
+							</table>
+							<!-- End Teaser -->
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</td>
+		</tr>
+	</tbody>
+</table>
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" clas=
+s=3D"mcnDividerBlock" style=3D"min-width:100%;">
+    <tbody class=3D"mcnDividerBlockOuter">
+        <tr>
+            <td class=3D"mcnDividerBlockInner" style=3D"min-width: 100%; pa=
+dding: 24px 0;">
+                <table class=3D"mcnDividerContent" border=3D"0" cellpadding=
+=3D"0" cellspacing=3D"0" width=3D"100%" style=3D"min-width: 100%;border-top=
+: 2px solid #EAEAEA;">
+                    <tbody>
+					<tr>
+                        <td>
+                            <span></span>
+                        </td>
+                    </tr>
+					</tbody>
+				</table>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<!--=3D=3D=3D=3D=3D End Article =3D=3D=3D=3D=3D-->
+						=09
+								<!--=3D=3D=3D=3D=3D Start Article =3D=3D=3D=3D=3D-->
+
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" clas=
+s=3D"mcnCaptionBlock">
+    <tbody class=3D"mcnCaptionBlockOuter">
+        <tr>
+            <td class=3D"mcnCaptionBlockInner" valign=3D"top" style=3D"font=
+-size: 16px">
+				<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=3D"mcnCap=
+tionRightContentOuter" width=3D"100%">
+					<tbody>
+					<tr>
+						<td valign=3D"top" class=3D"mcnCaptionRightContentInner" style=3D"pad=
+ding:0 16px; font-size: 16px">
+							<!-- Start Image -->
+							<table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=
+=3D"0" class=3D"mobile-first mcnCaptionRightImageContentContainer" width=3D=
+"100%" style=3D"margin-bottom: 9px">
+								<tbody>
+								<tr>
+									<td class=3D"mcnCaptionRightImageContent" align=3D"center" valign=
+=3D"top">
+										<a href=3D"https://6jmwc.r.sp1-brevo.net/mk/cl/f/sh/WCPzyXJTZ83TX=
+DgWF5UJiM5X05cxuefr/kl4lwr7ws3Os" title=3D"" class=3D"" target=3D"_blank" s=
+ib_link_id=3D"19" templating=3D"n">
+											<img alt=3D"" src=3D"https://6jmwc.img.sp1-brevo.net/im/sh/3CWZ2=
+iEvqS6A.jpg?u=3D2BpAyz2gMiWncpofPmTXXT3C3scunOZuKp" width=3D"216" style=3D"=
+max-width:216px;" class=3D"mcnImage" sib_img_id=3D"7">
+										</a>
+									</td>
+								</tr>
+								</tbody>
+							</table>
+							<!-- End Image -->
+							<!-- Start Teaser -->
+							<table class=3D"mobile-first mcnCaptionRightTextContentContainer" al=
+ign=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"28=
+3">
+								<tbody>
+								<tr>
+									<td valign=3D"top" class=3D"mcnTextContent" style=3D"font-size: 16=
+px; line-height: 24px">
+										<!-- Start Title -->
+                                        <h2 class=3D"null">
+                                            <span style=3D"font-family:aria=
+l,helvetica neue,helvetica,sans-serif">
+                                                <span style=3D"font-size:19=
+px">
+                                                    <a style=3D"color:#005E=
+52;text-decoration: none;" href=3D"https://6jmwc.r.sp1-brevo.net/mk/cl/f/sh=
+/WCPzyXJTZ6vNptHeLGkUEh1iX9zPQ45D/fuw0r0-3eZsL" target=3D"_blank" sib_link_=
+id=3D"20" templating=3D"n"><strong>Was passiert bei einer Leberzirrhose?</s=
+trong></a>
+                                                </span>
+                                            </span>
+                                        </h2>
+										<!-- End Title -->
+										<span style=3D"font-family:roboto,helvetica neue,helvetica,arial,=
+sans-serif">
+                                            <p>
+                                                Leberzirrhose =E2=80=93 woh=
+er sie kommt und welche gef=C3=A4hrlichen Folgen die Leberschrumpfung hat.
+                                                <a style=3D"color:#005E52" =
+href=3D"https://6jmwc.r.sp1-brevo.net/mk/cl/f/sh/WCPzyXJTZ73AtvUuhMEA0RBVfw=
+sWflhL/OkGpqLpvjsTm" target=3D"_blank" sib_link_id=3D"21" templating=3D"n">=
+<strong>mehr</strong></a>
+                                            </p>
+                                        </span>
+									</td>
+								</tr>
+								</tbody>
+							</table>
+							<!-- End Teaser -->
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</td>
+		</tr>
+	</tbody>
+</table>
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" clas=
+s=3D"mcnDividerBlock" style=3D"min-width:100%;">
+    <tbody class=3D"mcnDividerBlockOuter">
+        <tr>
+            <td class=3D"mcnDividerBlockInner" style=3D"min-width: 100%; pa=
+dding: 24px 0;">
+                <table class=3D"mcnDividerContent" border=3D"0" cellpadding=
+=3D"0" cellspacing=3D"0" width=3D"100%" style=3D"min-width: 100%;border-top=
+: 2px solid #EAEAEA;">
+                    <tbody>
+					<tr>
+                        <td>
+                            <span></span>
+                        </td>
+                    </tr>
+					</tbody>
+				</table>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<!--=3D=3D=3D=3D=3D End Article =3D=3D=3D=3D=3D-->
+						=09
+								<!--=3D=3D=3D=3D=3D Start Article =3D=3D=3D=3D=3D-->
+
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" clas=
+s=3D"mcnCaptionBlock">
+    <tbody class=3D"mcnCaptionBlockOuter">
+        <tr>
+            <td class=3D"mcnCaptionBlockInner" valign=3D"top" style=3D"font=
+-size: 16px">
+				<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=3D"mcnCap=
+tionRightContentOuter" width=3D"100%">
+					<tbody>
+					<tr>
+						<td valign=3D"top" class=3D"mcnCaptionRightContentInner" style=3D"pad=
+ding:0 16px; font-size: 16px">
+							<!-- Start Image -->
+							<table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=
+=3D"0" class=3D"mobile-first mcnCaptionRightImageContentContainer" width=3D=
+"100%" style=3D"margin-bottom: 9px">
+								<tbody>
+								<tr>
+									<td class=3D"mcnCaptionRightImageContent" align=3D"center" valign=
+=3D"top">
+										<a href=3D"https://6jmwc.r.sp1-brevo.net/mk/cl/f/sh/WCPzyXJTZ7Axx=
+xiB3RhpmBLIojldvTJT/vdR0H5rOBARN" title=3D"" class=3D"" target=3D"_blank" s=
+ib_link_id=3D"22" templating=3D"n">
+											<img alt=3D"" src=3D"https://6jmwc.img.sp1-brevo.net/im/sh/L-FN9=
+QeneWwd.jpg?u=3D2BpAyz2gMiWncrhewHmW6hVEQCR59tMeHL" width=3D"216" style=3D"=
+max-width:216px;" class=3D"mcnImage" sib_img_id=3D"8">
+										</a>
+									</td>
+								</tr>
+								</tbody>
+							</table>
+							<!-- End Image -->
+							<!-- Start Teaser -->
+							<table class=3D"mobile-first mcnCaptionRightTextContentContainer" al=
+ign=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"28=
+3">
+								<tbody>
+								<tr>
+									<td valign=3D"top" class=3D"mcnTextContent" style=3D"font-size: 16=
+px; line-height: 24px">
+										<!-- Start Title -->
+                                        <h2 class=3D"null">
+                                            <span style=3D"font-family:aria=
+l,helvetica neue,helvetica,sans-serif">
+                                                <span style=3D"font-size:19=
+px">
+                                                    <a style=3D"color:#005E=
+52;text-decoration: none;" href=3D"https://6jmwc.r.sp1-brevo.net/mk/cl/f/sh=
+/WCPzyXJTZ7Il1zvRPXBVXvV5xWelBAvb/vDBPtlYMfvPi" target=3D"_blank" sib_link_=
+id=3D"23" templating=3D"n"><strong>Gut f=C3=BCr die Leber!</strong></a>
+                                                </span>
+                                            </span>
+                                        </h2>
+										<!-- End Title -->
+										<span style=3D"font-family:roboto,helvetica neue,helvetica,arial,=
+sans-serif">
+                                            <p>
+                                                Ohne die Leber l=C3=A4uft n=
+ichts im K=C3=B6rper =C2=96 Zeit, ihr etwas Gutes zu tun! Hier finden Sie d=
+ie besten Tipps f=C3=BCr eine Leber-Verw=C3=B6hnkur.
+                                                <a style=3D"color:#005E52" =
+href=3D"https://6jmwc.r.sp1-brevo.net/mk/cl/f/sh/WCPzyXJTZ7QY628hlcfBJfet6J=
+XsQsXj/8ux0N4yuw3jE" target=3D"_blank" sib_link_id=3D"24" templating=3D"n">=
+<strong>mehr</strong></a>
+                                            </p>
+                                        </span>
+									</td>
+								</tr>
+								</tbody>
+							</table>
+							<!-- End Teaser -->
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</td>
+		</tr>
+	</tbody>
+</table>
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" clas=
+s=3D"mcnDividerBlock" style=3D"min-width:100%;">
+    <tbody class=3D"mcnDividerBlockOuter">
+        <tr>
+            <td class=3D"mcnDividerBlockInner" style=3D"min-width: 100%; pa=
+dding: 24px 0;">
+                <table class=3D"mcnDividerContent" border=3D"0" cellpadding=
+=3D"0" cellspacing=3D"0" width=3D"100%" style=3D"min-width: 100%;border-top=
+: 2px solid #EAEAEA;">
+                    <tbody>
+					<tr>
+                        <td>
+                            <span></span>
+                        </td>
+                    </tr>
+					</tbody>
+				</table>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<!--=3D=3D=3D=3D=3D End Article =3D=3D=3D=3D=3D-->
+						=09
+						</td>
+					</tr>
+
+				=09
+	<!--=3D=3D=3D=3D=3D Start Footer GPP =3D=3D=3D=3D=3D-->
+<tr>
+	<td valign=3D"top" id=3D"templateFooter">
+		<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" cl=
+ass=3D"mcnTextBlock" style=3D"min-width:100%;">
+			<tbody class=3D"mcnTextBlockOuter">
+				<tr>
+					<td valign=3D"top" class=3D"mcnTextBlockInner" style=3D"padding-top:9p=
+x;">
+						<!--[if mso]>
+						<table align=3D"left" border=3D"0" cellspacing=3D"0" cellpadding=3D"0=
+" width=3D"100%" style=3D"width:100%;">
+						<tr>
+						<![endif]-->
+
+						<!--[if mso]>
+						<td valign=3D"top" width=3D"600" style=3D"width:600px;">
+						<![endif]-->
+						<table align=3D"left" border=3D"0" cellpadding=3D"0" cellspacing=3D"0=
+" style=3D"max-width:100%; min-width:100%;" width=3D"100%" class=3D"mcnText=
+ContentContainer">
+							<tbody>
+							<tr>
+								<td valign=3D"top" align=3D"center" class=3D"mcnTextContent" style=
+=3D"padding-top:0; padding-right:18px; padding-bottom:9px; padding-left:18p=
+x;">
+									<span style=3D"font-family:roboto,helvetica neue,helvetica,arial,s=
+ans-serif">
+                                        Der Newsletter wird Ihnen gesendet =
+von:
+                                        <a style=3D"color:#005E52" href=3D"=
+https://6jmwc.r.sp1-brevo.net/mk/cl/f/sh/WCPzyXJTZ7YLA4Ly7i8r5PogF6Qzga9r/S=
+FdgxNsDmsdX" sib_link_id=3D"25" templating=3D"n">
+                                            hansemerkur.gesundheitsportal-p=
+rivat.de
+                                        </a>
+                                        (
+                                        <a style=3D"color:#005E52" href=3D"=
+https://6jmwc.r.sp1-brevo.net/mk/cl/f/sh/WCPzyXJTZ7g8E6ZETncWr9yTNtK6wHlz/l=
+RastCvflyd5" sib_link_id=3D"26" templating=3D"n">
+                                            Impressum
+                                        </a>)
+									    <br>
+                                        <a style=3D"color:#005E52" href=3D"=
+https://6jmwc.r.sp1-brevo.net/mk/cl/f/sh/WCPzyXJTZ7nvI8mUpt6Ccu8GWgDEBzO7/d=
+WZU8Cz-aTIJ" sib_link_id=3D"27" templating=3D"n">Datenschutzerkl=C3=A4rung<=
+/a>
+                                        <br><br>
+		=C2=A0 							    <a style=3D"color:#005E52" href=3D"https://6jmwc.r.sp1-=
+brevo.net/mk/un/v2/sh/7nVTPdbLJ2bPbSiQot96E9tByWk62CJ/M4zD3i8_OyYG?utm_sour=
+ce=3Dsendinblue&utm_campaign=3D&utm_medium=3Demail"><strong style=3D"font-f=
+amily:open sans,arial,helvetica,sans-serif; font-size:14px; font-weight:bol=
+d; line-height:22px">vom Newsletter abmelden</strong></a>
+                                    </span>
+								</td>
+							</tr>
+							</tbody>
+						</table>
+						<!--[if mso]>
+						</td>
+						<![endif]-->
+
+						<!--[if mso]>
+						</tr>
+						</table>
+						<![endif]-->
+					</td>
+				</tr>
+			</tbody>
+		</table>
+        <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"10=
+0%" class=3D"mcnImageBlock" style=3D"min-width:100%;">
+            <tbody class=3D"mcnImageBlockOuter">
+                    <tr>
+                        <td valign=3D"top" style=3D"padding:9px" class=3D"m=
+cnImageBlockInner">
+                            <table align=3D"left" width=3D"100%" border=3D"=
+0" cellpadding=3D"0" cellspacing=3D"0" class=3D"mcnImageContentContainer" s=
+tyle=3D"min-width:100%;">
+                                <tbody>
+                                <tr>
+                                    <td class=3D"mcnImageContent" valign=3D=
+"top" style=3D"padding-right: 9px; padding-left: 9px; padding-top: 0; paddi=
+ng-bottom: 0; text-align:center;">
+                                        <img align=3D"center" alt=3D"" src=
+=3D"https://6jmwc.img.sp1-brevo.net/im/sh/55HY9kngSxtC.png?u=3D2BpAyz2gMiWn=
+ctaeSn5UfvxGmWFFWO9ODr" width=3D"564" style=3D"max-width:600px; padding-bot=
+tom: 0; display: inline !important; vertical-align: bottom;" class=3D"mcnIm=
+age" sib_img_id=3D"9">
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+            </tbody>
+        </table>
+	</td>
+</tr>
+<!--=3D=3D=3D=3D=3D End Footer GPP=3D=3D=3D=3D=3D-->
+
+
+ 				</table>
+				<!--[if (gte mso 9)|(IE)]>
+				</td>
+				</tr>
+				</table>
+				<![endif]-->
+				<!-- // END TEMPLATE -->
+			</td>
+		</tr>
+	</table>
+</center>
+   </body>
+</html>
+
+---------?=_42826-3354295438507--
+

@@ -1,0 +1,592 @@
+Return-Path: <0100019c90a2308f-d58ec023-533d-4e97-bab2-57c47a94691b-000000@send.mail.ideabrowser.com>
+Delivered-To: alice@example.com
+Received: from mx.example.com
+	by mx.example.com with LMTP
+	id +CZxELTbnWlo9REAOIM6ow
+	(envelope-from <0100019c90a2308f-d58ec023-533d-4e97-bab2-57c47a94691b-000000@send.mail.ideabrowser.com>)
+	for <alice@example.com>; Tue, 24 Feb 2026 17:11:16 +0000
+Return-path: <0100019c90a2308f-d58ec023-533d-4e97-bab2-57c47a94691b-000000@send.mail.ideabrowser.com>
+Envelope-to: alice+ideabrowser@example.com
+Delivery-date: Tue, 24 Feb 2026 17:11:16 +0000
+Received: from a14-42.smtp-out.amazonses.com ([54.240.14.42])
+	by mx.example.com with esmtps  (TLS1.3) tls TLS_AES_256_GCM_SHA384
+	(Exim 4.98)
+	(envelope-from <0100019c90a2308f-d58ec023-533d-4e97-bab2-57c47a94691b-000000@send.mail.ideabrowser.com>)
+	id 1vuvwJ-00000006TqY-0PZd
+	for alice+ideabrowser@example.com;
+	Tue, 24 Feb 2026 17:11:16 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple; s=resend;
+	d=mail.ideabrowser.com; t=1771953074;
+	h=List-Unsubscribe:List-Unsubscribe-Post:From:To:Reply-To:Subject:Message-ID:Date:MIME-Version:Content-Type;
+	bh=MQ/X2mSU8mVSyAMx+uqsBipHfsCrSi250Ld1L/fpDOo=;
+	b=eKKTeAdRJMU3ZtmNCTNUWOIs/hnGRK8wWtULklxAMHzC+bLpMub3V2xzSLKWy81O
+	LP3DCnSn7s1BdKwMivW/sGkQB2yiSMsSxGBEz0h/nxLpPkzZPKH3OMKrlY1aLhX8iXE
+	itUU9Yz33Ad80apy7mDAVFJd/gDrd5YhVcpT3Scc=
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=6gbrjpgwjskckoa6a5zn6fwqkn67xbtw; d=amazonses.com; t=1771953074;
+	h=List-Unsubscribe:List-Unsubscribe-Post:From:To:Reply-To:Subject:Message-ID:Date:MIME-Version:Content-Type:Feedback-ID;
+	bh=MQ/X2mSU8mVSyAMx+uqsBipHfsCrSi250Ld1L/fpDOo=;
+	b=J4haSK77SgR5Gxqby4Muae0kpZnhTOAmatLX3WBaVjsQaxR+nF1RWPrl16FcvSQT
+	pORmXaCxcCKpwy7inqstFcoH14kaO+mfU2ME04KeDyEGcGAf8mY7RCyvgsZ8O2L+pMM
+	b9bXAuybimq2cYb+NNMi1NK/MXiNEqquByNgsIwQ=
+Precedence: bulk
+X-Entity-Ref-ID: d4ceaf5a-4a3e-4ed1-84ec-a56092209081
+List-Unsubscribe:
+ <https://unsubscribe.resend.com/?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjb250YWN0SWQiOiI1NTI2MmQ2OS0zOWYzLTQxYmEtODBmNi04YjMxY2I5NmMwZDIiLCJhdWRpZW5jZUlkIjoiODZmMzM5OTktZTI1Mi00NzU2LWE5ZmEtN2FjY2JlNzcxNmZmIiwiYnJvYWRjYXN0SWQiOiI1NTJlNzZlNS04ZWRiLTRkM2ItOWQ5Yy0xYjEzNDY5OTFjNDIiLCJ0ZWFtSWQiOiI0ODJkY2IwNC0yMmQ3LTQzODQtOGVlMi01MTQ0M2ZmY2I5MjQiLCJpYXQiOjE3NzE5NDcxNzYsImV4cCI6MTgwMzQ4MzE3Nn0.7HmUEdUcTfCFaxKPkwuS1H-RcWjrJ-MaiVNBAt3XmCM>
+List-Unsubscribe-Post: List-Unsubscribe=One-Click
+From: Ideabrowser <notifications@mail.ideabrowser.com>
+To: alice+ideabrowser@example.com
+Reply-To: hello@ideabrowser.com
+Subject: Idea of the Day: AI for Functional Medicine
+Message-ID: <0100019c90a2308f-d58ec023-533d-4e97-bab2-57c47a94691b-000000@email.amazonses.com>
+Date: Tue, 24 Feb 2026 17:11:14 +0000
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--_NmP-964b00ec21db9ec1-Part_1"
+Feedback-ID: :1.us-east-1.l6Ceo2Hx/4EmRftvxOu7o3uAdaNsU39s98PAEqDMYSrbg8Mej0zPBmmncOpm16nfr10l8KRTAyfvMzrPkQPgLTGNM/Zv0bjm+oDEUgCz556Brhuc6a/xj5as9g6zcU8YHQXmgkEtKGMLhk7A3HhsC+hcybwTep1I5xGviCj0sI8=:1.us-east-1.bUdgMqWxfG2SVsrQjgiKGviqCgupN9bd/NLnQooLs3w=:AmazonSES
+X-SES-Outgoing: 2026.02.24-54.240.14.42
+X-DKIM: signer='mail.ideabrowser.com' status='pass' reason=''
+DKIMCheck: Server passes DKIM test, 0 Spam score
+X-DKIM: signer='amazonses.com' status='pass' reason=''
+X-Spam-Score: 1.4 (+)
+X-Spam-Report: Spam detection software, running on the system "mx.example.com", has
+ performed the tests listed below against this email.
+ Information: https://docs.mxroute.com/docs/expert-spam-filtering.html
+ ---
+ Content analysis details:   (1.4 points)
+ ---
+  pts rule name              description
+ ---- ---------------------- -----------------------------------------
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/, no
+                             trust
+                             [54.240.14.42 listed in list.dnswl.org]
+  0.0 RCVD_IN_ZEN_BLOCKED_OPENDNS RBL: ADMINISTRATOR NOTICE: The query to
+                             zen.spamhaus.org was blocked due to usage of an
+                              open resolver. See
+                             https://www.spamhaus.org/returnc/pub/
+                             [54.240.14.42 listed in zen.spamhaus.org]
+  0.0 URIBL_BLOCKED          ADMINISTRATOR NOTICE: The query to URIBL was blocked.
+                             See
+                             http://wiki.apache.org/spamassassin/DnsBlocklists#dnsbl-block
+                              for more information.
+                             [URI: ideabrowser.com]
+                             [URI: resend.com]
+                             [URI: x.com]
+                             [URI: supabase.co]
+  0.0 URIBL_DBL_BLOCKED_OPENDNS ADMINISTRATOR NOTICE: The query to
+                             dbl.spamhaus.org was blocked due to usage of an
+                              open resolver. See
+                             https://www.spamhaus.org/returnc/pub/
+                             [URI: www.ideabrowser.com]
+                             [URI: mail.ideabrowser.com]
+                             [URI: api.ideabrowser.com]
+                             [URI: unsubscribe.resend.com]
+                             [URI: x.com]
+                             [URI: chqfunawciniepaqtdbd.supabase.co]
+ -0.1 DKIM_VALID             Message has at least one valid DKIM or DK signature
+  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily valid
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from author's
+                             domain
+  1.5 HTML_MESSAGE           BODY: HTML included in message
+SpamTally: Final spam score: 14
+
+----_NmP-964b00ec21db9ec1-Part_1
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+GMGM,
+
+Tuesday grab bag.
+
+An entire medical field building treatment plans =
+from memory. The people who organize for a living are running their own =
+business on disconnected apps (this niche is something). And why Google =
+Glass, Humane Pin, and a dozen other products all died from the same =
+mistake.
+
+=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81=
+=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81=
+=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81=
+=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81
+
+=F0=9F=93=8C IDEA OF THE DAY
+AI protocol platform for functional medicine =
+practitioners
+February 24, 2026
+
+Functional health practitioners love the =
+detective work. Cross-referencing labs, connecting symptoms, finding the =
+root cause. What they hate is the three to four hours of admin that =
+follows: building supplement stacks, writing lifestyle protocols, and =
+formatting everything into a plan a client can follow. Every practitioner =
+builds protocols in isolation. The field runs on intuition when it could =
+run on data.
+
+Protocol Pad takes client labs, symptoms, and health history and generates =
+a personalized treatment protocol: supplement dosages with timing, diet =
+recommendations, follow-up testing schedules, and lifestyle interventions =
+grounded in functional medicine frameworks. Practitioners adjust and refine=
+. Client outcomes get tracked. Every protocol generated and every outcome =
+logged feeds a clinical intelligence layer that surfaces which stacks =
+produce the best results for similar lab profiles and symptom clusters. The=
+ AI stops filling templates and starts recommending what works, backed by =
+anonymized data from across the platform.
+
+Build a web dashboard where practitioners upload client data and choose =
+from evidence-based protocol templates trained on functional medicine =
+literature and clinical guidelines. Integrate with supplement databases =
+like Fullscript or Emerson Ecologics so dosing is accurate and ordering =
+flows directly from the protocol. The regulatory positioning matters from =
+day one: every output must frame the platform as a practitioner tool that =
+assists clinical decisions, not one that prescribes them. Ship to 10 =
+practitioners drowning in protocol work and let them stress-test with real =
+clients before expanding the template library.
+
+Solo practitioners pay $49/month to save time. Pro at $149/month adds =
+outcomes tracking, client portals, and access to the clinical intelligence =
+layer. Supplement companies pay for anonymized prescribing pattern data. =
+Research institutions license the outcomes dataset. Distribution starts =
+through functional medicine Facebook groups where practitioners already ask=
+ for this kind of tool, and partnerships with organizations like the =
+Institute for Functional Medicine reach thousands of practitioners through =
+certification programs.
+
+=E2=86=92 View full idea: https://www.ideabrowser.=
+com/idea/ai-protocol-generator-for-functional-health-coaches-2686
+
+Also released today:
+=E2=80=A2 Pricing transparency platform for home =
+renovation quotes: https://www.ideabrowser.com/idea/contractor-quote-analyz=
+er
+=E2=80=A2 Productivity launcher that transforms tablets into =
+desktop-class workstations : https://www.ideabrowser.=
+com/idea/gesture-first-productivity-launcher-for-android-tablets-2882
+=E2=80=A2 Visual progress tracking tool for boutique fitness coaches: =
+https://www.ideabrowser.com/idea/visual-progress-journal-for-boutique-fitne=
+ss-coaches-2883
+
+=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81=
+=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81=
+=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81=
+=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81
+
+=F0=9F=94=8D HIDDEN NICHE OPPORTUNITY: Professional Organizers
+
+Nobody's built software for professional organizers. So they assembled =
+their own stack: Google Forms for intake. Bonsai for contracts it can't =
+handle. Before/after photos in a camera roll linked to no client. Nine =
+tools. Zero integration.
+
+Intake breaks first. Organizers email forms by =
+hand because their contract tools can't handle residential access waivers =
+or room-by-room scope agreements. One client, three documents, none of them=
+ connected.
+
+Opportunity: An intake-first platform for organizing =
+businesses. Pre-built templates for residential access waivers and scope =
+agreements. Digital signing. Auto-fill from client profiles. They're paying=
+ for nine tools because nobody gave them one.
+
+=E2=86=92 View full =
+analysis: https://www.ideabrowser.com/market-insights/professional-organize=
+rs-2026-01-23T00-05-19
+
+=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81=
+=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81=
+=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81=
+=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81=
+=E2=94=81
+
+=F0=9F=93=9A FOUNDER PLAYBOOK: Ask your users to change one =
+thing. Not two.
+
+A wearable that worked. Zero adoption.Before Wispr Flow =
+was software, it was a neural-signal earpiece converting silent speech to =
+text. The tech worked. But it demanded two behavior changes at once: wear a=
+ new device AND speak instead of type. Humane Pin hit the same wall (new =
+device AND palm projector). Google Glass too (face camera AND voice =
+commands in public). Two new behaviors. Every time.They stripped it to one =
+ask.Wispr Flow became software. One behavior change: speak instead of type.=
+ Apps, screen, workflow unchanged. Then the product learned each user. =
+Misspelled names got remembered. Tone matched your writing style. "Tomorrow=
+, no wait, Friday" became "Let's meet Friday." 50% month-over-month user =
+growth. 90% word-of-mouth.500 onboarding calls showed them what to subtract=
+.Tanay Kothari onboarded the first 500 users himself on Google Meet, =
+watching where they got confused in real time. The winning features =
+subtracted friction. Personal dictionary (stop re-spelling names). Tone =
+settings (stop re-formatting). Self-correction (one take, clean copy). =
+Three features, three fewer asks.
+
+=F0=9F=8E=AF STEAL THIS:
+The behavior-change audit. Before your next launch:1. List every new =
+behavior your product requires.2. Circle the one that delivers core value.3=
+. Everything else: can you plug into what the user already does?Tanay =
+Kothari's breakdown
+
+=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81=
+=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81=
+=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81=
+=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81=
+=E2=94=81
+
+=F0=9F=92=A1 HOW TO FIND YOUR NEXT IDEA:
+=E2=80=A2 Browse 1,000+ researched ideas: https://www.ideabrowser.=
+com/database
+=E2=80=A2 Generate business ideas tailored to you: https://www=
+.ideabrowser.com/idea-generator
+=E2=80=A2 Got an idea? Research & validate =
+it: https://www.ideabrowser.com/launch-week/research-agent-v2
+
+The fastest way to find an idea: look for the person using nine tools =
+because nobody gave them one. Count the tabs. Each one is a feature they'll=
+ pay to delete.
+
+=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81=
+=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81=
+=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81=
+=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81
+
+=F0=9F=94=AE TOMORROW'S HINT:
+The LSAT breakthrough resource that 170+ =
+scorers found buried in Reddit...
+
+PS - If you're reading this daily, =
+you're already ahead of 99% of people who 'want to start a business.' Pick =
+one. Go deep. https://www.ideabrowser.com/database
+
+=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81=
+=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81=
+=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81=
+=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81=E2=94=81
+
+You're receiving this because you subscribed to Ideabrowser's Idea of the =
+Day.
+
+Manage email preferences: https://www.ideabrowser.=
+com/account/notifications
+Unsubscribe: https://unsubscribe.resend.com/?=
+token=3DeyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjb250YWN0SWQiOiI1NTI2MmQ2OS=
+0zOWYzLTQxYmEtODBmNi04YjMxY2I5NmMwZDIiLCJhdWRpZW5jZUlkIjoiODZmMzM5OTktZTI1M=
+i00NzU2LWE5ZmEtN2FjY2JlNzcxNmZmIiwiYnJvYWRjYXN0SWQiOiI1NTJlNzZlNS04ZWRiLTRk=
+M2ItOWQ5Yy0xYjEzNDY5OTFjNDIiLCJ0ZWFtSWQiOiI0ODJkY2IwNC0yMmQ3LTQzODQtOGVlMi0=
+1MTQ0M2ZmY2I5MjQiLCJpYXQiOjE3NzE5NDcxNzYsImV4cCI6MTgwMzQ4MzE3Nn0.=
+7HmUEdUcTfCFaxKPkwuS1H-RcWjrJ-MaiVNBAt3XmCM
+
+----_NmP-964b00ec21db9ec1-Part_1
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.=
+w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html dir=3D"ltr" =
+lang=3D"en"><head><link rel=3D"preload" as=3D"image" href=3D"https://www.=
+ideabrowser.com/images/logo.png"/><link rel=3D"preload" as=3D"image" =
+href=3D"https://api.ideabrowser.com/storage/v1/object/public/idea-images/ai=
+-protocol-generator-for-functional-health-coaches-2686/first-section-177188=
+0274129.png"/><link rel=3D"preload" as=3D"image" href=3D"https://chqfunawci=
+niepaqtdbd.supabase.co/storage/v1/object/public/idea-images/contractor-quot=
+e-analyzer/first-section-1771540110955.png"/><link rel=3D"preload" =
+as=3D"image" href=3D"https://chqfunawciniepaqtdbd.supabase.=
+co/storage/v1/object/public/idea-images/gesture-first-productivity-launcher=
+-for-android-tablets-2882/first-section-1771535890848.png"/><link =
+rel=3D"preload" as=3D"image" href=3D"https://chqfunawciniepaqtdbd.supabase.=
+co/storage/v1/object/public/idea-images/email-screenshots/market-insights/8=
+7647d0f-c840-419b-b9f5-dcbdb29f146a-474-1771624804079.png?t=3D1771624823361=
+?t=3D1771880341228"/><meta content=3D"text/html; charset=3DUTF-8" =
+http-equiv=3D"Content-Type"/><meta name=3D"x-apple-disable-message-reformat=
+ting"/><style>
+          /* Rich text paragraph spacing */
+          p { margin: 0 0 16px 0; }
+          p:last-child { margin-bottom:=
+ 0; }
+          ul, ol { margin: 0 0 16px 0; padding-left: 24px; }
+          ul:last-child, ol:last-child { margin-bottom: 0; }
+          li { margin-bottom: 4px; }
+         =20
+          /* Rich text =
+link styling - matches design tokens */
+          a { color: #4C44FF; =
+text-decoration: none; font-weight: 600; }
+          a:hover { =
+text-decoration: underline; }
+         =20
+          @media only screen and=
+ (max-width: 600px) {
+            .mobile-stack { display: block !=
+important; width: 100% !important; }
+            .mobile-stack-cell { =
+display: block !important; width: 100% !important; padding-right: 0 !=
+important; padding-bottom: 16px !important; }
+            .mobile-image { =
+width: 100% !important; max-width: 100% !important; height: auto !=
+important; }
+          }
+        </style></head><body =
+style=3D"background-color:#ffffff;font-family:-apple-system,=
+BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Oxygen-Sans,Ubuntu,Cantarell=
+,&quot;Helvetica Neue&quot;,sans-serif"><!--$--><!--html--><!--head--><div =
+style=3D"display:none;overflow:hidden;line-height:1px;opacity:0;max-height:=
+0;max-width:0">Two patients. Same bloodwork. Two completely different =
+protocols. Built from memory.<div>=C2=A0=E2=80=8C=E2=80=8B=E2=80=8D=
+=E2=80=8E=E2=80=8F=EF=BB=BF=C2=A0=E2=80=8C=E2=80=8B=E2=80=8D=E2=80=8E=
+=E2=80=8F=EF=BB=BF=C2=A0=E2=80=8C=E2=80=8B=E2=80=8D=E2=80=8E=E2=80=8F=
+=EF=BB=BF=C2=A0=E2=80=8C=E2=80=8B=E2=80=8D=E2=80=8E=E2=80=8F=EF=BB=BF=
+=C2=A0=E2=80=8C=E2=80=8B=E2=80=8D=E2=80=8E=E2=80=8F=EF=BB=BF=C2=A0=
+=E2=80=8C=E2=80=8B=E2=80=8D=E2=80=8E=E2=80=8F=EF=BB=BF=C2=A0=E2=80=8C=
+=E2=80=8B=E2=80=8D=E2=80=8E=E2=80=8F=EF=BB=BF=C2=A0=E2=80=8C=E2=80=8B=
+=E2=80=8D=E2=80=8E=E2=80=8F=EF=BB=BF=C2=A0=E2=80=8C=E2=80=8B=E2=80=8D=
+=E2=80=8E=E2=80=8F=EF=BB=BF=C2=A0=E2=80=8C=E2=80=8B=E2=80=8D=E2=80=8E=
+=E2=80=8F=EF=BB=BF=C2=A0=E2=80=8C=E2=80=8B=E2=80=8D=E2=80=8E=E2=80=8F=
+=EF=BB=BF=C2=A0=E2=80=8C=E2=80=8B=E2=80=8D=E2=80=8E=E2=80=8F=EF=BB=BF=
+=C2=A0=E2=80=8C=E2=80=8B=E2=80=8D=E2=80=8E=E2=80=8F=EF=BB=BF=C2=A0=
+=E2=80=8C=E2=80=8B=E2=80=8D=E2=80=8E=E2=80=8F=EF=BB=BF=C2=A0=E2=80=8C=
+=E2=80=8B=E2=80=8D=E2=80=8E=E2=80=8F=EF=BB=BF=C2=A0=E2=80=8C=E2=80=8B=
+=E2=80=8D=E2=80=8E=E2=80=8F=EF=BB=BF=C2=A0=E2=80=8C=E2=80=8B=E2=80=8D=
+=E2=80=8E=E2=80=8F=EF=BB=BF=C2=A0=E2=80=8C=E2=80=8B=E2=80=8D=E2=80=8E=
+=E2=80=8F=EF=BB=BF=C2=A0=E2=80=8C=E2=80=8B=E2=80=8D=E2=80=8E=E2=80=8F=
+=EF=BB=BF=C2=A0=E2=80=8C=E2=80=8B=E2=80=8D=E2=80=8E=E2=80=8F=EF=BB=BF=
+=C2=A0=E2=80=8C=E2=80=8B=E2=80=8D=E2=80=8E=E2=80=8F=EF=BB=BF=C2=A0=
+=E2=80=8C=E2=80=8B=E2=80=8D=E2=80=8E=E2=80=8F=EF=BB=BF=C2=A0=E2=80=8C=
+=E2=80=8B=E2=80=8D=E2=80=8E=E2=80=8F=EF=BB=BF=C2=A0=E2=80=8C=E2=80=8B=
+=E2=80=8D=E2=80=8E=E2=80=8F=EF=BB=BF=C2=A0=E2=80=8C=E2=80=8B=E2=80=8D=
+=E2=80=8E=E2=80=8F=EF=BB=BF=C2=A0=E2=80=8C=E2=80=8B=E2=80=8D=E2=80=8E=
+=E2=80=8F=EF=BB=BF=C2=A0=E2=80=8C=E2=80=8B=E2=80=8D=E2=80=8E=E2=80=8F=
+=EF=BB=BF=C2=A0=E2=80=8C=E2=80=8B=E2=80=8D=E2=80=8E=E2=80=8F=EF=BB=BF=
+=C2=A0=E2=80=8C=E2=80=8B=E2=80=8D=E2=80=8E=E2=80=8F=EF=BB=BF=C2=A0=
+=E2=80=8C=E2=80=8B=E2=80=8D=E2=80=8E=E2=80=8F=EF=BB=BF=C2=A0=E2=80=8C=
+=E2=80=8B=E2=80=8D=E2=80=8E=E2=80=8F=EF=BB=BF=C2=A0=E2=80=8C=E2=80=8B=
+=E2=80=8D=E2=80=8E=E2=80=8F=EF=BB=BF=C2=A0=E2=80=8C=E2=80=8B=E2=80=8D=
+=E2=80=8E=E2=80=8F=EF=BB=BF=C2=A0=E2=80=8C=E2=80=8B=E2=80=8D=E2=80=8E=
+=E2=80=8F=EF=BB=BF=C2=A0=E2=80=8C=E2=80=8B=E2=80=8D=E2=80=8E=E2=80=8F=
+=EF=BB=BF=C2=A0=E2=80=8C=E2=80=8B=E2=80=8D=E2=80=8E=E2=80=8F=EF=BB=BF=
+=C2=A0=E2=80=8C=E2=80=8B=E2=80=8D=E2=80=8E=E2=80=8F=EF=BB=BF=C2=A0=
+=E2=80=8C=E2=80=8B=E2=80=8D=E2=80=8E=E2=80=8F=EF=BB=BF=C2=A0=E2=80=8C=
+=E2=80=8B=E2=80=8D=E2=80=8E=E2=80=8F=EF=BB=BF=C2=A0=E2=80=8C=E2=80=8B=
+=E2=80=8D=E2=80=8E=E2=80=8F=EF=BB=BF=C2=A0=E2=80=8C=E2=80=8B=E2=80=8D=
+=E2=80=8E=E2=80=8F=EF=BB=BF=C2=A0=E2=80=8C=E2=80=8B=E2=80=8D=E2=80=8E=
+=E2=80=8F=EF=BB=BF=C2=A0=E2=80=8C=E2=80=8B=E2=80=8D=E2=80=8E=E2=80=8F=
+=EF=BB=BF=C2=A0=E2=80=8C=E2=80=8B=E2=80=8D=E2=80=8E=E2=80=8F=EF=BB=BF=
+=C2=A0=E2=80=8C=E2=80=8B=E2=80=8D=E2=80=8E=E2=80=8F=EF=BB=BF=C2=A0=
+=E2=80=8C=E2=80=8B=E2=80=8D=E2=80=8E=E2=80=8F=EF=BB=BF=C2=A0=E2=80=8C=
+=E2=80=8B=E2=80=8D=E2=80=8E=E2=80=8F=EF=BB=BF=C2=A0=E2=80=8C=E2=80=8B=
+=E2=80=8D=E2=80=8E=E2=80=8F=EF=BB=BF=C2=A0=E2=80=8C=E2=80=8B=E2=80=8D=
+=E2=80=8E=E2=80=8F=EF=BB=BF=C2=A0=E2=80=8C=E2=80=8B=E2=80=8D=E2=80=8E=
+=E2=80=8F=EF=BB=BF=C2=A0=E2=80=8C=E2=80=8B=E2=80=8D=E2=80=8E=E2=80=8F=
+=EF=BB=BF=C2=A0=E2=80=8C=E2=80=8B=E2=80=8D=E2=80=8E=E2=80=8F=EF=BB=BF=
+=C2=A0=E2=80=8C=E2=80=8B=E2=80=8D=E2=80=8E=E2=80=8F=EF=BB=BF=C2=A0=
+=E2=80=8C=E2=80=8B=E2=80=8D=E2=80=8E=E2=80=8F=EF=BB=BF=C2=A0=E2=80=8C=
+=E2=80=8B=E2=80=8D=E2=80=8E=E2=80=8F=EF=BB=BF=C2=A0=E2=80=8C=E2=80=8B=
+=E2=80=8D=E2=80=8E=E2=80=8F=EF=BB=BF=C2=A0=E2=80=8C=E2=80=8B=E2=80=8D=
+=E2=80=8E=E2=80=8F=EF=BB=BF=C2=A0=E2=80=8C=E2=80=8B=E2=80=8D=E2=80=8E=
+=E2=80=8F=EF=BB=BF=C2=A0=E2=80=8C=E2=80=8B=E2=80=8D=E2=80=8E=E2=80=8F=
+=EF=BB=BF=C2=A0=E2=80=8C=E2=80=8B=E2=80=8D=E2=80=8E=E2=80=8F=EF=BB=BF=
+=C2=A0=E2=80=8C=E2=80=8B=E2=80=8D=E2=80=8E=E2=80=8F=EF=BB=BF=C2=A0=
+=E2=80=8C=E2=80=8B=E2=80=8D=E2=80=8E=E2=80=8F=EF=BB=BF=C2=A0=E2=80=8C=
+=E2=80=8B=E2=80=8D=E2=80=8E=E2=80=8F=EF=BB=BF=C2=A0=E2=80=8C=E2=80=8B=
+=E2=80=8D=E2=80=8E=E2=80=8F=EF=BB=BF=C2=A0=E2=80=8C=E2=80=8B=E2=80=8D=
+=E2=80=8E=E2=80=8F=EF=BB=BF=C2=A0=E2=80=8C=E2=80=8B=E2=80=8D=E2=80=8E=
+=E2=80=8F=EF=BB=BF</div></div><!--body--><table align=3D"center" =
+width=3D"100%" border=3D"0" cellPadding=3D"0" cellSpacing=3D"0" =
+role=3D"presentation" style=3D"max-width:600px;margin:0 auto;padding:40px 0=
+ 48px"><tbody><tr style=3D"width:100%"><td><img alt=3D"Ideabrowser" =
+height=3D"40" src=3D"https://www.ideabrowser.com/images/logo.png" =
+style=3D"display:block;outline:none;border:none;text-decoration:none;width:=
+184px;height:40px;margin:0 auto 24px" width=3D"184"/><table =
+align=3D"center" width=3D"100%" border=3D"0" cellPadding=3D"0" =
+cellSpacing=3D"0" role=3D"presentation" style=3D"margin-bottom:24px"><tbody=
+><tr><td><div style=3D"font-size:15px;color:#4B5563;line-height:1.=
+6;margin:0"><p>Tuesday grab bag.</p><p>An entire medical field building =
+treatment plans from memory. The people who organize for a living are =
+running their own business on disconnected apps (this niche is something). =
+And why Google Glass, Humane Pin, and a dozen other products all died from =
+the same mistake.</p></div></td></tr></tbody></table><p =
+style=3D"font-size:16px;line-height:24px;margin-bottom:16px;margin-top:16px=
+;color:#111827;font-weight:700;text-transform:uppercase;letter-spacing:0.=
+5px;margin:0 0 10px">Idea of the Day</p><p style=3D"font-size:22px;line-hei=
+ght:24px;margin-bottom:16px;margin-top:16px;color:#111827;font-weight:600;l=
+etter-spacing:-0.3px;margin:0 0 16px;text-align:left">AI protocol platform =
+for functional medicine practitioners</p><p style=3D"font-size:15px;line-he=
+ight:1.6;margin-bottom:16px;margin-top:16px;color:#4B5563;margin:0 0 =
+8px"><span>Functional health practitioners love the detective work. =
+Cross-referencing labs, connecting symptoms, finding the root cause. What =
+they hate is the three to four hours of admin that follows: building =
+supplement stacks, writing lifestyle protocols, and formatting everything =
+into a plan a client can follow. Every practitioner builds protocols in =
+isolation. The field runs on intuition when it could run on data.=
+
+<br/></span><span>
+<br/></span><span>Protocol Pad takes client labs, =
+symptoms, and health history and generates a personalized treatment =
+protocol: supplement dosage...</span></p><p style=3D"font-size:14px;line-he=
+ight:1.5;margin-bottom:16px;margin-top:16px;color:#4B5563;margin:0 0 =
+16px"><a href=3D"https://www.ideabrowser.com/idea/ai-protocol-generator-for=
+-functional-health-coaches-2686?utm_source=3Diotd&amp;utm_medium=3Demail&am=
+p;utm_campaign=3D2026-02-24&amp;utm_content=3Didea-summary-link" =
+style=3D"color:#6366F1;text-decoration-line:none;font-weight:500;text-decor=
+ation:none" target=3D"_blank">Browse this idea =E2=86=92</a></p><div =
+style=3D"width:100%;margin-top:16px"><a href=3D"https://www.ideabrowser.=
+com/idea/ai-protocol-generator-for-functional-health-coaches-2686?=
+utm_source=3Diotd&amp;utm_medium=3Demail&amp;utm_campaign=3D2026-02-24&amp;=
+utm_content=3Didea-screenshot" style=3D"color:inherit;text-decoration-line:=
+none;text-decoration:none;display:block" target=3D"_blank"><img =
+alt=3D"Featured image" src=3D"https://api.ideabrowser.=
+com/storage/v1/object/public/idea-images/ai-protocol-generator-for-function=
+al-health-coaches-2686/first-section-1771880274129.png" =
+style=3D"display:block;outline:none;border:1px solid =
+#E5E7EB;text-decoration:none;width:100%;height:auto;border-radius:8px" =
+width=3D"600"/></a><p style=3D"font-size:12px;line-height:24px;margin-botto=
+m:16px;margin-top:16px;color:#6B7280;margin:6px 0 12px;text-align:center"><=
+a href=3D"https://www.ideabrowser.com/idea/ai-protocol-generator-for-functi=
+onal-health-coaches-2686?utm_source=3Diotd&amp;utm_medium=3Demail&amp;utm_c=
+ampaign=3D2026-02-24&amp;utm_content=3Didea-view-full" =
+style=3D"color:#6366F1;text-decoration-line:none;text-decoration:none" =
+target=3D"_blank">View full idea =E2=86=92</a></p><p =
+style=3D"font-size:11px;line-height:24px;margin-bottom:16px;margin-top:16px=
+;color:#9CA3AF;margin:12px 0 0;text-align:center">=F0=9F=95=92 Today&#x27;s=
+ report is free until midnight UTC.</p></div><div style=3D"margin:24px =
+0"><p style=3D"font-size:14px;line-height:1.5;margin-bottom:16px;margin-top=
+:16px;color:#4B5563;margin:0 0 12px;font-weight:600">Also released =
+today:</p><table align=3D"center" width=3D"100%" border=3D"0" =
+cellPadding=3D"0" cellSpacing=3D"0" role=3D"presentation"><tbody =
+style=3D"width:100%"><tr style=3D"width:100%"><td data-id=3D"__react-email-=
+column" style=3D"width:50%;padding-left:0;padding-right:8px"><a =
+href=3D"https://www.ideabrowser.com/idea/contractor-quote-analyzer?=
+utm_source=3Diotd&amp;utm_medium=3Demail&amp;utm_campaign=3D2026-02-24&amp;=
+utm_content=3Dmore-ideas" style=3D"color:#067df7;text-decoration-line:none;=
+text-decoration:none;display:block" target=3D"_blank"><img alt=3D"Pricing =
+transparency platform for home renovation quotes" src=3D"https://chqfunawci=
+niepaqtdbd.supabase.co/storage/v1/object/public/idea-images/contractor-quot=
+e-analyzer/first-section-1771540110955.png" style=3D"display:block;outline:=
+none;border:1px solid #E5E7EB;text-decoration:none;width:100%;height:auto;b=
+order-radius:8px" width=3D"100%"/></a></td><td data-id=3D"__react-email-col=
+umn" style=3D"width:50%;padding-left:8px;padding-right:0"><a =
+href=3D"https://www.ideabrowser.com/idea/gesture-first-productivity-launche=
+r-for-android-tablets-2882?utm_source=3Diotd&amp;utm_medium=3Demail&amp;utm=
+_campaign=3D2026-02-24&amp;utm_content=3Dmore-ideas" =
+style=3D"color:#067df7;text-decoration-line:none;text-decoration:none;displ=
+ay:block" target=3D"_blank"><img alt=3D"Productivity launcher that =
+transforms tablets into desktop-class workstations " =
+src=3D"https://chqfunawciniepaqtdbd.supabase.co/storage/v1/object/public/id=
+ea-images/gesture-first-productivity-launcher-for-android-tablets-2882/firs=
+t-section-1771535890848.png" style=3D"display:block;outline:none;border:1px=
+ solid #E5E7EB;text-decoration:none;width:100%;height:auto;border-radius:8p=
+x" width=3D"100%"/></a></td></tr></tbody></table></div><hr =
+style=3D"width:100%;border:none;border-top:1px solid =
+#eaeaea;border-color:#E5E7EB;margin:32px 0"/><p style=3D"font-size:16px;lin=
+e-height:24px;margin-bottom:16px;margin-top:16px;color:#111827;font-weight:=
+700;text-transform:uppercase;letter-spacing:0.5px;margin:0 0 10px">HIDDEN =
+NICHE OPPORTUNITY</p><div style=3D"font-size:15px;color:#4B5563;line-height=
+:1.6;margin:0 0 12px"><p>Nobody's built software for professional =
+organizers. So they assembled their own stack: Google Forms for intake. =
+Bonsai for contracts it can't handle. Before/after photos in a camera roll =
+linked to no client. Nine tools. Zero integration.</p><p>Intake breaks =
+first. Organizers email forms by hand because their contract tools can't =
+handle residential access waivers or room-by-room scope agreements. One =
+client, three documents, none of them connected.</p><p><strong>Opportunity:=
+</strong> An intake-first platform for organizing businesses. Pre-built =
+templates for residential access waivers and scope agreements. Digital =
+signing. Auto-fill from client profiles. They're paying for nine tools =
+because nobody gave them one.</p></div><a href=3D"https://www.ideabrowser.=
+com/market-insights/professional-organizers-2026-01-23T00-05-19?=
+utm_source=3Diotd&amp;utm_medium=3Demail&amp;utm_campaign=3D2026-02-24&amp;=
+utm_content=3Dinsight-screenshot" style=3D"color:#067df7;text-decoration-li=
+ne:none;text-decoration:none;display:block" target=3D"_blank"><img =
+alt=3D"Professional Organizers" src=3D"https://chqfunawciniepaqtdbd.=
+supabase.co/storage/v1/object/public/idea-images/email-screenshots/market-i=
+nsights/87647d0f-c840-419b-b9f5-dcbdb29f146a-474-1771624804079.png?=
+t=3D1771624823361?t=3D1771880341228" style=3D"display:block;outline:none;bo=
+rder:1px solid #E5E7EB;text-decoration:none;border-radius:8px" =
+width=3D"100%"/></a><p style=3D"font-size:12px;line-height:24px;margin-bott=
+om:16px;margin-top:16px;color:#6B7280;margin:6px 0 12px;text-align:center">=
+<a href=3D"https://www.ideabrowser.com/market-insights/professional-organiz=
+ers-2026-01-23T00-05-19?utm_source=3Diotd&amp;utm_medium=3Demail&amp;utm_ca=
+mpaign=3D2026-02-24&amp;utm_content=3Dinsight-view-full" =
+style=3D"color:#6366F1;text-decoration-line:none;text-decoration:none" =
+target=3D"_blank">View full analysis =E2=86=92</a></p><hr =
+style=3D"width:100%;border:none;border-top:1px solid =
+#eaeaea;border-color:#E5E7EB;margin:32px 0"/><p style=3D"font-size:16px;lin=
+e-height:24px;margin-bottom:16px;margin-top:16px;color:#111827;font-weight:=
+700;text-transform:uppercase;letter-spacing:0.5px;margin:0 0 10px">Founder =
+Playbook</p><p style=3D"font-size:16px;line-height:24px;margin-bottom:16px;=
+margin-top:16px;color:#111827;font-weight:600;margin:0 0 16px">Ask your =
+users to change one thing. Not two.</p><div style=3D"font-size:15px;color:#=
+4B5563;line-height:1.6;margin:0 0 12px;margin-bottom:16px"><ul =
+class=3D"list-disc pl-4"><li><p><strong>A wearable that worked. Zero =
+adoption.</strong><br>Before Wispr Flow was software, it was a =
+neural-signal earpiece converting silent speech to text. The tech worked. =
+But it demanded two behavior changes at once: wear a new device AND speak =
+instead of type. Humane Pin hit the same wall (new device AND palm =
+projector). Google Glass too (face camera AND voice commands in public). =
+Two new behaviors. Every time.</p></li><li><p><strong>They stripped it to =
+one ask.</strong><br>Wispr Flow became software. One behavior change: speak=
+ instead of type. Apps, screen, workflow unchanged. Then the product =
+learned each user. Misspelled names got remembered. Tone matched your =
+writing style. "Tomorrow, no wait, Friday" became "Let's meet Friday." 50% =
+month-over-month user growth. 90% word-of-mouth.</p></li><li><p><strong>500=
+ onboarding calls showed them what to subtract.</strong><br>Tanay Kothari =
+onboarded the first 500 users himself on Google Meet, watching where they =
+got confused in real time. The winning features subtracted friction. =
+Personal dictionary (stop re-spelling names). Tone settings (stop =
+re-formatting). Self-correction (one take, clean copy). Three features, =
+three fewer asks.</p></li></ul></div><div style=3D"background-color:#F3F4F6=
+;padding:16px;border-radius:8px;margin-bottom:16px;border-left:4px solid =
+#6366F1"><p style=3D"font-size:13px;line-height:24px;margin-bottom:16px;mar=
+gin-top:16px;color:#4B5563;margin:0 0 8px;font-weight:600;text-transform:up=
+percase;letter-spacing:0.5px">=F0=9F=8E=AF Steal This</p><div =
+style=3D"font-size:14px;color:#4B5563;line-height:1.5;margin:0 0 =
+8px"><p><strong>The behavior-change audit.</strong> </p><p>Before your next=
+ launch:</p><p><em>1. List every new behavior your product requires.=
+</em></p><p><em>2. Circle the one that delivers core value.=
+</em></p><p><em>3. Everything else: can you plug into what the user already=
+ does?</em></p><p><a target=3D"_blank" rel=3D"noopener noreferrer nofollow"=
+ class=3D"text-blue-600 underline cursor-pointer" href=3D"https://www.=
+ideabrowser.com/api/redirect?url=3Dhttps%3A%2F%2Fx.com%2Ftankots%2Fstatus%2=
+F2022068761009041902&utm_source=3Diotd&utm_medium=3Demail&utm_campaign=3D20=
+26-02-24&utm_content=3Dplaybook-steal-link">Tanay Kothari's =
+breakdown</a></p></div></div><hr style=3D"width:100%;border:none;border-top=
+:1px solid #eaeaea;border-color:#E5E7EB;margin:32px 0"/><div =
+style=3D"margin-bottom:16px;padding:12px"><div style=3D"font-size:15px;colo=
+r:#4B5563;line-height:1.6;margin:0 0 12px" class=3D""><p>The fastest way to=
+ find an idea: look for the person using nine tools because nobody gave =
+them one. Count the tabs. Each one is a feature they'll pay to delete.=
+</p></div></div><hr style=3D"width:100%;border:none;border-top:1px solid =
+#eaeaea;border-color:#E5E7EB;margin:32px 0"/><p style=3D"font-size:16px;lin=
+e-height:24px;margin-bottom:16px;margin-top:16px;color:#111827;font-weight:=
+600;margin:0 0 8px">Sneak peek at tomorrow&#x27;s idea...</p><p =
+style=3D"font-size:15px;line-height:1.6;margin-bottom:16px;margin-top:16px;=
+color:#4B5563;margin:0 0 24px;font-style:italic">The LSAT breakthrough =
+resource that 170+ scorers found buried in Reddit...</p><hr =
+style=3D"width:100%;border:none;border-top:1px solid =
+#eaeaea;border-color:#E5E7EB;margin:32px 0"/><p style=3D"font-size:15px;lin=
+e-height:1.6;margin-bottom:16px;margin-top:16px;color:#4B5563;margin:0 0 =
+24px"><strong>PS</strong> - <!-- -->If you&#x27;re reading this daily, =
+you&#x27;re already ahead of 99% of people who &#x27;want to start a =
+business.&#x27; Pick one. Go deep.<!-- --> <a href=3D"https://www.=
+ideabrowser.com/database?utm_source=3Diotd&amp;utm_medium=3Demail&amp;utm_c=
+ampaign=3D2026-02-24&amp;utm_content=3Dps-link" style=3D"color:#4C44FF;text=
+-decoration-line:none;font-weight:600;text-decoration:none" =
+target=3D"_blank">Browse Ideas</a></p><p style=3D"font-size:15px;line-heigh=
+t:1.6;margin-bottom:16px;margin-top:16px;color:#111827;margin:0 0 =
+4px;font-weight:600">Want to make sure you never miss an idea?</p><p =
+style=3D"font-size:15px;line-height:1.6;margin-bottom:16px;margin-top:16px;=
+color:#6B7280;margin:0 0 12px">If you find this email in your Promotions =
+tab, just drag it to your Primary inbox and click &#x27;Yes&#x27; when =
+prompted. Or, add us to your contacts. You&#x27;ll get more free startup =
+ideas this way.</p><hr style=3D"width:100%;border:none;border-top:1px solid=
+ #eaeaea;border-color:#E5E7EB;margin:40px 0 20px 0"/><p =
+style=3D"font-size:12px;line-height:1.4;margin-bottom:16px;margin-top:16px;=
+color:#9CA3AF;text-align:center;margin:32px 0 0">You&#x27;re receiving this=
+ email because you subscribed to Ideabrowser&#x27;s Idea of the Day.</p><p =
+style=3D"font-size:12px;line-height:1.4;margin-bottom:16px;margin-top:16px;=
+color:#9CA3AF;text-align:center;margin:12px 0 0"><a href=3D"https://www.=
+ideabrowser.com/account/notifications" style=3D"color:#6B7280;text-decorati=
+on-line:none" target=3D"_blank">Manage email preferences</a> | <a =
+href=3D"https://unsubscribe.resend.com/?token=3DeyJhbGciOiJIUzI1NiIsInR5cCI=
+6IkpXVCJ9.eyJjb250YWN0SWQiOiI1NTI2MmQ2OS0zOWYzLTQxYmEtODBmNi04YjMxY2I5NmMwZ=
+DIiLCJhdWRpZW5jZUlkIjoiODZmMzM5OTktZTI1Mi00NzU2LWE5ZmEtN2FjY2JlNzcxNmZmIiwi=
+YnJvYWRjYXN0SWQiOiI1NTJlNzZlNS04ZWRiLTRkM2ItOWQ5Yy0xYjEzNDY5OTFjNDIiLCJ0ZWF=
+tSWQiOiI0ODJkY2IwNC0yMmQ3LTQzODQtOGVlMi01MTQ0M2ZmY2I5MjQiLCJpYXQiOjE3NzE5ND=
+cxNzYsImV4cCI6MTgwMzQ4MzE3Nn0.7HmUEdUcTfCFaxKPkwuS1H-RcWjrJ-MaiVNBAt3XmCM" =
+style=3D"color:#6B7280;text-decoration-line:none" target=3D"_blank">Unsubsc=
+ribe</a></p></td></tr></tbody></table><!=
+--/$--></body></html>
+----_NmP-964b00ec21db9ec1-Part_1--
