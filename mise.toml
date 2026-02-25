@@ -3,8 +3,29 @@ alias = "h"
 description = "Print 'hello'"
 run = "echo hello"
 
+[tasks."check:format"]
+description = "Check formatting"
+run = "dprint check"
+
+[tasks."check:lint"]
+description = "Run clippy"
+run = "cargo clippy -- -D warnings"
+
+[tasks."check:build"]
+description = "Check compilation"
+run = "cargo check"
+
+[tasks.check]
+description = "Run all checks"
+depends = ["check:*"]
+
+[tasks.test]
+description = "Run tests"
+run = "cargo test"
+
 [tools]
 "cargo:convco" = "latest"
 dprint = "latest"
 hk = "latest"
 pkl = "latest"
+rust = "latest"
