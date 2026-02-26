@@ -1,10 +1,12 @@
-amends "package://github.com/jdx/hk/releases/download/v1.1.1/hk@1.1.1#/Config.pkl"
+amends "package://github.com/jdx/hk/releases/download/v1.32.0/hk@1.32.0#/Config.pkl"
+import "package://github.com/jdx/hk/releases/download/v1.32.0/hk@1.32.0#/Builtins.pkl"
 
 local linters  = new Mapping<String, Step> {
   ["fmt"]  {
     fix = "dprint fmt"
     stage = "*"
   }
+  ["lint"] = Builtins.cargo_clippy
 }
 
 hooks {
