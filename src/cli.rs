@@ -37,6 +37,8 @@ pub enum Command {
     List,
     #[command(about = "Create a sample config file to get started")]
     Init,
+    #[command(about = "Scan IMAP account(s) and list unique sender addresses")]
+    Scan(ScanArgs),
 }
 
 #[derive(Args, Debug)]
@@ -50,5 +52,11 @@ pub struct FetchArgs {
 #[derive(Args, Debug)]
 pub struct TestArgs {
     #[arg(long, value_name = "ACCOUNT", help = "Test only this account")]
+    pub account: Option<String>,
+}
+
+#[derive(Args, Debug)]
+pub struct ScanArgs {
+    #[arg(long, value_name = "ACCOUNT", help = "Scan only this account")]
     pub account: Option<String>,
 }

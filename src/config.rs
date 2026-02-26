@@ -127,10 +127,6 @@ impl Config {
             errors.push("at least one account must be defined".to_string());
         }
 
-        if self.feeds.is_empty() {
-            errors.push("at least one feed must be defined".to_string());
-        }
-
         for (feed_key, feed) in &self.feeds {
             if !self.accounts.contains_key(&feed.account) {
                 errors.push(format!(

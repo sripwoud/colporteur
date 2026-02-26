@@ -1,7 +1,8 @@
 use clap::Parser;
-use colporteur::cli::{Cli, Command, FetchArgs, TestArgs};
+use colporteur::cli::{Cli, Command, FetchArgs, ScanArgs, TestArgs};
 use colporteur::config::Config;
 use colporteur::fetch;
+use colporteur::scan;
 use colporteur::state::AppState;
 
 fn main() {
@@ -24,6 +25,7 @@ fn main() {
         Command::Fetch(args) => cmd_fetch(&config, &args, cli.json, cli.quiet),
         Command::Test(args) => cmd_test(&config, &args, cli.json),
         Command::List => cmd_list(&config, cli.json),
+        Command::Scan(args) => cmd_scan(&config, &args, cli.json, cli.quiet),
         Command::Init => unreachable!(),
     };
 
@@ -179,6 +181,48 @@ fn cmd_test(config: &Config, args: &TestArgs, json: bool) -> i32 {
 
     let any_failed = results.iter().any(|(_, r)| r.is_err());
     if any_failed { 5 } else { 0 }
+}
+
+fn cmd_scan(config: &Config, args: &ScanArgs, json: bool, quiet: bool) -> i32 {
+    let reports = scan::run(config, args.account.as_deref());
+
+    if json {
+        match serde_json::to_string_pretty(&reports) {
+            Ok(s) => println!("{s}"),
+            Err(e) => eprintln!("error serializing JSON: {e}"),
+        }
+    } else if !quiet {
+        for report in &reports {
+            println!("scanning {}...", report.account);
+            if let Some(err) = &report.error {
+                eprintln!("  FAILED: {err}");
+                continue;
+            }
+            if report.senders.is_empty() {
+                println!("  (no messages found)");
+                continue;
+            }
+            for sender in &report.senders {
+                let name = sender.name.as_deref().unwrap_or("");
+                let date = sender.latest.format("%Y-%m-%d");
+                println!(
+                    "  {:<42} {:<20} {:>4}  {}",
+                    sender.address, name, sender.count, date
+                );
+            }
+        }
+    }
+
+    let any_failed = reports.iter().any(|r| r.error.is_some());
+    let all_failed = !reports.is_empty() && reports.iter().all(|r| r.error.is_some());
+
+    if all_failed {
+        5
+    } else if any_failed {
+        4
+    } else {
+        0
+    }
 }
 
 fn cmd_list(config: &Config, json: bool) -> i32 {
