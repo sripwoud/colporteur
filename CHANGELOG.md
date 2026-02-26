@@ -11,7 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- *(cli)* add scan command to discover sender addresses ([#2](https://github.com/sripwoud/colporteur/pull/2))
+- _(cli)_ add scan command to discover sender addresses ([#2](https://github.com/sripwoud/colporteur/pull/2))
 
 ### Other
 
