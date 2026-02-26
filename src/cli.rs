@@ -35,6 +35,8 @@ pub enum Command {
     Test(TestArgs),
     #[command(about = "List configured feeds and their sync state")]
     List,
+    #[command(about = "Create a sample config file to get started")]
+    Init,
 }
 
 #[derive(Args, Debug)]

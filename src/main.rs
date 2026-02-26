@@ -8,10 +8,14 @@ fn main() {
     let cli = Cli::parse();
     init_logger(cli.verbose, cli.quiet);
 
+    if let Command::Init = cli.command {
+        std::process::exit(cmd_init());
+    }
+
     let config = match Config::load() {
         Ok(c) => c,
         Err(e) => {
-            eprintln!("error: {e:#}");
+            eprintln!("error: {e}");
             std::process::exit(3);
         }
     };
@@ -20,6 +24,7 @@ fn main() {
         Command::Fetch(args) => cmd_fetch(&config, &args, cli.json, cli.quiet),
         Command::Test(args) => cmd_test(&config, &args, cli.json),
         Command::List => cmd_list(&config, cli.json),
+        Command::Init => unreachable!(),
     };
 
     std::process::exit(exit_code);
@@ -42,6 +47,20 @@ fn init_logger(verbose: u8, quiet: bool) {
     };
 
     env_logger::Builder::new().filter_level(level).init();
+}
+
+fn cmd_init() -> i32 {
+    match Config::init() {
+        Ok(path) => {
+            println!("created {}", path.display());
+            println!("edit it with your IMAP accounts and feeds, then run 'colporteur test'.");
+            0
+        }
+        Err(e) => {
+            eprintln!("error: {e}");
+            1
+        }
+    }
 }
 
 fn cmd_fetch(config: &Config, args: &FetchArgs, json: bool, quiet: bool) -> i32 {
