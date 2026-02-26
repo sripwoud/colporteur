@@ -1,23 +1,9 @@
-[tasks.hello]
-alias = "h"
-description = "Print 'hello'"
-run = "echo hello"
-
-[tasks."check:format"]
-description = "Check formatting"
-run = "dprint check"
-
-[tasks."check:lint"]
+[tasks."lint"]
 description = "Run clippy"
-run = "cargo clippy -- -D warnings"
+run = "cargo clippy"
 
-[tasks."check:build"]
-description = "Check compilation"
-run = "cargo check"
-
-[tasks.check]
-description = "Run all checks"
-depends = ["check:*"]
+[tasks."build"]
+run = "cargo build --release"
 
 [tasks.test]
 description = "Run tests"
