@@ -8,7 +8,7 @@ output_dir = "/srv/feeds"
 [accounts.mail]
 server = "mail.mxroute.com"
 username = "newsletters@domain.com"
-password_env = "IMAP_PASSWORD"
+password = "secret"
 
 [feeds.tech]
 title = "Tech Newsletters"
@@ -30,12 +30,12 @@ output_dir = "/srv/feeds"
 [accounts.mxroute]
 server = "mail.mxroute.com"
 username = "news@domain.com"
-password_env = "IMAP_MXROUTE_PASSWORD"
+password = "secret"
 
 [accounts.gmail]
 server = "imap.gmail.com"
 username = "user@gmail.com"
-password_env = "IMAP_GMAIL_PASSWORD"
+password = "secret"
 
 [feeds.ideabrowser]
 title = "Ideabrowser Daily"
@@ -53,7 +53,7 @@ senders = ["no-reply@accounts.google.com"]
 Run every 15 minutes, quietly (only errors logged):
 
 ```bash
-*/15 * * * * IMAP_PASSWORD="$(pass show email/newsletters)" colporteur fetch -q
+*/15 * * * * colporteur fetch -q
 ```
 
 ## Fetch a single feed
@@ -88,7 +88,6 @@ Description=Fetch newsletter feeds
 [Service]
 Type=oneshot
 ExecStart=%h/.cargo/bin/colporteur fetch -q
-Environment=IMAP_PASSWORD=your-password
 ```
 
 `~/.config/systemd/user/colporteur.timer`:

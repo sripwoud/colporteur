@@ -17,7 +17,7 @@ output_dir = "/srv/feeds"
 [accounts.example]
 server = "imap.example.com"
 username = "newsletters@example.com"
-password_env = "IMAP_EXAMPLE_PASSWORD"  # reads password from this env var
+password = "your-imap-password"
 # mailbox = "INBOX"  # default
 
 # Feeds (one per newsletter or group of senders)
@@ -40,7 +40,7 @@ fn default_max_entries() -> usize {
 pub struct AccountConfig {
     pub server: String,
     pub username: String,
-    pub password_env: String,
+    pub password: String,
     #[serde(default = "default_mailbox")]
     pub mailbox: String,
 }
@@ -63,9 +63,8 @@ pub struct Config {
 }
 
 impl AccountConfig {
-    pub fn resolve_password(&self) -> eyre::Result<String> {
-        std::env::var(&self.password_env)
-            .wrap_err_with(|| format!("env var '{}' not set", self.password_env))
+    pub fn resolve_password(&self) -> String {
+        self.password.clone()
     }
 }
 
@@ -113,6 +112,13 @@ impl Config {
         }
         std::fs::write(&path, SAMPLE_CONFIG)
             .wrap_err_with(|| format!("failed to write {}", path.display()))?;
+        #[cfg(unix)]
+        {
+            use std::os::unix::fs::PermissionsExt;
+            let perms = std::fs::Permissions::from_mode(0o600);
+            std::fs::set_permissions(&path, perms)
+                .wrap_err_with(|| format!("failed to set permissions on {}", path.display()))?;
+        }
         Ok(path)
     }
 
@@ -162,13 +168,13 @@ max_entries = 50
 [accounts.mxroute]
 server = "mail.mxroute.com"
 username = "news@domain.com"
-password_env = "IMAP_MXROUTE_PASSWORD"
+password = "secret1"
 mailbox = "INBOX"
 
 [accounts.gmail]
 server = "imap.gmail.com"
 username = "user@gmail.com"
-password_env = "IMAP_GMAIL_PASSWORD"
+password = "secret2"
 
 [feeds.ideabrowser]
 title = "Ideabrowser Daily"
@@ -199,7 +205,7 @@ max_entries = 10
             .expect("mxroute account missing");
         assert_eq!(mxroute.server, "mail.mxroute.com");
         assert_eq!(mxroute.username, "news@domain.com");
-        assert_eq!(mxroute.password_env, "IMAP_MXROUTE_PASSWORD");
+        assert_eq!(mxroute.password, "secret1");
         assert_eq!(mxroute.mailbox, "INBOX");
 
         let gmail = config.accounts.get("gmail").expect("gmail account missing");
@@ -231,7 +237,7 @@ output_dir = "/srv/feeds"
 [accounts.real]
 server = "mail.example.com"
 username = "user@example.com"
-password_env = "PASS"
+password = "pass"
 
 [feeds.broken]
 title = "Broken Feed"
@@ -249,15 +255,14 @@ senders = ["x@example.com"]
     }
 
     #[test]
-    fn resolve_password_reads_env_var() {
-        unsafe { std::env::set_var("TEST_IMAP_PASS_CONFIG", "s3cr3t") };
+    fn resolve_password_returns_password() {
         let account = AccountConfig {
             server: "mail.example.com".to_string(),
             username: "user@example.com".to_string(),
-            password_env: "TEST_IMAP_PASS_CONFIG".to_string(),
+            password: "s3cr3t".to_string(),
             mailbox: "INBOX".to_string(),
         };
-        assert_eq!(account.resolve_password().unwrap(), "s3cr3t");
+        assert_eq!(account.resolve_password(), "s3cr3t");
     }
 
     #[test]
@@ -268,7 +273,7 @@ output_dir = "/srv/feeds"
 [accounts.minimal]
 server = "mail.example.com"
 username = "user@example.com"
-password_env = "PASS"
+password = "pass"
 
 [feeds.f]
 title = "Feed"
@@ -287,7 +292,7 @@ output_dir = "/srv/feeds"
 [accounts.a]
 server = "s"
 username = "u"
-password_env = "P"
+password = "p"
 
 [feeds.f]
 title = "F"

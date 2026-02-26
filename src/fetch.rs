@@ -71,22 +71,7 @@ pub fn run(
             }
         };
 
-        let password = match account.resolve_password() {
-            Ok(p) => p,
-            Err(e) => {
-                log::error!("account '{account_name}': failed to resolve password: {e}");
-                for (feed_key, _) in feeds {
-                    all_results.push(FeedResult {
-                        key: (*feed_key).to_string(),
-                        new_entries: 0,
-                        output: None,
-                        ok: false,
-                        error: Some(format!("failed to resolve password: {e}")),
-                    });
-                }
-                continue;
-            }
-        };
+        let password = account.resolve_password();
 
         let mut source = match ImapClient::connect(&account.server, &account.username, &password) {
             Ok(c) => c,
@@ -410,7 +395,7 @@ mod tests {
             AccountConfig {
                 server: "localhost".to_string(),
                 username: "user@test.com".to_string(),
-                password_env: "UNUSED_IN_RUN_WITH_SOURCE".to_string(),
+                password: "unused".to_string(),
                 mailbox: "INBOX".to_string(),
             },
         );
@@ -581,7 +566,7 @@ mod tests {
             AccountConfig {
                 server: "localhost".to_string(),
                 username: "user@test.com".to_string(),
-                password_env: "UNUSED_IN_RUN_WITH_SOURCE".to_string(),
+                password: "unused".to_string(),
                 mailbox: "INBOX".to_string(),
             },
         );
@@ -661,10 +646,9 @@ pub fn test_connections(
         .iter()
         .filter(|(name, _)| account_filter.is_none_or(|f| f == name.as_str()))
         .map(|(name, account)| {
-            let result = account.resolve_password().and_then(|password| {
-                ImapClient::test_connection(&account.server, &account.username, &password)
-                    .wrap_err_with(|| format!("connection test failed for '{name}'"))
-            });
+            let password = account.resolve_password();
+            let result = ImapClient::test_connection(&account.server, &account.username, &password)
+                .wrap_err_with(|| format!("connection test failed for '{name}'"));
             (name.clone(), result)
         })
         .collect()

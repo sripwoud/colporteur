@@ -31,7 +31,7 @@ output_dir = "/srv/feeds"
 [accounts.mail]
 server = "imap.example.com"
 username = "newsletters@example.com"
-password_env = "IMAP_PASSWORD"
+password = "your-password"
 
 [feeds.weekly-digest]
 title = "Weekly Digest"
@@ -39,10 +39,9 @@ account = "mail"
 senders = ["digest@newsletter.com"]
 ```
 
-Set the password and fetch:
+Fetch:
 
 ```bash
-export IMAP_PASSWORD="your-password"
 colporteur fetch
 ```
 
