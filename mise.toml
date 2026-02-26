@@ -15,11 +15,12 @@ outputs = ["target/release/colporteur"]
 [tasks.test]
 alias = "t"
 description = "Run tests"
-run = "cargo test"
+run = "cargo nextest run"
 quiet = true
 sources = ["src/**/*.rs", "Cargo.toml", "tests/**/*"]
 
 [tools]
+"cargo:cargo-nextest" = "latest"
 "cargo:convco" = "latest"
 dprint = "latest"
 hk = "latest"
