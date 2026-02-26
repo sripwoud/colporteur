@@ -68,7 +68,7 @@ Passwords are stored directly in the config file. Since the file contains secret
 chmod 600 ~/.config/colporteur/config.toml
 ```
 
-`colporteur init` sets this permission automatically.
+On Unix-like systems, `colporteur init` sets this permission automatically. On other platforms, you may need to adjust file permissions or ACLs manually to restrict access.
 
 ## State
 
