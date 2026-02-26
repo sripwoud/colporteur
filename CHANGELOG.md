@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.6](https://github.com/sripwoud/colporteur/compare/v0.2.5...v0.2.6) - 2026-02-26
+
+### Fixed
+
+- *(ci)* make vendored openssl conditional on non-windows targets
+
 ## [0.2.5](https://github.com/sripwoud/colporteur/compare/v0.2.4...v0.2.5) - 2026-02-26
 
 ### Fixed
