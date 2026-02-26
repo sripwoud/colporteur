@@ -8,13 +8,19 @@ use clap::{Args, Parser, Subcommand};
     propagate_version = true
 )]
 pub struct Cli {
-    #[arg(long, global = true)]
+    #[arg(long, global = true, help = "Output in JSON format")]
     pub json: bool,
 
-    #[arg(long, short = 'q', global = true, conflicts_with = "verbose")]
+    #[arg(
+        long,
+        short = 'q',
+        global = true,
+        conflicts_with = "verbose",
+        help = "Suppress all output except errors"
+    )]
     pub quiet: bool,
 
-    #[arg(long, short = 'v', global = true, action = clap::ArgAction::Count)]
+    #[arg(long, short = 'v', global = true, action = clap::ArgAction::Count, help = "Increase verbosity (-v info, -vv debug)")]
     pub verbose: u8,
 
     #[command(subcommand)]
@@ -23,21 +29,24 @@ pub struct Cli {
 
 #[derive(Subcommand, Debug)]
 pub enum Command {
+    #[command(about = "Fetch new emails and update Atom feed files")]
     Fetch(FetchArgs),
+    #[command(about = "Test IMAP connection(s)")]
     Test(TestArgs),
+    #[command(about = "List configured feeds and their sync state")]
     List,
 }
 
 #[derive(Args, Debug)]
 pub struct FetchArgs {
-    #[arg(long, value_name = "FEED")]
+    #[arg(long, value_name = "FEED", help = "Process only this feed")]
     pub feed: Option<String>,
-    #[arg(long)]
+    #[arg(long, help = "Preview without writing files or updating state")]
     pub dry_run: bool,
 }
 
 #[derive(Args, Debug)]
 pub struct TestArgs {
-    #[arg(long, value_name = "ACCOUNT")]
+    #[arg(long, value_name = "ACCOUNT", help = "Test only this account")]
     pub account: Option<String>,
 }
