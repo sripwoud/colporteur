@@ -1,13 +1,23 @@
 [tasks."lint"]
+alias = "l"
 description = "Run clippy"
 run = "cargo clippy"
+quiet = true
+sources = ["src/**/*.rs", "Cargo.toml"]
 
 [tasks."build"]
+alias = "b"
 run = "cargo build --release"
+quiet = true
+sources = ["src/**/*.rs", "Cargo.toml", "Cargo.lock"]
+outputs = ["target/release/colporteur"]
 
 [tasks.test]
+alias = "t"
 description = "Run tests"
 run = "cargo test"
+quiet = true
+sources = ["src/**/*.rs", "Cargo.toml", "tests/**/*"]
 
 [tools]
 "cargo:convco" = "latest"
