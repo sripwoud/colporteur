@@ -36,13 +36,24 @@ fn default_max_entries() -> usize {
     50
 }
 
-#[derive(Debug, Deserialize, Clone)]
+#[derive(Deserialize, Clone)]
 pub struct AccountConfig {
     pub server: String,
     pub username: String,
     pub password: String,
     #[serde(default = "default_mailbox")]
     pub mailbox: String,
+}
+
+impl std::fmt::Debug for AccountConfig {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        f.debug_struct("AccountConfig")
+            .field("server", &self.server)
+            .field("username", &self.username)
+            .field("password", &"[REDACTED]")
+            .field("mailbox", &self.mailbox)
+            .finish()
+    }
 }
 
 #[derive(Debug, Deserialize, Clone)]
@@ -100,24 +111,40 @@ impl Config {
 
     pub fn init() -> eyre::Result<PathBuf> {
         let path = Self::default_path()?;
-        if path.exists() {
-            bail!(
-                "config file already exists: {}\n  Edit it directly or remove it first.",
-                path.display()
-            );
-        }
         if let Some(parent) = path.parent() {
             std::fs::create_dir_all(parent)
                 .wrap_err_with(|| format!("failed to create {}", parent.display()))?;
         }
-        std::fs::write(&path, SAMPLE_CONFIG)
-            .wrap_err_with(|| format!("failed to write {}", path.display()))?;
         #[cfg(unix)]
         {
-            use std::os::unix::fs::PermissionsExt;
-            let perms = std::fs::Permissions::from_mode(0o600);
-            std::fs::set_permissions(&path, perms)
-                .wrap_err_with(|| format!("failed to set permissions on {}", path.display()))?;
+            use std::os::unix::fs::OpenOptionsExt;
+            std::fs::OpenOptions::new()
+                .write(true)
+                .create_new(true)
+                .mode(0o600)
+                .open(&path)
+                .and_then(|mut f| std::io::Write::write_all(&mut f, SAMPLE_CONFIG.as_bytes()))
+                .map_err(|e| {
+                    if e.kind() == std::io::ErrorKind::AlreadyExists {
+                        eyre::eyre!(
+                            "config file already exists: {}\n  Edit it directly or remove it first.",
+                            path.display()
+                        )
+                    } else {
+                        eyre::eyre!("failed to write {}: {e}", path.display())
+                    }
+                })?;
+        }
+        #[cfg(not(unix))]
+        {
+            if path.exists() {
+                bail!(
+                    "config file already exists: {}\n  Edit it directly or remove it first.",
+                    path.display()
+                );
+            }
+            std::fs::write(&path, SAMPLE_CONFIG)
+                .wrap_err_with(|| format!("failed to write {}", path.display()))?;
         }
         Ok(path)
     }
@@ -336,5 +363,40 @@ senders = ["x@x.com"]
     fn sample_config_is_valid_toml() {
         let _: toml::Value =
             toml::from_str(SAMPLE_CONFIG).expect("SAMPLE_CONFIG must be valid TOML");
+    }
+
+    #[test]
+    fn debug_output_redacts_password() {
+        let account = AccountConfig {
+            server: "mail.example.com".to_string(),
+            username: "user@example.com".to_string(),
+            password: "super-secret".to_string(),
+            mailbox: "INBOX".to_string(),
+        };
+        let debug = format!("{:?}", account);
+        assert!(
+            !debug.contains("super-secret"),
+            "password leaked in debug output: {debug}"
+        );
+        assert!(debug.contains("[REDACTED]"));
+    }
+
+    #[test]
+    #[cfg(unix)]
+    fn init_creates_config_with_restricted_permissions() {
+        use std::os::unix::fs::PermissionsExt;
+
+        let dir = std::env::temp_dir().join("colporteur-test-init-perms");
+        let _ = std::fs::remove_dir_all(&dir);
+        unsafe { std::env::set_var("XDG_CONFIG_HOME", &dir) };
+
+        let result = Config::init();
+        let path = result.expect("init should succeed");
+        let mode = std::fs::metadata(&path).unwrap().permissions().mode() & 0o777;
+
+        unsafe { std::env::remove_var("XDG_CONFIG_HOME") };
+        std::fs::remove_dir_all(&dir).ok();
+
+        assert_eq!(mode, 0o600, "expected 0600, got {mode:o}");
     }
 }
