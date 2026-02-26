@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.5](https://github.com/sripwoud/colporteur/compare/v0.2.4...v0.2.5) - 2026-02-26
+
+### Fixed
+
+- *(ci)* drop x86_64-apple-darwin target (macos intel runners deprecated)
+
 ## [0.2.4](https://github.com/sripwoud/colporteur/compare/v0.2.3...v0.2.4) - 2026-02-26
 
 ### Fixed
