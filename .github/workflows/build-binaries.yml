@@ -1,8 +1,12 @@
-name: Build Release Binaries
+name: Build Binaries
 
 on:
-  release:
-    types: [published]
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Release tag (e.g. v0.2.0)
+        required: true
+        type: string
 
 permissions:
   contents: write
@@ -27,9 +31,12 @@ jobs:
             os: windows-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.tag }}
 
       - uses: taiki-e/upload-rust-binary-action@v1
         with:
           bin: colporteur
           target: ${{ matrix.target }}
+          ref: refs/tags/${{ inputs.tag }}
           token: ${{ secrets.GITHUB_TOKEN }}
