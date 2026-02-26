@@ -1,0 +1,13 @@
+- [Home](/)
+- Getting Started
+  - [Installation](getting-started/installation.md)
+  - [Quick Start](getting-started/quick-start.md)
+- [Configuration](configuration.md)
+- [CLI Reference](cli-reference.md)
+- How It Works
+  - [Architecture](how-it-works/architecture.md)
+  - [Email Processing](how-it-works/email-processing.md)
+  - [Feed Generation](how-it-works/feed-generation.md)
+- [Examples](examples.md)
+- About
+  - [License](about/license.md)
