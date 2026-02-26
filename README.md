@@ -22,7 +22,7 @@ Colporteur connects to IMAP mailboxes, fetches emails from configured senders, s
 
 ## Quick Start
 
-Install colporteur:
+Install colporteur from a [pre-compiled binary](https://github.com/sripwoud/colporteur/releases/latest) or via cargo:
 
 ```bash
 cargo install colporteur
@@ -55,7 +55,6 @@ Full documentation available at [colporteur.sripwoud.xyz](https://colporteur.sri
 
 ## Requirements
 
-- Rust/Cargo for installation
 - An IMAP-accessible email account with newsletters
 
 ## Develop
