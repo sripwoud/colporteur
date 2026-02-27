@@ -10,7 +10,7 @@ output_dir = "/srv/feeds"
 [accounts.mxroute]
 server = "mail.mxroute.com"
 username = "news@domain.com"
-password_env = "IMAP_MXROUTE_PASSWORD"
+password = "your-imap-password"
 
 [feeds.ideabrowser]
 title = "Ideabrowser Daily"
@@ -18,15 +18,7 @@ account = "mxroute"
 senders = ["notifications@mail.ideabrowser.com"]
 ```
 
-## 2. Set the password
-
-Colporteur never stores passwords. It reads them from environment variables:
-
-```bash
-export IMAP_MXROUTE_PASSWORD="your-imap-password"
-```
-
-## 3. Test the connection
+## 2. Test the connection
 
 ```bash
 colporteur test
@@ -37,7 +29,7 @@ testing accounts...
   mxroute      mail.mxroute.com               ok
 ```
 
-## 4. Fetch newsletters
+## 3. Fetch newsletters
 
 ```bash
 colporteur fetch
@@ -49,7 +41,7 @@ fetching feeds...
 done. 1 entries written.
 ```
 
-## 5. Subscribe in your feed reader
+## 4. Subscribe in your feed reader
 
 Point your feed reader at `/srv/feeds/ideabrowser.xml`. Run `colporteur fetch` periodically (e.g. via cron) to keep it updated.
 

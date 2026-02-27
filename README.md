@@ -37,7 +37,6 @@ colporteur init
 Edit `~/.config/colporteur/config.toml` with your IMAP accounts and feeds, then:
 
 ```bash
-export IMAP_PASSWORD="your-password"
 colporteur test    # verify IMAP connection
 colporteur fetch   # fetch and generate feeds
 colporteur list    # show feed sync state

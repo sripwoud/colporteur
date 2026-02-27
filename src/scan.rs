@@ -18,18 +18,7 @@ pub fn run(config: &Config, account_filter: Option<&str>) -> Vec<ScanReport> {
             continue;
         }
 
-        let password = match account.resolve_password() {
-            Ok(p) => p,
-            Err(e) => {
-                log::error!("account '{account_name}': failed to resolve password: {e}");
-                reports.push(ScanReport {
-                    account: account_name.clone(),
-                    senders: Vec::new(),
-                    error: Some(format!("failed to resolve password: {e}")),
-                });
-                continue;
-            }
-        };
+        let password = account.resolve_password();
 
         let mut client = match ImapClient::connect(&account.server, &account.username, &password) {
             Ok(c) => c,

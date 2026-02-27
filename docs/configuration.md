@@ -11,13 +11,13 @@ max_entries = 50
 [accounts.mxroute]
 server = "mail.mxroute.com"
 username = "news@domain.com"
-password_env = "IMAP_MXROUTE_PASSWORD"
+password = "secret"
 mailbox = "INBOX"
 
 [accounts.gmail]
 server = "imap.gmail.com"
 username = "user@gmail.com"
-password_env = "IMAP_GMAIL_PASSWORD"
+password = "secret"
 
 [feeds.ideabrowser]
 title = "Ideabrowser Daily"
@@ -42,12 +42,12 @@ max_entries = 10
 
 Defined under `[accounts.<name>]`.
 
-| Key            | Type   | Default    | Description                                                |
-| -------------- | ------ | ---------- | ---------------------------------------------------------- |
-| `server`       | string | _required_ | IMAP server hostname                                       |
-| `username`     | string | _required_ | IMAP username                                              |
-| `password_env` | string | _required_ | Name of the environment variable holding the IMAP password |
-| `mailbox`      | string | `"INBOX"`  | IMAP mailbox to search                                     |
+| Key        | Type   | Default    | Description            |
+| ---------- | ------ | ---------- | ---------------------- |
+| `server`   | string | _required_ | IMAP server hostname   |
+| `username` | string | _required_ | IMAP username          |
+| `password` | string | _required_ | IMAP password          |
+| `mailbox`  | string | `"INBOX"`  | IMAP mailbox to search |
 
 ## Feed settings
 
@@ -62,11 +62,13 @@ Defined under `[feeds.<name>]`. The `<name>` becomes the output filename (`<name
 
 ## Passwords
 
-Passwords are never stored in the config file. Instead, `password_env` specifies the name of an environment variable that holds the password. This allows integration with secret managers, `.env` files, or shell exports:
+Passwords are stored directly in the config file. Since the file contains secrets, ensure it is only readable by the owner:
 
 ```bash
-export IMAP_MXROUTE_PASSWORD="$(pass show email/mxroute)"
+chmod 600 ~/.config/colporteur/config.toml
 ```
+
+On Unix-like systems, `colporteur init` sets this permission automatically. On other platforms, you may need to adjust file permissions or ACLs manually to restrict access.
 
 ## State
 
