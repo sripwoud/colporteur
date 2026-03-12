@@ -8,7 +8,7 @@ pub const SAMPLE_CONFIG: &str = r#"# colporteur configuration
 # See: https://colporteur.sripwoud.xyz/#/configuration
 
 # Directory where Atom feed files are written
-output_dir = "/srv/feeds"
+output_dir = "/var/lib/colporteur/feeds"
 
 # Maximum entries per feed (default: 50)
 # max_entries = 50
@@ -189,7 +189,7 @@ mod tests {
     use super::*;
 
     const VALID_TOML: &str = r#"
-output_dir = "/srv/feeds"
+output_dir = "/var/lib/colporteur/feeds"
 max_entries = 50
 
 [accounts.mxroute]
@@ -223,7 +223,7 @@ max_entries = 10
     fn parses_valid_toml_with_two_accounts_and_two_feeds() {
         let config = parse(VALID_TOML);
 
-        assert_eq!(config.output_dir, "/srv/feeds");
+        assert_eq!(config.output_dir, "/var/lib/colporteur/feeds");
         assert_eq!(config.max_entries, 50);
 
         let mxroute = config
@@ -259,7 +259,7 @@ max_entries = 10
     #[test]
     fn validate_catches_unknown_account_reference() {
         let toml = r#"
-output_dir = "/srv/feeds"
+output_dir = "/var/lib/colporteur/feeds"
 
 [accounts.real]
 server = "mail.example.com"
@@ -295,7 +295,7 @@ senders = ["x@example.com"]
     #[test]
     fn default_mailbox_is_inbox_when_omitted() {
         let toml = r#"
-output_dir = "/srv/feeds"
+output_dir = "/var/lib/colporteur/feeds"
 
 [accounts.minimal]
 server = "mail.example.com"
@@ -314,7 +314,7 @@ senders = ["a@example.com"]
     #[test]
     fn default_max_entries_is_50_when_omitted() {
         let toml = r#"
-output_dir = "/srv/feeds"
+output_dir = "/var/lib/colporteur/feeds"
 
 [accounts.a]
 server = "s"
