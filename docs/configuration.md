@@ -42,12 +42,12 @@ max_entries = 10
 
 Defined under `[accounts.<name>]`.
 
-| Key        | Type   | Default    | Description            |
-| ---------- | ------ | ---------- | ---------------------- |
-| `server`   | string | _required_ | IMAP server hostname   |
-| `username` | string | _required_ | IMAP username          |
-| `password` | string | _required_ | IMAP password          |
-| `mailbox`  | string | `"INBOX"`  | IMAP mailbox to search |
+| Key        | Type   | Default    | Description                                               |
+| ---------- | ------ | ---------- | --------------------------------------------------------- |
+| `server`   | string | _required_ | IMAP server hostname                                      |
+| `username` | string | _required_ | IMAP username                                             |
+| `password` | string | _required_ | IMAP password or `!command` (see [Passwords](#passwords)) |
+| `mailbox`  | string | `"INBOX"`  | IMAP mailbox to search                                    |
 
 ## Feed settings
 
@@ -62,7 +62,31 @@ Defined under `[feeds.<name>]`. The `<name>` becomes the output filename (`<name
 
 ## Passwords
 
-Passwords are stored directly in the config file. Since the file contains secrets, ensure it is only readable by the owner:
+Passwords can be specified in three ways:
+
+| Syntax                               | Meaning                                             |
+| ------------------------------------ | --------------------------------------------------- |
+| `password = "secret"`                | Plain text                                          |
+| `password = "!pass show email/imap"` | Command — executes via `sh -c`, uses trimmed stdout |
+| `password = "!!starts-with-bang"`    | Escaped — literal password starting with `!`        |
+
+Command examples:
+
+```toml
+password = "!pass show email/imap"
+password = "!gopass show -o email/imap"
+password = "!op read 'op://Vault/IMAP/password'"
+password = "!secret-tool lookup service imap user newsletters"
+```
+
+Command execution details:
+
+- Runs via `sh -c <command>` with stdin closed
+- Trimmed stdout is used as the password
+- Fails with a clear error if the command exits non-zero or produces empty output
+- stderr is logged at debug level only
+
+Since the config file may contain secrets, ensure it is only readable by the owner:
 
 ```bash
 chmod 600 ~/.config/colporteur/config.toml

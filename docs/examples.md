@@ -8,7 +8,7 @@ output_dir = "/var/lib/colporteur/feeds"
 [accounts.mail]
 server = "mail.mxroute.com"
 username = "newsletters@domain.com"
-password = "secret"
+password = "secret" # or "!pass show email/newsletters" for a password manager
 
 [feeds.tech]
 title = "Tech Newsletters"
@@ -30,12 +30,12 @@ output_dir = "/var/lib/colporteur/feeds"
 [accounts.mxroute]
 server = "mail.mxroute.com"
 username = "news@domain.com"
-password = "secret"
+password = "secret" # or "!pass show email/mxroute" for a password manager
 
 [accounts.gmail]
 server = "imap.gmail.com"
 username = "user@gmail.com"
-password = "secret"
+password = "secret" # or "!op read 'op://Vault/Gmail/password'"
 
 [feeds.ideabrowser]
 title = "Ideabrowser Daily"
