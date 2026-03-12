@@ -775,10 +775,11 @@ pub fn test_connections(
         .map(|(name, account)| {
             let result = account
                 .resolve_password()
+                .wrap_err_with(|| format!("password resolution failed for '{name}'"))
                 .and_then(|password| {
                     ImapClient::test_connection(&account.server, &account.username, &password)
-                })
-                .wrap_err_with(|| format!("connection test failed for '{name}'"));
+                        .wrap_err_with(|| format!("connection test failed for '{name}'"))
+                });
             (name.clone(), result)
         })
         .collect()

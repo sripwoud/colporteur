@@ -88,6 +88,12 @@ impl AccountConfig {
         Ok(self.password.clone())
     }
 
+    #[cfg(not(unix))]
+    fn run_password_command(cmd: &str) -> eyre::Result<String> {
+        bail!("command-based passwords are only supported on Unix: {cmd}");
+    }
+
+    #[cfg(unix)]
     fn run_password_command(cmd: &str) -> eyre::Result<String> {
         let output = Command::new("sh")
             .arg("-c")
@@ -344,6 +350,7 @@ senders = ["x@example.com"]
     }
 
     #[test]
+    #[cfg(unix)]
     fn resolve_command_password() {
         assert_eq!(
             account_with_password("!echo secret123")
@@ -354,6 +361,7 @@ senders = ["x@example.com"]
     }
 
     #[test]
+    #[cfg(unix)]
     fn resolve_command_trims_whitespace() {
         assert_eq!(
             account_with_password("!echo '  secret  '")
@@ -374,6 +382,7 @@ senders = ["x@example.com"]
     }
 
     #[test]
+    #[cfg(unix)]
     fn resolve_command_failure() {
         let err = account_with_password("!false")
             .resolve_password()
@@ -383,6 +392,7 @@ senders = ["x@example.com"]
     }
 
     #[test]
+    #[cfg(unix)]
     fn resolve_command_empty_output() {
         let err = account_with_password("!echo -n ''")
             .resolve_password()
@@ -392,6 +402,7 @@ senders = ["x@example.com"]
     }
 
     #[test]
+    #[cfg(unix)]
     fn resolve_command_not_found() {
         let err = account_with_password("!nonexistent_binary_xyz_99")
             .resolve_password()
