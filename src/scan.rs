@@ -26,7 +26,9 @@ pub fn run(config: &Config, account_filter: Option<&str>) -> Vec<ScanReport> {
                 reports.push(ScanReport {
                     account: account_name.clone(),
                     senders: Vec::new(),
-                    error: Some("failed to resolve password".to_string()),
+                    error: Some(
+                        "failed to resolve password; re-run with -vv for details".to_string(),
+                    ),
                 });
                 continue;
             }

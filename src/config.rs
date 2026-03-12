@@ -106,10 +106,13 @@ impl AccountConfig {
             .wrap_err_with(|| format!("failed to execute password command: {cmd}"))?;
 
         if !output.stderr.is_empty() {
-            log::debug!(
-                "password command produced output on stderr ({} bytes)",
-                output.stderr.len()
-            );
+            let stderr = String::from_utf8_lossy(&output.stderr);
+            let sanitized: String = stderr
+                .chars()
+                .map(|c| if c == '\n' || c == '\r' { ' ' } else { c })
+                .take(200)
+                .collect();
+            log::debug!("password command stderr: {sanitized}");
         }
 
         if !output.status.success() {

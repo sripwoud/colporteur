@@ -82,7 +82,9 @@ pub fn run(
                         new_entries: 0,
                         output: None,
                         ok: false,
-                        error: Some("failed to resolve password".to_string()),
+                        error: Some(
+                            "failed to resolve password; re-run with -vv for details".to_string(),
+                        ),
                     });
                 }
                 continue;
