@@ -5,7 +5,7 @@
 Colporteur reads its config from `~/.config/colporteur/config.toml`:
 
 ```toml
-output_dir = "/srv/feeds"
+output_dir = "/var/lib/colporteur/feeds"
 
 [accounts.mxroute]
 server = "mail.mxroute.com"
@@ -37,13 +37,13 @@ colporteur fetch
 
 ```
 fetching feeds...
-  ideabrowser          1 new  ->  /srv/feeds/ideabrowser.xml
+  ideabrowser          1 new  ->  /var/lib/colporteur/feeds/ideabrowser.xml
 done. 1 entries written.
 ```
 
 ## 4. Subscribe in your feed reader
 
-Point your feed reader at `/srv/feeds/ideabrowser.xml`. Run `colporteur fetch` periodically (e.g. via cron) to keep it updated.
+Point your feed reader at `/var/lib/colporteur/feeds/ideabrowser.xml`. Run `colporteur fetch` periodically (e.g. via cron) to keep it updated.
 
 ## Next steps
 
