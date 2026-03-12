@@ -105,19 +105,19 @@ impl AccountConfig {
             .output()
             .wrap_err_with(|| format!("failed to execute password command: {cmd}"))?;
 
+        if !output.stderr.is_empty() {
+            log::debug!(
+                "password command produced output on stderr ({} bytes)",
+                output.stderr.len()
+            );
+        }
+
         if !output.status.success() {
             let code = output
                 .status
                 .code()
                 .map_or("signal".to_string(), |c| c.to_string());
             bail!("password command failed (exit {code}): {cmd}");
-        }
-
-        if !output.stderr.is_empty() {
-            log::debug!(
-                "password command produced output on stderr ({} bytes)",
-                output.stderr.len()
-            );
         }
 
         let password = String::from_utf8(output.stdout)
@@ -397,7 +397,7 @@ senders = ["x@example.com"]
     #[test]
     #[cfg(unix)]
     fn resolve_command_empty_output() {
-        let err = account_with_password("!echo -n ''")
+        let err = account_with_password("!printf ''")
             .resolve_password()
             .unwrap_err()
             .to_string();

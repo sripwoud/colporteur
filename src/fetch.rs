@@ -74,14 +74,15 @@ pub fn run(
         let password = match account.resolve_password() {
             Ok(p) => p,
             Err(e) => {
-                log::error!("account '{account_name}': {e}");
+                log::error!("account '{account_name}': failed to resolve password");
+                log::debug!("account '{account_name}': {e}");
                 for (feed_key, _) in feeds {
                     all_results.push(FeedResult {
                         key: (*feed_key).to_string(),
                         new_entries: 0,
                         output: None,
                         ok: false,
-                        error: Some(format!("{e}")),
+                        error: Some("failed to resolve password".to_string()),
                     });
                 }
                 continue;
