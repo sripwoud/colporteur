@@ -3,7 +3,7 @@
 ## Single account, multiple feeds
 
 ```toml
-output_dir = "/srv/feeds"
+output_dir = "/var/lib/colporteur/feeds"
 
 [accounts.mail]
 server = "mail.mxroute.com"
@@ -25,7 +25,7 @@ max_entries = 20
 ## Multiple accounts
 
 ```toml
-output_dir = "/srv/feeds"
+output_dir = "/var/lib/colporteur/feeds"
 
 [accounts.mxroute]
 server = "mail.mxroute.com"

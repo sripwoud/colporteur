@@ -5,7 +5,7 @@ Colporteur reads its config from `~/.config/colporteur/config.toml`.
 ## Full example
 
 ```toml
-output_dir = "/srv/feeds"
+output_dir = "/var/lib/colporteur/feeds"
 max_entries = 50
 
 [accounts.mxroute]

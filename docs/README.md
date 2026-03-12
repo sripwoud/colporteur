@@ -26,7 +26,7 @@ cargo install colporteur
 Create a config file at `~/.config/colporteur/config.toml`:
 
 ```toml
-output_dir = "/srv/feeds"
+output_dir = "/var/lib/colporteur/feeds"
 
 [accounts.mail]
 server = "imap.example.com"
@@ -45,6 +45,6 @@ Fetch:
 colporteur fetch
 ```
 
-The generated feed will be at `/srv/feeds/weekly-digest.xml`.
+The generated feed will be at `/var/lib/colporteur/feeds/weekly-digest.xml`.
 
 See [Installation](getting-started/installation.md) and [Quick Start](getting-started/quick-start.md) for detailed setup instructions.
