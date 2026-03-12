@@ -1,5 +1,6 @@
 use std::collections::HashMap;
 use std::path::{Path, PathBuf};
+use std::process::{Command, Stdio};
 
 use eyre::{Context, bail};
 use serde::Deserialize;
@@ -18,6 +19,7 @@ output_dir = "/var/lib/colporteur/feeds"
 server = "imap.example.com"
 username = "newsletters@example.com"
 password = "your-imap-password"
+# password = "!pass show email/imap"  # or use a command (! prefix)
 # mailbox = "INBOX"  # default
 
 # Feeds (one per newsletter or group of senders)
@@ -74,8 +76,51 @@ pub struct Config {
 }
 
 impl AccountConfig {
-    pub fn resolve_password(&self) -> String {
-        self.password.clone()
+    pub fn resolve_password(&self) -> eyre::Result<String> {
+        if let Some(rest) = self.password.strip_prefix("!!") {
+            return Ok(format!("!{rest}"));
+        }
+
+        if let Some(cmd) = self.password.strip_prefix('!') {
+            return Self::run_password_command(cmd);
+        }
+
+        Ok(self.password.clone())
+    }
+
+    fn run_password_command(cmd: &str) -> eyre::Result<String> {
+        let output = Command::new("sh")
+            .arg("-c")
+            .arg(cmd)
+            .stdin(Stdio::null())
+            .stdout(Stdio::piped())
+            .stderr(Stdio::piped())
+            .output()
+            .wrap_err_with(|| format!("failed to execute password command: {cmd}"))?;
+
+        if !output.status.success() {
+            let code = output
+                .status
+                .code()
+                .map_or("signal".to_string(), |c| c.to_string());
+            bail!("password command failed (exit {code}): {cmd}");
+        }
+
+        let stderr = String::from_utf8_lossy(&output.stderr);
+        if !stderr.is_empty() {
+            log::debug!("password command stderr: {stderr}");
+        }
+
+        let password = String::from_utf8(output.stdout)
+            .wrap_err_with(|| format!("password command output is not valid UTF-8: {cmd}"))?
+            .trim()
+            .to_string();
+
+        if password.is_empty() {
+            bail!("password command produced no output: {cmd}");
+        }
+
+        Ok(password)
     }
 }
 
@@ -281,15 +326,78 @@ senders = ["x@example.com"]
         );
     }
 
-    #[test]
-    fn resolve_password_returns_password() {
-        let account = AccountConfig {
+    fn account_with_password(password: &str) -> AccountConfig {
+        AccountConfig {
             server: "mail.example.com".to_string(),
             username: "user@example.com".to_string(),
-            password: "s3cr3t".to_string(),
+            password: password.to_string(),
             mailbox: "INBOX".to_string(),
-        };
-        assert_eq!(account.resolve_password(), "s3cr3t");
+        }
+    }
+
+    #[test]
+    fn resolve_plaintext_password() {
+        assert_eq!(
+            account_with_password("s3cr3t").resolve_password().unwrap(),
+            "s3cr3t"
+        );
+    }
+
+    #[test]
+    fn resolve_command_password() {
+        assert_eq!(
+            account_with_password("!echo secret123")
+                .resolve_password()
+                .unwrap(),
+            "secret123"
+        );
+    }
+
+    #[test]
+    fn resolve_command_trims_whitespace() {
+        assert_eq!(
+            account_with_password("!echo '  secret  '")
+                .resolve_password()
+                .unwrap(),
+            "secret"
+        );
+    }
+
+    #[test]
+    fn resolve_escape_literal_bang() {
+        assert_eq!(
+            account_with_password("!!not-a-command")
+                .resolve_password()
+                .unwrap(),
+            "!not-a-command"
+        );
+    }
+
+    #[test]
+    fn resolve_command_failure() {
+        let err = account_with_password("!false")
+            .resolve_password()
+            .unwrap_err()
+            .to_string();
+        assert!(err.contains("exit"), "expected exit info in: {err}");
+    }
+
+    #[test]
+    fn resolve_command_empty_output() {
+        let err = account_with_password("!echo -n ''")
+            .resolve_password()
+            .unwrap_err()
+            .to_string();
+        assert!(err.contains("no output"), "expected 'no output' in: {err}");
+    }
+
+    #[test]
+    fn resolve_command_not_found() {
+        let err = account_with_password("!nonexistent_binary_xyz_99")
+            .resolve_password()
+            .unwrap_err()
+            .to_string();
+        assert!(err.contains("nonexistent_binary_xyz_99"));
     }
 
     #[test]

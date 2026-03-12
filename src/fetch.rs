@@ -71,7 +71,22 @@ pub fn run(
             }
         };
 
-        let password = account.resolve_password();
+        let password = match account.resolve_password() {
+            Ok(p) => p,
+            Err(e) => {
+                log::error!("account '{account_name}': {e}");
+                for (feed_key, _) in feeds {
+                    all_results.push(FeedResult {
+                        key: (*feed_key).to_string(),
+                        new_entries: 0,
+                        output: None,
+                        ok: false,
+                        error: Some(format!("{e}")),
+                    });
+                }
+                continue;
+            }
+        };
 
         let mut source = match ImapClient::connect(&account.server, &account.username, &password) {
             Ok(c) => c,
@@ -758,8 +773,11 @@ pub fn test_connections(
         .iter()
         .filter(|(name, _)| account_filter.is_none_or(|f| f == name.as_str()))
         .map(|(name, account)| {
-            let password = account.resolve_password();
-            let result = ImapClient::test_connection(&account.server, &account.username, &password)
+            let result = account
+                .resolve_password()
+                .and_then(|password| {
+                    ImapClient::test_connection(&account.server, &account.username, &password)
+                })
                 .wrap_err_with(|| format!("connection test failed for '{name}'"));
             (name.clone(), result)
         })
