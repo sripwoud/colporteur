@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.3.3](https://github.com/sripwoud/colporteur/compare/v0.3.2...v0.3.3) - 2026-03-12
+
+### Fixed
+
+- *(imap)* clamp UID search range start to 1 ([#24](https://github.com/sripwoud/colporteur/pull/24))
+- downgrade IMAP search with no results from ERROR to DEBUG ([#22](https://github.com/sripwoud/colporteur/pull/22))
+
 ## [0.3.2](https://github.com/sripwoud/colporteur/compare/v0.3.1...v0.3.2) - 2026-03-12
 
 ### Fixed
