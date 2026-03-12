@@ -1,5 +1,6 @@
 use std::collections::HashMap;
 use std::path::{Path, PathBuf};
+#[cfg(unix)]
 use std::process::{Command, Stdio};
 
 use eyre::{Context, bail};
@@ -112,9 +113,11 @@ impl AccountConfig {
             bail!("password command failed (exit {code}): {cmd}");
         }
 
-        let stderr = String::from_utf8_lossy(&output.stderr);
-        if !stderr.is_empty() {
-            log::debug!("password command stderr: {stderr}");
+        if !output.stderr.is_empty() {
+            log::debug!(
+                "password command produced output on stderr ({} bytes)",
+                output.stderr.len()
+            );
         }
 
         let password = String::from_utf8(output.stdout)

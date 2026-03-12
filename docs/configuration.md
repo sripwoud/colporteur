@@ -85,6 +85,7 @@ Command execution details:
 - Trimmed stdout is used as the password
 - Fails with a clear error if the command exits non-zero or produces empty output
 - stderr is logged at debug level only
+- Unix-only — on Windows, command-based passwords are not supported; use a plain text value instead
 
 Since the config file may contain secrets, ensure it is only readable by the owner:
 
