@@ -53,7 +53,8 @@ impl ImapClient {
     }
 
     pub fn search_from_since_uid(&mut self, sender: &str, last_uid: u32) -> eyre::Result<Vec<u32>> {
-        let query = format!("FROM \"{sender}\" UID {last_uid}:*");
+        let start = last_uid.max(1);
+        let query = format!("FROM \"{sender}\" UID {start}:*");
         let uids = match self.session.uid_search(&query) {
             Ok(uids) => uids,
             Err(imap::error::Error::No(no)) => {
