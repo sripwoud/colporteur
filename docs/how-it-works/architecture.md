@@ -25,7 +25,7 @@ Config (TOML)
 Group feeds by account
   │
   ▼  (per account)
-Resolve password from env ──► Connect IMAP (TLS)
+Resolve password (plain/command) ──► Connect IMAP (TLS)
   │
   ▼
 Check UIDVALIDITY ──► Reset state if changed

@@ -10,7 +10,7 @@ output_dir = "/var/lib/colporteur/feeds"
 [accounts.mxroute]
 server = "mail.mxroute.com"
 username = "news@domain.com"
-password = "your-imap-password"
+password = "your-imap-password" # or "!pass show email/imap" for a password manager
 
 [feeds.ideabrowser]
 title = "Ideabrowser Daily"

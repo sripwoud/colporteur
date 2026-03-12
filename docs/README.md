@@ -31,7 +31,7 @@ output_dir = "/var/lib/colporteur/feeds"
 [accounts.mail]
 server = "imap.example.com"
 username = "newsletters@example.com"
-password = "your-password"
+password = "your-password" # or "!pass show email/imap" for a password manager
 
 [feeds.weekly-digest]
 title = "Weekly Digest"
