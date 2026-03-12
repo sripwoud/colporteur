@@ -635,6 +635,118 @@ mod tests {
             102
         );
     }
+
+    struct FailingSearchSource {
+        uid_validity_val: u32,
+        emails: HashMap<u32, (String, Vec<u8>)>,
+        failing_senders: Vec<String>,
+    }
+
+    impl EmailSource for FailingSearchSource {
+        fn uid_validity(&mut self, _mailbox: &str) -> eyre::Result<u32> {
+            Ok(self.uid_validity_val)
+        }
+
+        fn search_from_since_uid(&mut self, sender: &str, last_uid: u32) -> eyre::Result<Vec<u32>> {
+            if self.failing_senders.iter().any(|s| s == sender) {
+                return Err(eyre::eyre!("IMAP search failed for sender"));
+            }
+            let mut uids: Vec<u32> = self
+                .emails
+                .iter()
+                .filter(|&(uid, (s, _))| *uid > last_uid && s == sender)
+                .map(|(&uid, _)| uid)
+                .collect();
+            uids.sort();
+            Ok(uids)
+        }
+
+        fn fetch_email(&mut self, uid: u32) -> eyre::Result<FetchedEmail> {
+            let (_, raw) = self
+                .emails
+                .get(&uid)
+                .ok_or_else(|| eyre::eyre!("mock: UID {uid} not found"))?;
+            Ok(FetchedEmail {
+                uid,
+                raw: raw.clone(),
+            })
+        }
+    }
+
+    #[test]
+    fn search_failure_for_one_sender_does_not_block_others() {
+        let dir = TestDir::new("search_fail_partial");
+        let state_path = dir.state_path();
+
+        let mut accounts = HashMap::new();
+        accounts.insert(
+            "test".to_string(),
+            AccountConfig {
+                server: "localhost".to_string(),
+                username: "user@test.com".to_string(),
+                password: "unused".to_string(),
+                mailbox: "INBOX".to_string(),
+            },
+        );
+        let mut feeds_map = HashMap::new();
+        feeds_map.insert(
+            "mixed".to_string(),
+            FeedConfig {
+                title: "Mixed Feed".to_string(),
+                account: "test".to_string(),
+                senders: vec![
+                    "failing@example.com".to_string(),
+                    "notifications@mail.ideabrowser.com".to_string(),
+                ],
+                max_entries: None,
+            },
+        );
+        let config = Config {
+            output_dir: dir.output_dir(),
+            max_entries: 50,
+            accounts,
+            feeds: feeds_map,
+        };
+
+        let mut source = FailingSearchSource {
+            uid_validity_val: 1,
+            emails: make_emails(&[(
+                101,
+                "notifications@mail.ideabrowser.com",
+                include_bytes!("../tests/fixtures/sample1.eml"),
+            )]),
+            failing_senders: vec!["failing@example.com".to_string()],
+        };
+        let mut state = AppState::default();
+
+        let feeds: Vec<(&str, &FeedConfig)> =
+            config.feeds.iter().map(|(k, v)| (k.as_str(), v)).collect();
+
+        let account = config.accounts.get("test").unwrap();
+
+        let results = run_with_source(AccountRunArgs {
+            source: &mut source,
+            account_name: "test",
+            account,
+            feeds: &feeds,
+            config: &config,
+            state: &mut state,
+            state_path: &state_path,
+            dry_run: false,
+        });
+
+        assert_eq!(results.len(), 1);
+        assert_eq!(
+            results[0].new_entries, 1,
+            "working sender should still produce entries"
+        );
+        assert!(results[0].ok);
+
+        assert_eq!(
+            state.last_uid("test", "notifications@mail.ideabrowser.com"),
+            101
+        );
+    }
 }
 
 pub fn test_connections(
