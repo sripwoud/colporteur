@@ -17,7 +17,8 @@ static EMPTY_BLOCK_RE: LazyLock<Regex> = LazyLock::new(|| {
     Regex::new(r"<div>\s*(?:&nbsp;|\x{00A0})?\s*</div>|<p>\s*(?:&nbsp;|\x{00A0})?\s*</p>").unwrap()
 });
 
-static MULTI_NEWLINES_RE: LazyLock<Regex> = LazyLock::new(|| Regex::new(r">\n{3,}<").unwrap());
+static MULTI_NEWLINES_RE: LazyLock<Regex> =
+    LazyLock::new(|| Regex::new(r">(?:\r?\n){3,}<").unwrap());
 
 pub fn sanitize_html(html: &str) -> String {
     let mut builder = Builder::new();
@@ -69,11 +70,14 @@ pub fn sanitize_html(html: &str) -> String {
     clean_email_noise(&without_pixels)
 }
 
+const MAX_EMPTY_BLOCK_PASSES: usize = 10;
+
 fn clean_email_noise(html: &str) -> String {
-    let result = NBSP_PADDING_RE.replace_all(html, " ");
+    let (work, preserved) = protect_preformatted(html);
+    let result = NBSP_PADDING_RE.replace_all(&work, " ");
     let result = EXCESSIVE_BR_RE.replace_all(&result, "<br><br>");
     let mut current = result.into_owned();
-    loop {
+    for _ in 0..MAX_EMPTY_BLOCK_PASSES {
         let cleaned = EMPTY_BLOCK_RE.replace_all(&current, "");
         if let std::borrow::Cow::Borrowed(_) = cleaned {
             break;
@@ -81,7 +85,40 @@ fn clean_email_noise(html: &str) -> String {
         current = cleaned.into_owned();
     }
     let result = MULTI_NEWLINES_RE.replace_all(&current, ">\n\n<");
-    result.trim().to_string()
+    let trimmed = result.trim().to_string();
+    restore_preformatted(&trimmed, &preserved)
+}
+
+fn protect_preformatted(html: &str) -> (String, Vec<String>) {
+    let mut result = html.to_string();
+    let mut blocks = Vec::new();
+    for tag in ["pre", "code"] {
+        let open = format!("<{tag}");
+        let close = format!("</{tag}>");
+        let mut pos = 0;
+        while let Some(start) = result[pos..].find(&open) {
+            let abs_start = pos + start;
+            if let Some(end_rel) = result[abs_start..].find(&close) {
+                let abs_end = abs_start + end_rel + close.len();
+                let placeholder = format!("COLPORTEUR_PRESERVED_{}", blocks.len());
+                blocks.push(result[abs_start..abs_end].to_string());
+                result.replace_range(abs_start..abs_end, &placeholder);
+                pos = abs_start + placeholder.len();
+            } else {
+                break;
+            }
+        }
+    }
+    (result, blocks)
+}
+
+fn restore_preformatted(html: &str, blocks: &[String]) -> String {
+    let mut result = html.to_string();
+    for (i, block) in blocks.iter().enumerate() {
+        let placeholder = format!("COLPORTEUR_PRESERVED_{i}");
+        result = result.replace(&placeholder, block);
+    }
+    result
 }
 
 fn remove_tracking_pixels(html: &str) -> String {
@@ -224,9 +261,28 @@ mod tests {
 
     #[test]
     fn preserves_nbsp_indentation_in_pre() {
-        let html = "<pre>&nbsp;&nbsp;&nbsp;indent</pre>";
+        let nbsp_12 = "&nbsp;".repeat(12);
+        let html = format!("<pre>{nbsp_12}indent</pre>");
+        let result = clean_email_noise(&html);
+        assert_eq!(result, html);
+    }
+
+    #[test]
+    fn preserves_br_inside_pre() {
+        let html = "<pre>a<br><br><br><br>b</pre>";
         let result = clean_email_noise(html);
         assert_eq!(result, html);
+    }
+
+    #[test]
+    fn preserves_code_block_content() {
+        let nbsp_15 = "&nbsp;".repeat(15);
+        let html = format!("<code>{nbsp_15}indented</code><p>text</p>");
+        let result = clean_email_noise(&html);
+        assert!(
+            result.contains(&nbsp_15),
+            "code block content must be preserved"
+        );
     }
 
     #[test]
@@ -289,6 +345,13 @@ mod tests {
     #[test]
     fn collapses_multi_newlines_between_tags() {
         let html = "<p>one</p>\n\n\n\n\n<p>two</p>";
+        let result = clean_email_noise(html);
+        assert_eq!(result, "<p>one</p>\n\n<p>two</p>");
+    }
+
+    #[test]
+    fn collapses_crlf_newlines_between_tags() {
+        let html = "<p>one</p>\r\n\r\n\r\n\r\n<p>two</p>";
         let result = clean_email_noise(html);
         assert_eq!(result, "<p>one</p>\n\n<p>two</p>");
     }
