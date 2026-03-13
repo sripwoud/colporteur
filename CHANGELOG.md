@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.4.0](https://github.com/sripwoud/colporteur/compare/v0.3.4...v0.4.0) - 2026-03-13
+
+### Added
+
+- add `export-opml` command ([#29](https://github.com/sripwoud/colporteur/pull/29))
+
 ## [0.3.4](https://github.com/sripwoud/colporteur/compare/v0.3.3...v0.3.4) - 2026-03-12
 
 ### Added
