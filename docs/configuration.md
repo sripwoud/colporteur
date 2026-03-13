@@ -33,10 +33,11 @@ max_entries = 10
 
 ## Global settings
 
-| Key           | Type    | Default    | Description                                          |
-| ------------- | ------- | ---------- | ---------------------------------------------------- |
-| `output_dir`  | string  | _required_ | Directory where Atom XML feed files are written      |
-| `max_entries` | integer | `50`       | Maximum entries kept per feed (oldest trimmed first) |
+| Key           | Type    | Default    | Description                                                                   |
+| ------------- | ------- | ---------- | ----------------------------------------------------------------------------- |
+| `output_dir`  | string  | _required_ | Directory where Atom XML feed files are written                               |
+| `max_entries` | integer | `50`       | Maximum entries kept per feed (oldest trimmed first)                          |
+| `base_url`    | string  | _optional_ | Base URL for serving feeds; used to generate `<link rel="alternate">` entries |
 
 ## Account settings
 
@@ -53,12 +54,30 @@ Defined under `[accounts.<name>]`.
 
 Defined under `[feeds.<name>]`. The `<name>` becomes the output filename (`<name>.xml`).
 
-| Key           | Type     | Default              | Description                                                   |
-| ------------- | -------- | -------------------- | ------------------------------------------------------------- |
-| `title`       | string   | _required_           | Title of the Atom feed                                        |
-| `account`     | string   | _required_           | Key of the account to use (must match an `[accounts.<name>]`) |
-| `senders`     | string[] | _required_           | Email addresses to search for in the mailbox                  |
-| `max_entries` | integer  | global `max_entries` | Per-feed override for max entries                             |
+| Key           | Type     | Default              | Description                                                               |
+| ------------- | -------- | -------------------- | ------------------------------------------------------------------------- |
+| `title`       | string   | _required_           | Title of the Atom feed                                                    |
+| `account`     | string   | _required_           | Key of the account to use (must match an `[accounts.<name>]`)             |
+| `senders`     | string[] | _required_           | Email addresses to search for in the mailbox                              |
+| `max_entries` | integer  | global `max_entries` | Per-feed override for max entries                                         |
+| `url`         | string   | _optional_           | URL added as `<link rel="alternate">` on each entry; overrides `base_url` |
+
+## Entry links
+
+RSS readers like Read You expect a `<link>` element on entries for "read mode". Colporteur generates entry links in this priority order:
+
+1. Per-feed `url` (if set)
+2. `{base_url}/{feed_key}.xml` (if base_url is set)
+3. No link (if neither is configured)
+
+Set `base_url` globally and optionally override with per-feed `url`:
+
+```toml
+base_url = "https://feeds.example.com"
+
+[feeds.newsletter]
+url = "https://newsletter.author.com/archive"
+```
 
 ## Passwords
 
