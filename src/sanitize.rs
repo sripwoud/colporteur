@@ -14,7 +14,7 @@ static EMPTY_BLOCK_RE: LazyLock<Regex> = LazyLock::new(|| {
     Regex::new(r"<div>\s*(?:&nbsp;|\x{00A0})?\s*</div>|<p>\s*(?:&nbsp;|\x{00A0})?\s*</p>").unwrap()
 });
 
-static MULTI_NEWLINES_RE: LazyLock<Regex> = LazyLock::new(|| Regex::new(r"\n{3,}").unwrap());
+static MULTI_NEWLINES_RE: LazyLock<Regex> = LazyLock::new(|| Regex::new(r">\n{3,}<").unwrap());
 
 pub fn sanitize_html(html: &str) -> String {
     let mut builder = Builder::new();
@@ -62,15 +62,15 @@ pub fn sanitize_html(html: &str) -> String {
         .url_schemes(HashSet::from(["http", "https"]));
 
     let sanitized = builder.clean(html).to_string();
-    let cleaned = clean_email_noise(&sanitized);
-    remove_tracking_pixels(&cleaned)
+    let without_pixels = remove_tracking_pixels(&sanitized);
+    clean_email_noise(&without_pixels)
 }
 
 fn clean_email_noise(html: &str) -> String {
     let result = PREHEADER_PADDING_RE.replace_all(html, " ");
     let result = EXCESSIVE_BR_RE.replace_all(&result, "<br><br>");
     let result = EMPTY_BLOCK_RE.replace_all(&result, "");
-    let result = MULTI_NEWLINES_RE.replace_all(&result, "\n\n");
+    let result = MULTI_NEWLINES_RE.replace_all(&result, ">\n\n<");
     result.trim().to_string()
 }
 
@@ -229,10 +229,17 @@ mod tests {
     }
 
     #[test]
-    fn collapses_multi_newlines() {
+    fn collapses_multi_newlines_between_tags() {
         let html = "<p>one</p>\n\n\n\n\n<p>two</p>";
         let result = clean_email_noise(html);
         assert_eq!(result, "<p>one</p>\n\n<p>two</p>");
+    }
+
+    #[test]
+    fn preserves_newlines_inside_pre() {
+        let html = "<pre>line1\n\n\n\nline4</pre>";
+        let result = clean_email_noise(html);
+        assert_eq!(result, html);
     }
 
     #[test]
@@ -240,6 +247,17 @@ mod tests {
         let html = "\n\n  <p>content</p>  \n\n";
         let result = clean_email_noise(html);
         assert_eq!(result, "<p>content</p>");
+    }
+
+    #[test]
+    fn tracking_pixel_removal_then_empty_block_cleanup() {
+        let html = r#"<div><img width="1" height="1" src="https://track.example.com/pixel.gif"></div><p>content</p>"#;
+        let result = sanitize_html(html);
+        assert!(
+            !result.contains("<div></div>"),
+            "empty wrapper after pixel removal should be cleaned"
+        );
+        assert!(result.contains("content"));
     }
 
     #[test]
