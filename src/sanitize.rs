@@ -78,12 +78,17 @@ fn clean_email_noise(html: &str) -> String {
     let result = NBSP_PADDING_RE.replace_all(&work, " ");
     let result = EXCESSIVE_BR_RE.replace_all(&result, "<br><br>");
     let mut current = result.into_owned();
+    let mut stabilized = false;
     for _ in 0..MAX_EMPTY_BLOCK_PASSES {
         let cleaned = EMPTY_BLOCK_RE.replace_all(&current, "");
         if let std::borrow::Cow::Borrowed(_) = cleaned {
+            stabilized = true;
             break;
         }
         current = cleaned.into_owned();
+    }
+    if !stabilized {
+        log::warn!("empty-block cleanup did not stabilize within {MAX_EMPTY_BLOCK_PASSES} passes");
     }
     let result = MULTI_NEWLINES_RE.replace_all(&current, ">\n\n<");
     let trimmed = result.trim().to_string();
