@@ -3,8 +3,11 @@ use regex::Regex;
 use std::collections::{HashMap, HashSet};
 use std::sync::LazyLock;
 
-static PREHEADER_PADDING_RE: LazyLock<Regex> = LazyLock::new(|| {
-    Regex::new(r"(?:(?:&nbsp;|\x{00A0})[\x{200B}-\x{200D}\x{FEFF}]*){10,}").unwrap()
+static NBSP_PADDING_RE: LazyLock<Regex> = LazyLock::new(|| {
+    Regex::new(
+        r"(?:(?:&nbsp;|\x{00A0})[\x{200B}-\x{200D}\x{FEFF}]+){3,}|(?:(?:&nbsp;|\x{00A0})\s*){10,}",
+    )
+    .unwrap()
 });
 
 static EXCESSIVE_BR_RE: LazyLock<Regex> =
@@ -67,10 +70,17 @@ pub fn sanitize_html(html: &str) -> String {
 }
 
 fn clean_email_noise(html: &str) -> String {
-    let result = PREHEADER_PADDING_RE.replace_all(html, " ");
+    let result = NBSP_PADDING_RE.replace_all(html, " ");
     let result = EXCESSIVE_BR_RE.replace_all(&result, "<br><br>");
-    let result = EMPTY_BLOCK_RE.replace_all(&result, "");
-    let result = MULTI_NEWLINES_RE.replace_all(&result, ">\n\n<");
+    let mut current = result.into_owned();
+    loop {
+        let cleaned = EMPTY_BLOCK_RE.replace_all(&current, "");
+        if let std::borrow::Cow::Borrowed(_) = cleaned {
+            break;
+        }
+        current = cleaned.into_owned();
+    }
+    let result = MULTI_NEWLINES_RE.replace_all(&current, ">\n\n<");
     result.trim().to_string()
 }
 
@@ -226,6 +236,28 @@ mod tests {
         let html = "<p></p><p>content</p>";
         let result = clean_email_noise(html);
         assert_eq!(result, "<p>content</p>");
+    }
+
+    #[test]
+    fn removes_nested_empty_blocks() {
+        let html = "<div><p></p></div><p>content</p>";
+        let result = clean_email_noise(html);
+        assert!(
+            !result.contains("<div>"),
+            "outer div should be removed after inner p"
+        );
+        assert_eq!(result, "<p>content</p>");
+    }
+
+    #[test]
+    fn strips_short_nbsp_with_zero_width_chars() {
+        let padding = format!("&nbsp;\u{200C}&nbsp;\u{200C}&nbsp;\u{200C}");
+        let html = format!("<div>{padding}</div><p>content</p>");
+        let result = clean_email_noise(&html);
+        assert!(
+            !result.contains("&nbsp;\u{200C}&nbsp;"),
+            "NBSP+ZW runs should be stripped even at 3 repetitions"
+        );
     }
 
     #[test]
