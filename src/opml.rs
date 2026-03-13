@@ -8,7 +8,10 @@ fn escape_xml(s: &str) -> String {
         .replace('\'', "&apos;")
 }
 
-pub fn generate(config: &Config, base_url: &str) -> String {
+pub fn generate(config: &Config, base_url: &str) -> eyre::Result<String> {
+    if base_url.contains('?') || base_url.contains('#') {
+        eyre::bail!("base URL must not contain query string or fragment: {base_url}");
+    }
     let base = base_url.trim_end_matches('/');
 
     let mut keys: Vec<&String> = config.feeds.keys().collect();
@@ -26,7 +29,7 @@ pub fn generate(config: &Config, base_url: &str) -> String {
         })
         .collect();
 
-    format!(
+    Ok(format!(
         "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n\
          <opml version=\"2.0\">\n\
          \x20 <head>\n\
@@ -37,7 +40,7 @@ pub fn generate(config: &Config, base_url: &str) -> String {
          \x20 </body>\n\
          </opml>\n",
         outlines.join("\n")
-    )
+    ))
 }
 
 #[cfg(test)]
@@ -80,7 +83,7 @@ mod tests {
     #[test]
     fn generates_valid_opml_with_single_feed() {
         let config = test_config(vec![("newsletter", "My Newsletter")]);
-        let opml = generate(&config, "http://localhost:8085");
+        let opml = generate(&config, "http://localhost:8085").unwrap();
 
         assert!(opml.starts_with("<?xml version=\"1.0\""));
         assert!(opml.contains("<opml version=\"2.0\">"));
@@ -93,7 +96,7 @@ mod tests {
     #[test]
     fn generates_feeds_in_sorted_order() {
         let config = test_config(vec![("zebra", "Zebra Feed"), ("alpha", "Alpha Feed")]);
-        let opml = generate(&config, "https://feeds.example.com");
+        let opml = generate(&config, "https://feeds.example.com").unwrap();
 
         let alpha_pos = opml.find("alpha.xml").unwrap();
         let zebra_pos = opml.find("zebra.xml").unwrap();
@@ -103,7 +106,7 @@ mod tests {
     #[test]
     fn escapes_xml_special_characters_in_title() {
         let config = test_config(vec![("test", "Tom & Jerry's <News>")]);
-        let opml = generate(&config, "http://localhost:8085");
+        let opml = generate(&config, "http://localhost:8085").unwrap();
 
         assert!(opml.contains("Tom &amp; Jerry&apos;s &lt;News&gt;"));
     }
@@ -111,24 +114,30 @@ mod tests {
     #[test]
     fn strips_trailing_slash_from_base_url() {
         let config = test_config(vec![("feed", "Feed")]);
-        let opml = generate(&config, "http://localhost:8085/");
+        let opml = generate(&config, "http://localhost:8085/").unwrap();
 
         assert!(opml.contains("http://localhost:8085/feed.xml"));
         assert!(!opml.contains("http://localhost:8085//feed.xml"));
     }
 
     #[test]
-    fn escapes_xml_special_characters_in_url() {
+    fn rejects_base_url_with_query_string() {
         let config = test_config(vec![("feed", "Feed")]);
-        let opml = generate(&config, "http://localhost:8085/path?a=1&b=2");
+        let result = generate(&config, "http://localhost:8085/path?a=1&b=2");
+        assert!(result.is_err());
+    }
 
-        assert!(opml.contains("xmlUrl=\"http://localhost:8085/path?a=1&amp;b=2/feed.xml\""));
+    #[test]
+    fn rejects_base_url_with_fragment() {
+        let config = test_config(vec![("feed", "Feed")]);
+        let result = generate(&config, "http://localhost:8085/path#section");
+        assert!(result.is_err());
     }
 
     #[test]
     fn handles_empty_feeds() {
         let config = test_config(vec![]);
-        let opml = generate(&config, "http://localhost:8085");
+        let opml = generate(&config, "http://localhost:8085").unwrap();
 
         assert!(opml.contains("<body>"));
         assert!(opml.contains("</body>"));

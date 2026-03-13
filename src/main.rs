@@ -297,7 +297,13 @@ fn cmd_list(config: &Config, json: bool) -> i32 {
 }
 
 fn cmd_export_opml(config: &Config, args: &ExportOpmlArgs, quiet: bool) -> i32 {
-    let content = opml::generate(config, &args.base_url);
+    let content = match opml::generate(config, &args.base_url) {
+        Ok(c) => c,
+        Err(e) => {
+            eprintln!("error: {e}");
+            return 1;
+        }
+    };
 
     match &args.output {
         Some(path) => match std::fs::write(path, &content) {
