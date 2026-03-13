@@ -87,6 +87,27 @@ ideabrowser          mxroute      notifications@mail.ideabrowser.com   142
 mixed                gmail        noreply@health.com, tips@parent...   87
 ```
 
+### `export-opml`
+
+Export configured feeds as an OPML 2.0 file for importing into RSS readers.
+
+```bash
+colporteur export-opml --base-url URL [-o FILE]
+```
+
+| Flag               | Short | Description                                       |
+| ------------------ | ----- | ------------------------------------------------- |
+| `--base-url <URL>` |       | Base URL for feed links (required; no `?` or `#`) |
+| `--output <FILE>`  | `-o`  | Output file path (default: stdout)                |
+
+**Example:**
+
+```bash
+colporteur export-opml --base-url https://feeds.example.com
+colporteur export-opml --base-url https://feeds.example.com -o feeds.opml
+colporteur export-opml --base-url https://feeds.example.com -o feeds.opml -q
+```
+
 ## Logging
 
 Verbosity is controlled by `-v` flags or the `RUST_LOG` environment variable:
