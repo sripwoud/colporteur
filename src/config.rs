@@ -16,7 +16,7 @@ output_dir = "/var/lib/colporteur/feeds"
 # max_entries = 50
 
 # Base URL for generating per-entry links: {base_url}/{feed_key}.xml
-# Per-feed url = "..." overrides this
+# Per-feed "url" overrides this
 # base_url = "https://example.com/feeds"
 
 # IMAP accounts
@@ -225,12 +225,17 @@ impl Config {
             errors.push("at least one account must be defined".to_string());
         }
 
-        if let Some(ref url) = self.base_url
-            && (url.is_empty() || (!url.starts_with("http://") && !url.starts_with("https://")))
-        {
-            errors.push(format!(
-                "base_url must start with http:// or https://, got: '{url}'"
-            ));
+        if let Some(ref url) = self.base_url {
+            if url.is_empty() || (!url.starts_with("http://") && !url.starts_with("https://")) {
+                errors.push(format!(
+                    "base_url must start with http:// or https://, got: '{url}'"
+                ));
+            }
+            if url.contains('?') || url.contains('#') {
+                errors.push(format!(
+                    "base_url must not contain query string or fragment: '{url}'"
+                ));
+            }
         }
 
         for (feed_key, feed) in &self.feeds {
@@ -662,6 +667,23 @@ senders = ["x@x.com"]
             msg.contains("base_url"),
             "expected base_url in error: {msg}"
         );
+    }
+
+    #[test]
+    fn validate_rejects_base_url_with_query_or_fragment() {
+        for url in [
+            "https://example.com/feeds?a=1",
+            "https://example.com/feeds#sec",
+        ] {
+            let config = minimal_config_with_feed("myfeed", None, Some(url.to_string()));
+            let result = config.validate();
+            assert!(result.is_err(), "expected error for base_url: {url}");
+            let msg = result.unwrap_err().to_string();
+            assert!(
+                msg.contains("query string or fragment"),
+                "expected query/fragment error for {url}: {msg}"
+            );
+        }
     }
 
     #[test]
