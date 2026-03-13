@@ -15,6 +15,10 @@ output_dir = "/var/lib/colporteur/feeds"
 # Maximum entries per feed (default: 50)
 # max_entries = 50
 
+# Base URL for generating per-entry links: {base_url}/{feed_key}.xml
+# Per-feed url = "..." overrides this
+# base_url = "https://example.com/feeds"
+
 # IMAP accounts
 [accounts.example]
 server = "imap.example.com"
@@ -29,6 +33,7 @@ title = "My Newsletter"
 account = "example"
 senders = ["hello@newsletter.com"]
 # max_entries = 25  # override per feed
+# url = "https://example.com/newsletter/archive"  # link added to each entry (optional)
 "#;
 
 fn default_mailbox() -> String {
@@ -65,6 +70,7 @@ pub struct FeedConfig {
     pub account: String,
     pub senders: Vec<String>,
     pub max_entries: Option<usize>,
+    pub url: Option<String>,
 }
 
 #[derive(Debug, Deserialize, Clone)]
@@ -72,6 +78,8 @@ pub struct Config {
     pub output_dir: String,
     #[serde(default = "default_max_entries")]
     pub max_entries: usize,
+    #[serde(default)]
+    pub base_url: Option<String>,
     pub accounts: HashMap<String, AccountConfig>,
     pub feeds: HashMap<String, FeedConfig>,
 }
@@ -217,11 +225,26 @@ impl Config {
             errors.push("at least one account must be defined".to_string());
         }
 
+        if let Some(ref url) = self.base_url
+            && (url.is_empty() || (!url.starts_with("http://") && !url.starts_with("https://")))
+        {
+            errors.push(format!(
+                "base_url must start with http:// or https://, got: '{url}'"
+            ));
+        }
+
         for (feed_key, feed) in &self.feeds {
             if !self.accounts.contains_key(&feed.account) {
                 errors.push(format!(
                     "feed '{}' references unknown account '{}'",
                     feed_key, feed.account
+                ));
+            }
+            if let Some(ref url) = feed.url
+                && (url.is_empty() || (!url.starts_with("http://") && !url.starts_with("https://")))
+            {
+                errors.push(format!(
+                    "feed '{feed_key}' url must start with http:// or https://, got: '{url}'"
                 ));
             }
         }
@@ -238,6 +261,16 @@ impl Config {
             .get(feed_key)
             .and_then(|f| f.max_entries)
             .unwrap_or(self.max_entries)
+    }
+
+    pub fn entry_url_for(&self, feed_key: &str) -> Option<String> {
+        if let Some(url) = self.feeds.get(feed_key).and_then(|f| f.url.as_deref()) {
+            return Some(url.to_string());
+        }
+        self.base_url.as_deref().map(|base| {
+            let trimmed = base.trim_end_matches('/');
+            format!("{trimmed}/{feed_key}.xml")
+        })
     }
 }
 
@@ -523,5 +556,143 @@ senders = ["x@x.com"]
         std::fs::remove_dir_all(&dir).ok();
 
         assert_eq!(mode, 0o600, "expected 0600, got {mode:o}");
+    }
+
+    fn minimal_config_with_feed(
+        feed_key: &str,
+        feed_url: Option<String>,
+        base_url: Option<String>,
+    ) -> Config {
+        let mut accounts = HashMap::new();
+        accounts.insert(
+            "test".to_string(),
+            AccountConfig {
+                server: "mail.example.com".to_string(),
+                username: "user@example.com".to_string(),
+                password: "pass".to_string(),
+                mailbox: "INBOX".to_string(),
+            },
+        );
+        let mut feeds = HashMap::new();
+        feeds.insert(
+            feed_key.to_string(),
+            FeedConfig {
+                title: "Test Feed".to_string(),
+                account: "test".to_string(),
+                senders: vec!["a@example.com".to_string()],
+                max_entries: None,
+                url: feed_url,
+            },
+        );
+        Config {
+            output_dir: "/tmp/feeds".to_string(),
+            max_entries: 50,
+            base_url,
+            accounts,
+            feeds,
+        }
+    }
+
+    #[test]
+    fn entry_url_for_returns_feed_url_when_set() {
+        let config = minimal_config_with_feed(
+            "myfeed",
+            Some("https://example.com/archive".to_string()),
+            None,
+        );
+        assert_eq!(
+            config.entry_url_for("myfeed"),
+            Some("https://example.com/archive".to_string())
+        );
+    }
+
+    #[test]
+    fn entry_url_for_returns_base_url_fallback() {
+        let config = minimal_config_with_feed(
+            "myfeed",
+            None,
+            Some("https://example.com/feeds".to_string()),
+        );
+        assert_eq!(
+            config.entry_url_for("myfeed"),
+            Some("https://example.com/feeds/myfeed.xml".to_string())
+        );
+    }
+
+    #[test]
+    fn entry_url_for_returns_none_when_no_urls() {
+        let config = minimal_config_with_feed("myfeed", None, None);
+        assert_eq!(config.entry_url_for("myfeed"), None);
+    }
+
+    #[test]
+    fn entry_url_for_feed_url_overrides_base_url() {
+        let config = minimal_config_with_feed(
+            "myfeed",
+            Some("https://example.com/specific".to_string()),
+            Some("https://example.com/feeds".to_string()),
+        );
+        assert_eq!(
+            config.entry_url_for("myfeed"),
+            Some("https://example.com/specific".to_string())
+        );
+    }
+
+    #[test]
+    fn entry_url_for_trims_trailing_slash_from_base_url() {
+        let config = minimal_config_with_feed(
+            "myfeed",
+            None,
+            Some("https://example.com/feeds/".to_string()),
+        );
+        assert_eq!(
+            config.entry_url_for("myfeed"),
+            Some("https://example.com/feeds/myfeed.xml".to_string())
+        );
+    }
+
+    #[test]
+    fn validate_rejects_invalid_base_url() {
+        let config =
+            minimal_config_with_feed("myfeed", None, Some("ftp://example.com/feeds".to_string()));
+        let result = config.validate();
+        assert!(result.is_err());
+        let msg = result.unwrap_err().to_string();
+        assert!(
+            msg.contains("base_url"),
+            "expected base_url in error: {msg}"
+        );
+    }
+
+    #[test]
+    fn validate_rejects_invalid_feed_url() {
+        let config = minimal_config_with_feed("myfeed", Some("not-a-url".to_string()), None);
+        let result = config.validate();
+        assert!(result.is_err());
+        let msg = result.unwrap_err().to_string();
+        assert!(msg.contains("myfeed"), "expected feed key in error: {msg}");
+    }
+
+    #[test]
+    fn parses_config_with_base_url() {
+        let toml = r#"
+output_dir = "/var/lib/colporteur/feeds"
+base_url = "https://example.com/feeds"
+
+[accounts.a]
+server = "s"
+username = "u"
+password = "p"
+
+[feeds.f]
+title = "F"
+account = "a"
+senders = ["x@x.com"]
+"#;
+        let config = parse(toml);
+        assert_eq!(
+            config.base_url,
+            Some("https://example.com/feeds".to_string())
+        );
     }
 }

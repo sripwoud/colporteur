@@ -59,6 +59,7 @@ mod tests {
                     account: "test".to_string(),
                     senders: vec!["a@b.com".to_string()],
                     max_entries: None,
+                    url: None,
                 },
             );
         }
@@ -75,6 +76,7 @@ mod tests {
         Config {
             output_dir: "/tmp/feeds".to_string(),
             max_entries: 50,
+            base_url: None,
             accounts,
             feeds: feed_map,
         }

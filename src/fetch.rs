@@ -233,6 +233,7 @@ fn process_feed(args: ProcessFeedArgs<'_>) -> FeedResult {
     };
 
     let mut new_entries: usize = 0;
+    let entry_url = config.entry_url_for(feed_key);
 
     for sender in &feed_config.senders {
         let last_uid = state.last_uid(account_name, sender);
@@ -275,7 +276,7 @@ fn process_feed(args: ProcessFeedArgs<'_>) -> FeedResult {
                 }
             };
 
-            append_entry(&mut feed, &email_content, &sanitized);
+            append_entry(&mut feed, &email_content, &sanitized, entry_url.as_deref());
             new_entries += 1;
 
             if uid > highest_uid {
@@ -425,11 +426,13 @@ mod tests {
                 account: "test".to_string(),
                 senders: vec!["notifications@mail.ideabrowser.com".to_string()],
                 max_entries: None,
+                url: None,
             },
         );
         Config {
             output_dir: output_dir.to_string(),
             max_entries: 50,
+            base_url: None,
             accounts,
             feeds,
         }
@@ -599,11 +602,13 @@ mod tests {
                     "noreply@gesundheitsportal-privat.de".to_string(),
                 ],
                 max_entries: None,
+                url: None,
             },
         );
         let config = Config {
             output_dir: dir.output_dir(),
             max_entries: 50,
+            base_url: None,
             accounts,
             feeds: feeds_map,
         };
@@ -717,11 +722,13 @@ mod tests {
                     "notifications@mail.ideabrowser.com".to_string(),
                 ],
                 max_entries: None,
+                url: None,
             },
         );
         let config = Config {
             output_dir: dir.output_dir(),
             max_entries: 50,
+            base_url: None,
             accounts,
             feeds: feeds_map,
         };
@@ -763,6 +770,54 @@ mod tests {
         assert_eq!(
             state.last_uid("test", "notifications@mail.ideabrowser.com"),
             101
+        );
+    }
+
+    #[test]
+    fn full_pipeline_with_base_url_sets_entry_links() {
+        let dir = TestDir::new("base_url_links");
+        let mut config = single_sender_config(&dir.output_dir());
+        config.base_url = Some("https://example.com/feeds".to_string());
+        let state_path = dir.state_path();
+
+        let mut source = MockEmailSource {
+            uid_validity_val: 1,
+            emails: make_emails(&[(
+                100,
+                "notifications@mail.ideabrowser.com",
+                include_bytes!("../tests/fixtures/sample1.eml"),
+            )]),
+        };
+        let mut state = AppState::default();
+
+        let feeds: Vec<(&str, &FeedConfig)> =
+            config.feeds.iter().map(|(k, v)| (k.as_str(), v)).collect();
+
+        let account = config.accounts.get("test").unwrap();
+
+        let results = run_with_source(AccountRunArgs {
+            source: &mut source,
+            account_name: "test",
+            account,
+            feeds: &feeds,
+            config: &config,
+            state: &mut state,
+            state_path: &state_path,
+            dry_run: false,
+        });
+
+        assert_eq!(results.len(), 1);
+        assert!(
+            results[0].ok,
+            "expected ok=true, got: {:?}",
+            results[0].error
+        );
+
+        let feed_path = std::path::Path::new(&dir.output_dir()).join("ideabrowser.xml");
+        let xml = std::fs::read_to_string(&feed_path).unwrap();
+        assert!(
+            xml.contains("https://example.com/feeds/ideabrowser.xml"),
+            "expected entry link in XML: {xml}"
         );
     }
 }
