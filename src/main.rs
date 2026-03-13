@@ -93,6 +93,7 @@ fn cmd_fetch(config: &Config, args: &FetchArgs, json: bool, quiet: bool) -> i32 
         filtered_config = colporteur::config::Config {
             output_dir: config.output_dir.clone(),
             max_entries: config.max_entries,
+            base_url: config.base_url.clone(),
             accounts: config.accounts.clone(),
             feeds: config
                 .feeds

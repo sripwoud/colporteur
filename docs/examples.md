@@ -48,6 +48,33 @@ account = "gmail"
 senders = ["no-reply@accounts.google.com"]
 ```
 
+## Feed entry links
+
+```toml
+output_dir = "/var/lib/colporteur/feeds"
+base_url = "https://feeds.example.com"
+
+[accounts.mail]
+server = "mail.mxroute.com"
+username = "newsletters@domain.com"
+password = "secret"
+
+[feeds.tech]
+title = "Tech Newsletters"
+account = "mail"
+senders = ["weekly@changelog.com"]
+# entry links → https://feeds.example.com/tech.xml
+
+[feeds.substack-author]
+title = "Author's Substack"
+account = "mail"
+senders = ["newsletter@substack.com"]
+url = "https://author.substack.com/archive"
+# entry links → https://author.substack.com/archive (overrides base_url)
+```
+
+Setting `base_url` automatically generates entry links. Use per-feed `url` to override with a custom link destination.
+
 ## Cron job
 
 Run every 15 minutes, quietly (only errors logged):

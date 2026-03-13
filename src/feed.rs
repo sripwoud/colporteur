@@ -3,7 +3,7 @@ use std::hash::{Hash, Hasher};
 use std::io::{BufReader, Write};
 use std::path::Path;
 
-use atom_syndication::{Content, Entry, Feed, Generator, Person, Text};
+use atom_syndication::{Content, Entry, Feed, Generator, Link, Person, Text};
 use chrono::Utc;
 use eyre::Context;
 
@@ -43,7 +43,22 @@ pub fn load_or_create(path: &Path, title: &str) -> eyre::Result<Feed> {
     Ok(feed)
 }
 
-pub fn append_entry(feed: &mut Feed, email: &EmailContent, sanitized_html: &str) {
+pub fn append_entry(
+    feed: &mut Feed,
+    email: &EmailContent,
+    sanitized_html: &str,
+    url: Option<&str>,
+) {
+    let links = url
+        .map(|href| {
+            vec![Link {
+                href: href.to_string(),
+                rel: "alternate".to_string(),
+                ..Default::default()
+            }]
+        })
+        .unwrap_or_default();
+
     let entry = Entry {
         id: entry_id(email),
         title: Text::plain(&email.subject),
@@ -57,6 +72,7 @@ pub fn append_entry(feed: &mut Feed, email: &EmailContent, sanitized_html: &str)
             value: Some(sanitized_html.to_string()),
             ..Default::default()
         }),
+        links,
         ..Default::default()
     };
 
@@ -145,7 +161,7 @@ mod tests {
         let path = tmp_path("append_entry");
         let mut feed = load_or_create(&path, "Test Feed").unwrap();
         let email = make_email("Hello", "sender@example.com", None);
-        append_entry(&mut feed, &email, "<p>hello</p>");
+        append_entry(&mut feed, &email, "<p>hello</p>", None);
         assert_eq!(feed.entries().len(), 1);
     }
 
@@ -156,7 +172,7 @@ mod tests {
 
         for i in 0..5 {
             let email = make_email(&format!("Subject {i}"), "sender@example.com", None);
-            append_entry(&mut feed, &email, "<p>body</p>");
+            append_entry(&mut feed, &email, "<p>body</p>", None);
         }
 
         assert_eq!(feed.entries().len(), 5);
@@ -172,7 +188,7 @@ mod tests {
         let mut feed = load_or_create(&path, "Round Trip Feed").unwrap();
 
         let email = make_email("Round Trip Subject", "rt@example.com", None);
-        append_entry(&mut feed, &email, "<p>rt</p>");
+        append_entry(&mut feed, &email, "<p>rt</p>", None);
 
         write_atomic(&feed, &path).unwrap();
 
@@ -202,5 +218,54 @@ mod tests {
             id.starts_with("urn:colporteur:"),
             "expected urn prefix, got: {id}"
         );
+    }
+
+    #[test]
+    fn append_entry_with_url_sets_alternate_link() {
+        let path = tmp_path("entry_with_url");
+        let mut feed = load_or_create(&path, "Link Feed").unwrap();
+        let email = make_email("Linked", "sender@example.com", None);
+        append_entry(
+            &mut feed,
+            &email,
+            "<p>body</p>",
+            Some("https://example.com/archive"),
+        );
+        let entry = &feed.entries()[0];
+        assert_eq!(entry.links.len(), 1);
+        assert_eq!(entry.links[0].href, "https://example.com/archive");
+        assert_eq!(entry.links[0].rel, "alternate");
+    }
+
+    #[test]
+    fn append_entry_without_url_has_no_links() {
+        let path = tmp_path("entry_no_url");
+        let mut feed = load_or_create(&path, "No Link Feed").unwrap();
+        let email = make_email("No Link", "sender@example.com", None);
+        append_entry(&mut feed, &email, "<p>body</p>", None);
+        let entry = &feed.entries()[0];
+        assert!(entry.links.is_empty());
+    }
+
+    #[test]
+    fn entry_link_survives_round_trip() {
+        let path = tmp_path("link_round_trip");
+        let mut feed = load_or_create(&path, "Link Round Trip").unwrap();
+        let email = make_email("Subject", "sender@example.com", None);
+        append_entry(
+            &mut feed,
+            &email,
+            "<p>body</p>",
+            Some("https://example.com/archive"),
+        );
+        write_atomic(&feed, &path).unwrap();
+
+        let loaded = load_or_create(&path, "ignored").unwrap();
+        let entry = &loaded.entries()[0];
+        assert_eq!(entry.links.len(), 1);
+        assert_eq!(entry.links[0].href, "https://example.com/archive");
+        assert_eq!(entry.links[0].rel, "alternate");
+
+        let _ = std::fs::remove_file(&path);
     }
 }
