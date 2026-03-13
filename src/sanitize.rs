@@ -1,5 +1,20 @@
 use ammonia::Builder;
+use regex::Regex;
 use std::collections::{HashMap, HashSet};
+use std::sync::LazyLock;
+
+static PREHEADER_PADDING_RE: LazyLock<Regex> = LazyLock::new(|| {
+    Regex::new(r"(?:(?:&nbsp;|\x{00A0})[\x{200B}-\x{200D}\x{FEFF}]*){3,}").unwrap()
+});
+
+static EXCESSIVE_BR_RE: LazyLock<Regex> =
+    LazyLock::new(|| Regex::new(r"(?:<br\s*/?>[\s]*){3,}").unwrap());
+
+static EMPTY_BLOCK_RE: LazyLock<Regex> = LazyLock::new(|| {
+    Regex::new(r"<div>\s*(?:&nbsp;|\x{00A0})?\s*</div>|<p>\s*(?:&nbsp;|\x{00A0})?\s*</p>").unwrap()
+});
+
+static MULTI_NEWLINES_RE: LazyLock<Regex> = LazyLock::new(|| Regex::new(r"\n{3,}").unwrap());
 
 pub fn sanitize_html(html: &str) -> String {
     let mut builder = Builder::new();
@@ -47,7 +62,16 @@ pub fn sanitize_html(html: &str) -> String {
         .url_schemes(HashSet::from(["http", "https"]));
 
     let sanitized = builder.clean(html).to_string();
-    remove_tracking_pixels(&sanitized)
+    let cleaned = clean_email_noise(&sanitized);
+    remove_tracking_pixels(&cleaned)
+}
+
+fn clean_email_noise(html: &str) -> String {
+    let result = PREHEADER_PADDING_RE.replace_all(html, " ");
+    let result = EXCESSIVE_BR_RE.replace_all(&result, "<br><br>");
+    let result = EMPTY_BLOCK_RE.replace_all(&result, "");
+    let result = MULTI_NEWLINES_RE.replace_all(&result, "\n\n");
+    result.trim().to_string()
 }
 
 fn remove_tracking_pixels(html: &str) -> String {
@@ -148,5 +172,89 @@ mod tests {
         assert!(result.contains("&amp;"));
         assert!(result.contains("<br>"));
         assert!(result.contains("</p><p>"));
+    }
+
+    #[test]
+    fn strips_preheader_padding() {
+        let padding = "&nbsp;\u{200C}".repeat(50);
+        let html = format!("<div>{padding}</div><p>real content</p>");
+        let result = clean_email_noise(&html);
+        assert!(
+            !result.contains("&nbsp;\u{200C}&nbsp;"),
+            "preheader padding should be stripped"
+        );
+        assert!(result.contains("real content"));
+    }
+
+    #[test]
+    fn preserves_one_or_two_nbsp() {
+        let html = "<p>hello&nbsp;&nbsp;world</p>";
+        let result = clean_email_noise(html);
+        assert_eq!(result, html);
+    }
+
+    #[test]
+    fn collapses_excessive_br() {
+        let html = "<p>one</p><br><br><br><br><br><p>two</p>";
+        let result = clean_email_noise(html);
+        assert_eq!(result, "<p>one</p><br><br><p>two</p>");
+    }
+
+    #[test]
+    fn removes_empty_div_with_nbsp() {
+        let html = "<div>&nbsp;</div><p>content</p>";
+        let result = clean_email_noise(html);
+        assert_eq!(result, "<p>content</p>");
+    }
+
+    #[test]
+    fn removes_empty_div() {
+        let html = "<div>  </div><p>content</p>";
+        let result = clean_email_noise(html);
+        assert_eq!(result, "<p>content</p>");
+    }
+
+    #[test]
+    fn removes_empty_p() {
+        let html = "<p></p><p>content</p>";
+        let result = clean_email_noise(html);
+        assert_eq!(result, "<p>content</p>");
+    }
+
+    #[test]
+    fn preserves_div_with_content() {
+        let html = "<div>hello world</div>";
+        let result = clean_email_noise(html);
+        assert_eq!(result, html);
+    }
+
+    #[test]
+    fn collapses_multi_newlines() {
+        let html = "<p>one</p>\n\n\n\n\n<p>two</p>";
+        let result = clean_email_noise(html);
+        assert_eq!(result, "<p>one</p>\n\n<p>two</p>");
+    }
+
+    #[test]
+    fn trims_leading_trailing_whitespace() {
+        let html = "\n\n  <p>content</p>  \n\n";
+        let result = clean_email_noise(html);
+        assert_eq!(result, "<p>content</p>");
+    }
+
+    #[test]
+    fn clean_email_noise_integration() {
+        let padding = "&nbsp;\u{200C}".repeat(100);
+        let html = format!(
+            "\n  <div>{padding}</div>\n<p>real</p><br><br><br><br><div>&nbsp;</div><p></p><p>end</p>\n\n"
+        );
+        let result = clean_email_noise(&html);
+        assert!(!result.contains("&nbsp;\u{200C}&nbsp;"));
+        assert!(result.contains("<p>real</p>"));
+        assert!(result.contains("<p>end</p>"));
+        assert!(!result.contains("<p></p>"));
+        assert!(!result.contains("<div>&nbsp;</div>"));
+        let br_count = result.matches("<br>").count();
+        assert!(br_count <= 2, "expected at most 2 <br>, got {br_count}");
     }
 }
