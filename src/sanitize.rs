@@ -4,7 +4,7 @@ use std::collections::{HashMap, HashSet};
 use std::sync::LazyLock;
 
 static PREHEADER_PADDING_RE: LazyLock<Regex> = LazyLock::new(|| {
-    Regex::new(r"(?:(?:&nbsp;|\x{00A0})[\x{200B}-\x{200D}\x{FEFF}]*){3,}").unwrap()
+    Regex::new(r"(?:(?:&nbsp;|\x{00A0})[\x{200B}-\x{200D}\x{FEFF}]*){10,}").unwrap()
 });
 
 static EXCESSIVE_BR_RE: LazyLock<Regex> =
@@ -187,8 +187,15 @@ mod tests {
     }
 
     #[test]
-    fn preserves_one_or_two_nbsp() {
+    fn preserves_short_nbsp_runs() {
         let html = "<p>hello&nbsp;&nbsp;world</p>";
+        let result = clean_email_noise(html);
+        assert_eq!(result, html);
+    }
+
+    #[test]
+    fn preserves_nbsp_indentation_in_pre() {
+        let html = "<pre>&nbsp;&nbsp;&nbsp;indent</pre>";
         let result = clean_email_noise(html);
         assert_eq!(result, html);
     }
