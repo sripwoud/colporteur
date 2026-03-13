@@ -14,7 +14,8 @@ static EXCESSIVE_BR_RE: LazyLock<Regex> =
     LazyLock::new(|| Regex::new(r"(?:<br\s*/?>[\s]*){3,}").unwrap());
 
 static EMPTY_BLOCK_RE: LazyLock<Regex> = LazyLock::new(|| {
-    Regex::new(r"<div>\s*(?:&nbsp;|\x{00A0})?\s*</div>|<p>\s*(?:&nbsp;|\x{00A0})?\s*</p>").unwrap()
+    Regex::new(r"<div>\s*(?:(?:&nbsp;|\x{00A0})\s*)*</div>|<p>\s*(?:(?:&nbsp;|\x{00A0})\s*)*</p>")
+        .unwrap()
 });
 
 static MULTI_NEWLINES_RE: LazyLock<Regex> =
@@ -100,7 +101,7 @@ fn protect_preformatted(html: &str) -> (String, Vec<String>) {
             let abs_start = pos + start;
             if let Some(end_rel) = result[abs_start..].find(&close) {
                 let abs_end = abs_start + end_rel + close.len();
-                let placeholder = format!("COLPORTEUR_PRESERVED_{}", blocks.len());
+                let placeholder = format!("\x00COLPORTEUR_{}\x00", blocks.len());
                 blocks.push(result[abs_start..abs_end].to_string());
                 result.replace_range(abs_start..abs_end, &placeholder);
                 pos = abs_start + placeholder.len();
@@ -115,7 +116,7 @@ fn protect_preformatted(html: &str) -> (String, Vec<String>) {
 fn restore_preformatted(html: &str, blocks: &[String]) -> String {
     let mut result = html.to_string();
     for (i, block) in blocks.iter().enumerate() {
-        let placeholder = format!("COLPORTEUR_PRESERVED_{i}");
+        let placeholder = format!("\x00COLPORTEUR_{i}\x00");
         result = result.replace(&placeholder, block);
     }
     result
@@ -300,6 +301,13 @@ mod tests {
     }
 
     #[test]
+    fn removes_div_with_multiple_nbsp() {
+        let html = "<div>&nbsp;&nbsp;&nbsp;</div><p>content</p>";
+        let result = clean_email_noise(html);
+        assert_eq!(result, "<p>content</p>");
+    }
+
+    #[test]
     fn removes_empty_div() {
         let html = "<div>  </div><p>content</p>";
         let result = clean_email_noise(html);
@@ -379,6 +387,23 @@ mod tests {
             "empty wrapper after pixel removal should be cleaned"
         );
         assert!(result.contains("content"));
+    }
+
+    #[test]
+    fn restore_preformatted_no_collision_with_10_plus_blocks() {
+        let blocks: Vec<String> = (0..12).map(|i| format!("<code>block{i}</code>")).collect();
+        let mut html = String::new();
+        for i in 0..12 {
+            html.push_str(&format!("\x00COLPORTEUR_{i}\x00"));
+        }
+        let result = restore_preformatted(&html, &blocks);
+        for i in 0..12 {
+            assert!(
+                result.contains(&format!("<code>block{i}</code>")),
+                "block {i} should be restored correctly"
+            );
+        }
+        assert!(!result.contains("COLPORTEUR_"));
     }
 
     #[test]
