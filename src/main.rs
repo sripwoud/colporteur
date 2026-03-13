@@ -1,7 +1,8 @@
 use clap::Parser;
-use colporteur::cli::{Cli, Command, FetchArgs, ScanArgs, TestArgs};
+use colporteur::cli::{Cli, Command, ExportOpmlArgs, FetchArgs, ScanArgs, TestArgs};
 use colporteur::config::Config;
 use colporteur::fetch;
+use colporteur::opml;
 use colporteur::scan;
 use colporteur::state::AppState;
 
@@ -26,6 +27,7 @@ fn main() {
         Command::Test(args) => cmd_test(&config, &args, cli.json),
         Command::List => cmd_list(&config, cli.json),
         Command::Scan(args) => cmd_scan(&config, &args, cli.json, cli.quiet),
+        Command::ExportOpml(args) => cmd_export_opml(&config, &args, cli.quiet),
         Command::Init => unreachable!(),
     };
 
@@ -292,4 +294,33 @@ fn cmd_list(config: &Config, json: bool) -> i32 {
     }
 
     0
+}
+
+fn cmd_export_opml(config: &Config, args: &ExportOpmlArgs, quiet: bool) -> i32 {
+    let content = match opml::generate(config, &args.base_url) {
+        Ok(c) => c,
+        Err(e) => {
+            eprintln!("error: {e}");
+            return 1;
+        }
+    };
+
+    match &args.output {
+        Some(path) => match std::fs::write(path, &content) {
+            Ok(()) => {
+                if !quiet {
+                    eprintln!("wrote {path}");
+                }
+                0
+            }
+            Err(e) => {
+                eprintln!("error: failed to write {path}: {e}");
+                1
+            }
+        },
+        None => {
+            print!("{content}");
+            0
+        }
+    }
 }
