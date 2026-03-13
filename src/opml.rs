@@ -19,7 +19,7 @@ pub fn generate(config: &Config, base_url: &str) -> String {
         .map(|key| {
             let feed = &config.feeds[*key];
             let title = escape_xml(&feed.title);
-            let url = format!("{base}/{key}.xml");
+            let url = escape_xml(&format!("{base}/{key}.xml"));
             format!(
                 "    <outline text=\"{title}\" title=\"{title}\" xmlUrl=\"{url}\" type=\"rss\"/>"
             )
@@ -115,6 +115,14 @@ mod tests {
 
         assert!(opml.contains("http://localhost:8085/feed.xml"));
         assert!(!opml.contains("http://localhost:8085//feed.xml"));
+    }
+
+    #[test]
+    fn escapes_xml_special_characters_in_url() {
+        let config = test_config(vec![("feed", "Feed")]);
+        let opml = generate(&config, "http://localhost:8085/path?a=1&b=2");
+
+        assert!(opml.contains("xmlUrl=\"http://localhost:8085/path?a=1&amp;b=2/feed.xml\""));
     }
 
     #[test]
