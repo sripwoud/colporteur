@@ -27,7 +27,7 @@ fn main() {
         Command::Test(args) => cmd_test(&config, &args, cli.json),
         Command::List => cmd_list(&config, cli.json),
         Command::Scan(args) => cmd_scan(&config, &args, cli.json, cli.quiet),
-        Command::ExportOpml(args) => cmd_export_opml(&config, &args),
+        Command::ExportOpml(args) => cmd_export_opml(&config, &args, cli.quiet),
         Command::Init => unreachable!(),
     };
 
@@ -296,13 +296,15 @@ fn cmd_list(config: &Config, json: bool) -> i32 {
     0
 }
 
-fn cmd_export_opml(config: &Config, args: &ExportOpmlArgs) -> i32 {
+fn cmd_export_opml(config: &Config, args: &ExportOpmlArgs, quiet: bool) -> i32 {
     let content = opml::generate(config, &args.base_url);
 
     match &args.output {
         Some(path) => match std::fs::write(path, &content) {
             Ok(()) => {
-                eprintln!("wrote {path}");
+                if !quiet {
+                    eprintln!("wrote {path}");
+                }
                 0
             }
             Err(e) => {
