@@ -204,6 +204,25 @@ mod tests {
     }
 
     #[test]
+    fn strips_ten_or_more_plain_nbsp() {
+        let nbsp_10 = "&nbsp;".repeat(10);
+        let html = format!("<p>{nbsp_10}text</p>");
+        let result = clean_email_noise(&html);
+        assert!(
+            !result.contains("&nbsp;&nbsp;"),
+            "10+ plain NBSP should be stripped"
+        );
+    }
+
+    #[test]
+    fn preserves_nine_plain_nbsp() {
+        let nbsp_9 = "&nbsp;".repeat(9);
+        let html = format!("<p>{nbsp_9}text</p>");
+        let result = clean_email_noise(&html);
+        assert_eq!(result, html);
+    }
+
+    #[test]
     fn preserves_nbsp_indentation_in_pre() {
         let html = "<pre>&nbsp;&nbsp;&nbsp;indent</pre>";
         let result = clean_email_noise(html);
