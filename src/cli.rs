@@ -39,6 +39,21 @@ pub enum Command {
     Init,
     #[command(about = "Scan IMAP account(s) and list unique sender addresses")]
     Scan(ScanArgs),
+    #[command(about = "Export configured feeds as an OPML file")]
+    ExportOpml(ExportOpmlArgs),
+}
+
+#[derive(Args, Debug)]
+pub struct ExportOpmlArgs {
+    #[arg(long, value_name = "URL", help = "Base URL for feed links")]
+    pub base_url: String,
+    #[arg(
+        short,
+        long,
+        value_name = "FILE",
+        help = "Output file (default: stdout)"
+    )]
+    pub output: Option<String>,
 }
 
 #[derive(Args, Debug)]

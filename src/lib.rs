@@ -4,6 +4,7 @@ pub mod email;
 pub mod feed;
 pub mod fetch;
 pub mod imap;
+pub mod opml;
 pub mod sanitize;
 pub mod scan;
 pub mod state;
