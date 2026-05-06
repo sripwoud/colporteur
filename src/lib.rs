@@ -3,6 +3,7 @@ pub mod config;
 pub mod email;
 pub mod feed;
 pub mod fetch;
+pub mod fs_atomic;
 pub mod imap;
 pub mod opml;
 pub mod sanitize;

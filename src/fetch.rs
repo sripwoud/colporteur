@@ -6,7 +6,8 @@ use serde::Serialize;
 
 use crate::config::{AccountConfig, Config, FeedConfig};
 use crate::email;
-use crate::feed::{append_entry, load_or_create, trim_entries, write_atomic};
+use crate::feed::{append_entry, load_or_create, trim_entries};
+use crate::fs_atomic;
 use crate::imap::{EmailSource, ImapClient};
 use crate::sanitize::{sanitize_html, text_to_html};
 use crate::state::AppState;
@@ -293,7 +294,7 @@ fn process_feed(args: ProcessFeedArgs<'_>) -> FeedResult {
     trim_entries(&mut feed, max);
 
     if !dry_run {
-        if let Err(e) = write_atomic(&feed, &output_path) {
+        if let Err(e) = fs_atomic::write_atomic(&output_path, feed.to_string().as_bytes()) {
             log::error!("feed '{feed_key}': failed to write feed: {e}");
             return FeedResult {
                 key: feed_key.to_string(),
