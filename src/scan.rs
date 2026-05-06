@@ -1,5 +1,5 @@
 use crate::config::Config;
-use crate::imap::{ImapClient, ScannedSender};
+use crate::imap::{AccountOpenError, AccountSession, ScannedSender};
 
 #[derive(Debug, serde::Serialize)]
 pub struct ScanReport {
@@ -18,11 +18,10 @@ pub fn run(config: &Config, account_filter: Option<&str>) -> Vec<ScanReport> {
             continue;
         }
 
-        let password = match account.resolve_password() {
-            Ok(p) => p,
-            Err(e) => {
+        let mut session = match AccountSession::open(account_name, account) {
+            Ok(s) => s,
+            Err(AccountOpenError::PasswordResolution(_)) => {
                 log::error!("account '{account_name}': failed to resolve password");
-                log::debug!("account '{account_name}': {e}");
                 reports.push(ScanReport {
                     account: account_name.clone(),
                     senders: Vec::new(),
@@ -32,11 +31,7 @@ pub fn run(config: &Config, account_filter: Option<&str>) -> Vec<ScanReport> {
                 });
                 continue;
             }
-        };
-
-        let mut client = match ImapClient::connect(&account.server, &account.username, &password) {
-            Ok(c) => c,
-            Err(e) => {
+            Err(AccountOpenError::Connection(e)) => {
                 log::error!("account '{account_name}': connection failed: {e}");
                 reports.push(ScanReport {
                     account: account_name.clone(),
@@ -47,7 +42,7 @@ pub fn run(config: &Config, account_filter: Option<&str>) -> Vec<ScanReport> {
             }
         };
 
-        if let Err(e) = client.uid_validity(&account.mailbox) {
+        if let Err(e) = session.client_mut().uid_validity(&account.mailbox) {
             log::error!(
                 "account '{account_name}': failed to select mailbox '{}': {e}",
                 account.mailbox
@@ -60,7 +55,7 @@ pub fn run(config: &Config, account_filter: Option<&str>) -> Vec<ScanReport> {
             continue;
         }
 
-        let mut senders = match client.scan_senders() {
+        let mut senders = match session.client_mut().scan_senders() {
             Ok(s) => s,
             Err(e) => {
                 log::error!("account '{account_name}': scan failed: {e}");
@@ -72,10 +67,6 @@ pub fn run(config: &Config, account_filter: Option<&str>) -> Vec<ScanReport> {
                 continue;
             }
         };
-
-        if let Err(e) = client.logout() {
-            log::warn!("account '{account_name}': logout error: {e}");
-        }
 
         senders.sort_by(|a, b| b.count.cmp(&a.count));
 
