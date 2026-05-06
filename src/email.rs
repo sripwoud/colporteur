@@ -13,7 +13,7 @@ pub struct EmailContent {
     pub feed_html: String,
 }
 
-pub(crate) fn body_from_parts(html: Option<String>, text: Option<String>) -> eyre::Result<String> {
+fn body_from_parts(html: Option<String>, text: Option<String>) -> eyre::Result<String> {
     if let Some(h) = html {
         return Ok(sanitize_html(&h));
     }
