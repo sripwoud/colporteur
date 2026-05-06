@@ -294,8 +294,9 @@ impl EmailSource for ImapClient {
 mod tests {
     use std::io::{BufRead, BufReader, Write};
     use std::net::TcpListener;
-    use std::sync::{Arc, Mutex};
+    use std::sync::mpsc;
     use std::thread;
+    use std::time::Duration;
 
     use imap::ConnectionMode;
 
@@ -312,12 +313,11 @@ mod tests {
     }
 
     /// Minimal mock IMAP server that handles LOGIN and LOGOUT over plaintext TCP.
-    /// Returns the port it's listening on, and a shared log of received commands.
-    fn spawn_mock_imap_server() -> (u16, Arc<Mutex<Vec<String>>>) {
+    /// Returns the port it's listening on and a receiver that fires once when LOGOUT is observed.
+    fn spawn_mock_imap_server() -> (u16, mpsc::Receiver<()>) {
         let listener = TcpListener::bind("127.0.0.1:0").expect("failed to bind mock server");
         let port = listener.local_addr().unwrap().port();
-        let log: Arc<Mutex<Vec<String>>> = Arc::new(Mutex::new(Vec::new()));
-        let log_clone = log.clone();
+        let (logout_tx, logout_rx) = mpsc::channel();
 
         thread::spawn(move || {
             if let Ok((stream, _)) = listener.accept() {
@@ -333,7 +333,6 @@ mod tests {
                         Ok(l) => l,
                         Err(_) => break,
                     };
-                    log_clone.lock().unwrap().push(line.clone());
 
                     let parts: Vec<&str> = line.splitn(3, ' ').collect();
                     if parts.len() < 2 {
@@ -353,6 +352,7 @@ mod tests {
                             writer
                                 .write_all(format!("{tag} OK LOGOUT completed\r\n").as_bytes())
                                 .ok();
+                            let _ = logout_tx.send(());
                             break;
                         }
                         _ => {
@@ -365,7 +365,7 @@ mod tests {
             }
         });
 
-        (port, log)
+        (port, logout_rx)
     }
 
     fn connect_to_mock(port: u16) -> ImapClient {
@@ -382,10 +382,7 @@ mod tests {
 
     #[test]
     fn open_success_and_drop_calls_logout() {
-        let (port, log) = spawn_mock_imap_server();
-
-        // Give the server thread a moment to start
-        thread::sleep(std::time::Duration::from_millis(10));
+        let (port, logout_rx) = spawn_mock_imap_server();
 
         let client = connect_to_mock(port);
         let session = AccountSession {
@@ -393,18 +390,11 @@ mod tests {
             client,
         };
 
-        // Drop the session — the Drop impl should call logout
         drop(session);
 
-        // Give the server thread a moment to process the logout
-        thread::sleep(std::time::Duration::from_millis(50));
-
-        let commands = log.lock().unwrap();
-        let logged_out = commands.iter().any(|c| c.to_uppercase().contains("LOGOUT"));
-        assert!(
-            logged_out,
-            "expected LOGOUT command; received: {commands:?}"
-        );
+        logout_rx
+            .recv_timeout(Duration::from_secs(2))
+            .expect("expected LOGOUT within 2s");
     }
 
     #[test]
