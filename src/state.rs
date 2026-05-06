@@ -4,6 +4,8 @@ use std::path::{Path, PathBuf};
 use eyre::Context;
 use serde::{Deserialize, Serialize};
 
+use crate::fs_atomic;
+
 #[derive(Debug, Serialize, Deserialize, Default)]
 pub struct AppState {
     pub accounts: HashMap<String, AccountState>,
@@ -32,17 +34,8 @@ impl AppState {
     }
 
     pub fn save(&self, path: &Path) -> eyre::Result<()> {
-        if let Some(parent) = path.parent() {
-            std::fs::create_dir_all(parent)
-                .wrap_err_with(|| format!("failed to create directories: {}", parent.display()))?;
-        }
-        let tmp = path.with_extension("tmp");
         let json = serde_json::to_string_pretty(self).wrap_err("failed to serialize state")?;
-        std::fs::write(&tmp, &json)
-            .wrap_err_with(|| format!("failed to write tmp file: {}", tmp.display()))?;
-        std::fs::rename(&tmp, path)
-            .wrap_err_with(|| format!("failed to rename tmp to: {}", path.display()))?;
-        Ok(())
+        fs_atomic::write_atomic(path, json.as_bytes())
     }
 
     pub fn default_path() -> eyre::Result<PathBuf> {

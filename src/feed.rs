@@ -1,6 +1,6 @@
 use std::collections::hash_map::DefaultHasher;
 use std::hash::{Hash, Hasher};
-use std::io::{BufReader, Write};
+use std::io::BufReader;
 use std::path::Path;
 
 use atom_syndication::{Content, Entry, Feed, Generator, Link, Person, Text};
@@ -88,32 +88,6 @@ pub fn trim_entries(feed: &mut Feed, max: usize) {
     }
 }
 
-pub fn write_atomic(feed: &Feed, path: &Path) -> eyre::Result<()> {
-    if let Some(parent) = path.parent() {
-        std::fs::create_dir_all(parent)
-            .wrap_err_with(|| format!("failed to create directories for {}", path.display()))?;
-    }
-
-    let tmp_path = path.with_extension("tmp");
-
-    let mut file = std::fs::File::create(&tmp_path)
-        .wrap_err_with(|| format!("failed to create tmp file: {}", tmp_path.display()))?;
-
-    let xml = feed.to_string();
-    file.write_all(xml.as_bytes())
-        .wrap_err("failed to write feed xml")?;
-
-    std::fs::rename(&tmp_path, path).wrap_err_with(|| {
-        format!(
-            "failed to rename {} to {}",
-            tmp_path.display(),
-            path.display()
-        )
-    })?;
-
-    Ok(())
-}
-
 fn entry_id(email: &EmailContent) -> String {
     if let Some(ref mid) = email.message_id {
         return mid.trim_matches(|c| c == '<' || c == '>').to_string();
@@ -190,7 +164,7 @@ mod tests {
         let email = make_email("Round Trip Subject", "rt@example.com", None);
         append_entry(&mut feed, &email, "<p>rt</p>", None);
 
-        write_atomic(&feed, &path).unwrap();
+        crate::fs_atomic::write_atomic(&path, feed.to_string().as_bytes()).unwrap();
 
         let loaded = load_or_create(&path, "ignored").unwrap();
         assert_eq!(loaded.title.as_str(), "Round Trip Feed");
@@ -258,7 +232,7 @@ mod tests {
             "<p>body</p>",
             Some("https://example.com/archive"),
         );
-        write_atomic(&feed, &path).unwrap();
+        crate::fs_atomic::write_atomic(&path, feed.to_string().as_bytes()).unwrap();
 
         let loaded = load_or_create(&path, "ignored").unwrap();
         let entry = &loaded.entries()[0];
