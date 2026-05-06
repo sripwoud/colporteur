@@ -13,7 +13,11 @@ pub struct AppState {
 
 #[derive(Debug, Serialize, Deserialize, Default, Clone)]
 struct AccountState {
+    #[serde(default)]
     uid_validity: u32,
+    /// `alias = "feeds"` accepts the v1 field name on load — v1 files are
+    /// migrated in-place to the v2 schema on the next save.
+    #[serde(default, alias = "feeds")]
     senders: HashMap<String, SenderState>,
 }
 
@@ -61,8 +65,14 @@ struct AppStateFile<'a> {
 const STATE_VERSION: u32 = 2;
 
 /// Versioned wrapper used only for deserialization (load).
+///
+/// Permissive about both `version` (defaults to 0 = legacy) and `accounts`
+/// (defaults to empty), so that a single `from_str` pass handles current,
+/// migrated, and partially-populated files.
 #[derive(Deserialize)]
 struct AppStateFileLoad {
+    #[serde(default)]
+    version: u32,
     #[serde(default)]
     accounts: HashMap<String, AccountState>,
 }
@@ -74,24 +84,25 @@ impl AppState {
         }
         let contents = std::fs::read_to_string(path)
             .wrap_err_with(|| format!("failed to read state file: {}", path.display()))?;
-        let raw: serde_json::Value = serde_json::from_str(&contents)
+        let file: AppStateFileLoad = serde_json::from_str(&contents)
             .wrap_err_with(|| format!("failed to parse state file: {}", path.display()))?;
-        let version = raw
-            .get("version")
-            .and_then(|v| v.as_u64())
-            .and_then(|v| u32::try_from(v).ok())
-            .unwrap_or(0);
-        if version != STATE_VERSION {
+        if file.version > STATE_VERSION {
             log::warn!(
-                "state file '{}' has unsupported version {} (expected {}), discarding",
+                "state file '{}' has unsupported version {} (expected <= {}), discarding",
                 path.display(),
-                version,
+                file.version,
                 STATE_VERSION
             );
             return Ok(Self::default());
         }
-        let file: AppStateFileLoad = serde_json::from_value(raw)
-            .wrap_err_with(|| format!("failed to deserialize state file: {}", path.display()))?;
+        if file.version < STATE_VERSION {
+            log::info!(
+                "state file '{}': migrating schema v{} -> v{}",
+                path.display(),
+                file.version,
+                STATE_VERSION
+            );
+        }
         Ok(Self {
             accounts: file.accounts,
         })
@@ -279,19 +290,55 @@ mod tests {
     }
 
     #[test]
-    fn load_v1_file_discards_and_returns_default() {
+    fn load_v1_file_migrates_to_v2() {
         let path = temp_path("v1_state");
         let _ = std::fs::remove_file(&path);
-        // Write a v1-style file (missing "version" field)
+        // Write a v1-style file (missing "version" field, "feeds" instead of "senders")
         std::fs::write(
             &path,
             r#"{"accounts":{"acct":{"uid_validity":1,"feeds":{"s@x.com":{"last_uid":99}}}}}"#,
         )
         .unwrap();
+
+        let mut state = AppState::load(&path).unwrap();
+        let c = state.cursor("acct", "s@x.com", 1);
+        assert_eq!(
+            c.since_uid(),
+            99,
+            "v1 last_uid should be carried into v2 via the `feeds` alias"
+        );
+
+        state.save(&path).unwrap();
+        let raw = std::fs::read_to_string(&path).unwrap();
+        let v: serde_json::Value = serde_json::from_str(&raw).unwrap();
+        assert_eq!(v["version"], STATE_VERSION, "re-saved file must be v2");
+        assert!(
+            v["accounts"]["acct"]["senders"]["s@x.com"]["last_uid"]
+                .as_u64()
+                .is_some(),
+            "v2 schema uses `senders`, not `feeds`"
+        );
+        assert!(
+            v["accounts"]["acct"].get("feeds").is_none(),
+            "legacy `feeds` key must not appear in re-saved file"
+        );
+
+        let _ = std::fs::remove_file(&path);
+    }
+
+    #[test]
+    fn load_future_version_file_is_discarded() {
+        let path = temp_path("future_state");
+        let _ = std::fs::remove_file(&path);
+        std::fs::write(
+            &path,
+            r#"{"version":99,"accounts":{"acct":{"uid_validity":1,"senders":{"s@x.com":{"last_uid":42}}}}}"#,
+        )
+        .unwrap();
         let state = AppState::load(&path).unwrap();
         assert!(
             state.accounts.is_empty(),
-            "v1 file should be discarded and return default"
+            "future version > STATE_VERSION must be discarded, not silently accepted"
         );
         let _ = std::fs::remove_file(&path);
     }
