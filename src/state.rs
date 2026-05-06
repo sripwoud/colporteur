@@ -88,11 +88,16 @@ impl AppState {
         }
         let file: AppStateFileLoad = serde_json::from_value(raw)
             .wrap_err_with(|| format!("failed to deserialize state file: {}", path.display()))?;
-        Ok(Self { accounts: file.accounts })
+        Ok(Self {
+            accounts: file.accounts,
+        })
     }
 
     pub fn save(&self, path: &Path) -> eyre::Result<()> {
-        let file = AppStateFile { version: STATE_VERSION, accounts: &self.accounts };
+        let file = AppStateFile {
+            version: STATE_VERSION,
+            accounts: &self.accounts,
+        };
         let json = serde_json::to_string_pretty(&file).wrap_err("failed to serialize state")?;
         fs_atomic::write_atomic(path, json.as_bytes())
     }
@@ -303,7 +308,10 @@ mod tests {
         let v: serde_json::Value = serde_json::from_str(&raw).unwrap();
         assert_eq!(v["version"], STATE_VERSION);
         assert_eq!(v["accounts"]["myaccount"]["uid_validity"], 7);
-        assert_eq!(v["accounts"]["myaccount"]["senders"]["s@x.com"]["last_uid"], 3);
+        assert_eq!(
+            v["accounts"]["myaccount"]["senders"]["s@x.com"]["last_uid"],
+            3
+        );
 
         let _ = std::fs::remove_file(&path);
     }
