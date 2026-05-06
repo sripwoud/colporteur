@@ -7,6 +7,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.6.0](https://github.com/sripwoud/colporteur/compare/v0.5.1...v0.6.0) - 2026-05-06
+
+### Other
+
+- *(release-plz)* trigger releases on perf and refactor
+- update CONTEXT
+- add meta
+- *(imap)* introduce AccountSession with logout-on-drop ([#46](https://github.com/sripwoud/colporteur/pull/46))
+- encapsulate Feed Body in EmailContent (sanitize at parse time) ([#45](https://github.com/sripwoud/colporteur/pull/45))
+- *(state)* introduce SenderCursor seam and bump state.json to v2 ([#43](https://github.com/sripwoud/colporteur/pull/43))
+- *(deps)* bump the cargo group across 1 directory with 2 updates ([#44](https://github.com/sripwoud/colporteur/pull/44))
+- *(deps)* bump openssl in the cargo group across 1 directory ([#36](https://github.com/sripwoud/colporteur/pull/36))
+- extract fs_atomic::write_atomic from feed.rs and state.rs ([#42](https://github.com/sripwoud/colporteur/pull/42))
+- *(ci)* add codeql advanced setup with cleartext-logging suppressed ([#41](https://github.com/sripwoud/colporteur/pull/41))
+
 ## [0.5.1](https://github.com/sripwoud/colporteur/compare/v0.5.0...v0.5.1) - 2026-03-13
 
 ### Added
