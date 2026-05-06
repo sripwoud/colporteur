@@ -5,6 +5,8 @@ use eyre::{Context, eyre};
 use imap::{ClientBuilder, Connection, Session};
 use mailparse::{MailAddr, MailHeaderMap, addrparse_header, parse_headers};
 
+use crate::config::AccountConfig;
+
 pub trait EmailSource {
     fn uid_validity(&mut self, mailbox: &str) -> eyre::Result<u32>;
     fn search_from_since_uid(&mut self, sender: &str, last_uid: u32) -> eyre::Result<Vec<u32>>;
@@ -13,6 +15,45 @@ pub trait EmailSource {
 
 pub struct ImapClient {
     session: Session<Connection>,
+}
+
+#[derive(Debug)]
+pub enum AccountOpenError {
+    PasswordResolution(eyre::Error),
+    Connection(eyre::Error),
+}
+
+pub struct AccountSession {
+    name: String,
+    client: ImapClient,
+}
+
+impl AccountSession {
+    pub fn open(name: &str, account: &AccountConfig) -> Result<Self, AccountOpenError> {
+        let password = account
+            .resolve_password()
+            .map_err(AccountOpenError::PasswordResolution)?;
+
+        let client = ImapClient::connect(&account.server, &account.username, &password)
+            .map_err(AccountOpenError::Connection)?;
+
+        Ok(Self {
+            name: name.to_string(),
+            client,
+        })
+    }
+
+    pub fn client_mut(&mut self) -> &mut ImapClient {
+        &mut self.client
+    }
+}
+
+impl Drop for AccountSession {
+    fn drop(&mut self) {
+        if let Err(e) = self.client.logout() {
+            log::warn!("account '{}': logout error: {e}", self.name);
+        }
+    }
 }
 
 pub struct FetchedEmail {
@@ -246,5 +287,136 @@ impl EmailSource for ImapClient {
 
     fn fetch_email(&mut self, uid: u32) -> eyre::Result<FetchedEmail> {
         self.fetch_email(uid)
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use std::io::{BufRead, BufReader, Write};
+    use std::net::TcpListener;
+    use std::sync::mpsc;
+    use std::thread;
+    use std::time::Duration;
+
+    use imap::ConnectionMode;
+
+    use super::*;
+    use crate::config::AccountConfig;
+
+    fn account_config(server: &str, password: &str) -> AccountConfig {
+        AccountConfig {
+            server: server.to_string(),
+            username: "user@test.com".to_string(),
+            password: password.to_string(),
+            mailbox: "INBOX".to_string(),
+        }
+    }
+
+    /// Minimal mock IMAP server that handles LOGIN and LOGOUT over plaintext TCP.
+    /// Returns the port it's listening on and a receiver that fires once when LOGOUT is observed.
+    fn spawn_mock_imap_server() -> (u16, mpsc::Receiver<()>) {
+        let listener = TcpListener::bind("127.0.0.1:0").expect("failed to bind mock server");
+        let port = listener.local_addr().unwrap().port();
+        let (logout_tx, logout_rx) = mpsc::channel();
+
+        thread::spawn(move || {
+            if let Ok((stream, _)) = listener.accept() {
+                let mut writer = stream.try_clone().unwrap();
+                let reader = BufReader::new(stream);
+
+                writer
+                    .write_all(b"* OK IMAP4rev1 mock server ready\r\n")
+                    .ok();
+
+                for line in reader.lines() {
+                    let line = match line {
+                        Ok(l) => l,
+                        Err(_) => break,
+                    };
+
+                    let parts: Vec<&str> = line.splitn(3, ' ').collect();
+                    if parts.len() < 2 {
+                        break;
+                    }
+                    let tag = parts[0];
+                    let cmd = parts[1].to_uppercase();
+
+                    match cmd.as_str() {
+                        "LOGIN" => {
+                            writer
+                                .write_all(format!("{tag} OK LOGIN completed\r\n").as_bytes())
+                                .ok();
+                        }
+                        "LOGOUT" => {
+                            writer.write_all(b"* BYE Logging out\r\n").ok();
+                            writer
+                                .write_all(format!("{tag} OK LOGOUT completed\r\n").as_bytes())
+                                .ok();
+                            let _ = logout_tx.send(());
+                            break;
+                        }
+                        _ => {
+                            writer
+                                .write_all(format!("{tag} BAD unknown command\r\n").as_bytes())
+                                .ok();
+                        }
+                    }
+                }
+            }
+        });
+
+        (port, logout_rx)
+    }
+
+    fn connect_to_mock(port: u16) -> ImapClient {
+        let client = ClientBuilder::new("127.0.0.1", port)
+            .mode(ConnectionMode::Plaintext)
+            .connect()
+            .expect("failed to connect to mock server");
+        let session = client
+            .login("user@test.com", "password")
+            .map_err(|(e, _)| e)
+            .expect("mock login failed");
+        ImapClient { session }
+    }
+
+    #[test]
+    fn open_success_and_drop_calls_logout() {
+        let (port, logout_rx) = spawn_mock_imap_server();
+
+        let client = connect_to_mock(port);
+        let session = AccountSession {
+            name: "test-account".to_string(),
+            client,
+        };
+
+        drop(session);
+
+        logout_rx
+            .recv_timeout(Duration::from_secs(2))
+            .expect("expected LOGOUT within 2s");
+    }
+
+    #[test]
+    #[cfg(unix)]
+    fn open_password_resolution_failure() {
+        // "!false" is a shell command that exits with code 1 — resolution must fail
+        let account = account_config("localhost", "!false");
+        let result = AccountSession::open("test", &account);
+        assert!(
+            matches!(result, Err(AccountOpenError::PasswordResolution(_))),
+            "expected PasswordResolution error"
+        );
+    }
+
+    #[test]
+    fn open_connection_failure() {
+        // Use a hostname that does not exist — DNS lookup will fail fast
+        let account = account_config("this.hostname.does.not.exist.colporteur.test", "password");
+        let result = AccountSession::open("test", &account);
+        assert!(
+            matches!(result, Err(AccountOpenError::Connection(_))),
+            "expected Connection error"
+        );
     }
 }

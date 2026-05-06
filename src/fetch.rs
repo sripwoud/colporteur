@@ -8,7 +8,7 @@ use crate::config::{AccountConfig, Config, FeedConfig};
 use crate::email;
 use crate::feed::{append_entry, load_or_create, trim_entries};
 use crate::fs_atomic;
-use crate::imap::{EmailSource, ImapClient};
+use crate::imap::{AccountOpenError, AccountSession, EmailSource, ImapClient};
 use crate::state::AppState;
 
 #[derive(Debug, Serialize)]
@@ -71,9 +71,9 @@ pub fn run(
             }
         };
 
-        let password = match account.resolve_password() {
-            Ok(p) => p,
-            Err(e) => {
+        let mut session = match AccountSession::open(account_name, account) {
+            Ok(s) => s,
+            Err(AccountOpenError::PasswordResolution(e)) => {
                 log::error!("account '{account_name}': failed to resolve password");
                 log::debug!("account '{account_name}': {e}");
                 for (feed_key, _) in feeds {
@@ -89,11 +89,7 @@ pub fn run(
                 }
                 continue;
             }
-        };
-
-        let mut source = match ImapClient::connect(&account.server, &account.username, &password) {
-            Ok(c) => c,
-            Err(e) => {
+            Err(AccountOpenError::Connection(e)) => {
                 log::error!("account '{account_name}': connection failed: {e}");
                 for (feed_key, _) in feeds {
                     all_results.push(FeedResult {
@@ -109,7 +105,7 @@ pub fn run(
         };
 
         let mut results = run_with_source(AccountRunArgs {
-            source: &mut source,
+            source: session.client_mut(),
             account_name,
             account,
             feeds,
@@ -118,10 +114,6 @@ pub fn run(
             state_path,
             dry_run,
         });
-
-        if let Err(e) = source.logout() {
-            log::warn!("account '{account_name}': logout error: {e}");
-        }
 
         all_results.append(&mut results);
     }
