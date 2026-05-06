@@ -43,12 +43,7 @@ pub fn load_or_create(path: &Path, title: &str) -> eyre::Result<Feed> {
     Ok(feed)
 }
 
-pub fn append_entry(
-    feed: &mut Feed,
-    email: &EmailContent,
-    sanitized_html: &str,
-    url: Option<&str>,
-) {
+pub fn append_entry(feed: &mut Feed, email: &EmailContent, url: Option<&str>) {
     let links = url
         .map(|href| {
             vec![Link {
@@ -69,7 +64,7 @@ pub fn append_entry(
         }],
         content: Some(Content {
             content_type: Some("html".to_string()),
-            value: Some(sanitized_html.to_string()),
+            value: Some(email.feed_html.clone()),
             ..Default::default()
         }),
         links,
@@ -114,8 +109,7 @@ mod tests {
             from: from.to_string(),
             date: DateTime::from_timestamp(1_700_000_000, 0).unwrap(),
             message_id: message_id.map(str::to_string),
-            html: Some("<p>hello</p>".to_string()),
-            text: None,
+            feed_html: "<p>hello</p>".to_string(),
         }
     }
 
@@ -135,7 +129,7 @@ mod tests {
         let path = tmp_path("append_entry");
         let mut feed = load_or_create(&path, "Test Feed").unwrap();
         let email = make_email("Hello", "sender@example.com", None);
-        append_entry(&mut feed, &email, "<p>hello</p>", None);
+        append_entry(&mut feed, &email, None);
         assert_eq!(feed.entries().len(), 1);
     }
 
@@ -146,7 +140,7 @@ mod tests {
 
         for i in 0..5 {
             let email = make_email(&format!("Subject {i}"), "sender@example.com", None);
-            append_entry(&mut feed, &email, "<p>body</p>", None);
+            append_entry(&mut feed, &email, None);
         }
 
         assert_eq!(feed.entries().len(), 5);
@@ -162,7 +156,7 @@ mod tests {
         let mut feed = load_or_create(&path, "Round Trip Feed").unwrap();
 
         let email = make_email("Round Trip Subject", "rt@example.com", None);
-        append_entry(&mut feed, &email, "<p>rt</p>", None);
+        append_entry(&mut feed, &email, None);
 
         crate::fs_atomic::write_atomic(&path, feed.to_string().as_bytes()).unwrap();
 
@@ -199,12 +193,7 @@ mod tests {
         let path = tmp_path("entry_with_url");
         let mut feed = load_or_create(&path, "Link Feed").unwrap();
         let email = make_email("Linked", "sender@example.com", None);
-        append_entry(
-            &mut feed,
-            &email,
-            "<p>body</p>",
-            Some("https://example.com/archive"),
-        );
+        append_entry(&mut feed, &email, Some("https://example.com/archive"));
         let entry = &feed.entries()[0];
         assert_eq!(entry.links.len(), 1);
         assert_eq!(entry.links[0].href, "https://example.com/archive");
@@ -216,7 +205,7 @@ mod tests {
         let path = tmp_path("entry_no_url");
         let mut feed = load_or_create(&path, "No Link Feed").unwrap();
         let email = make_email("No Link", "sender@example.com", None);
-        append_entry(&mut feed, &email, "<p>body</p>", None);
+        append_entry(&mut feed, &email, None);
         let entry = &feed.entries()[0];
         assert!(entry.links.is_empty());
     }
@@ -226,12 +215,7 @@ mod tests {
         let path = tmp_path("link_round_trip");
         let mut feed = load_or_create(&path, "Link Round Trip").unwrap();
         let email = make_email("Subject", "sender@example.com", None);
-        append_entry(
-            &mut feed,
-            &email,
-            "<p>body</p>",
-            Some("https://example.com/archive"),
-        );
+        append_entry(&mut feed, &email, Some("https://example.com/archive"));
         crate::fs_atomic::write_atomic(&path, feed.to_string().as_bytes()).unwrap();
 
         let loaded = load_or_create(&path, "ignored").unwrap();

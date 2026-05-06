@@ -2,14 +2,25 @@ use chrono::{DateTime, Utc};
 use eyre::Context;
 use mailparse::{MailHeaderMap, parse_mail};
 
+use crate::sanitize::{sanitize_html, text_to_html};
+
 #[derive(Debug)]
 pub struct EmailContent {
     pub subject: String,
     pub from: String,
     pub date: DateTime<Utc>,
     pub message_id: Option<String>,
-    pub html: Option<String>,
-    pub text: Option<String>,
+    pub feed_html: String,
+}
+
+pub(crate) fn body_from_parts(html: Option<String>, text: Option<String>) -> eyre::Result<String> {
+    if let Some(h) = html {
+        return Ok(sanitize_html(&h));
+    }
+    if let Some(t) = text {
+        return Ok(text_to_html(&t));
+    }
+    Err(eyre::eyre!("email has no text/html or text/plain body"))
 }
 
 fn extract_bodies(mail: &mailparse::ParsedMail) -> eyre::Result<(Option<String>, Option<String>)> {
@@ -89,17 +100,14 @@ pub fn parse(raw: &[u8]) -> eyre::Result<EmailContent> {
 
     let (html, text) = extract_bodies(&mail)?;
 
-    if html.is_none() && text.is_none() {
-        return Err(eyre::eyre!("email has no text/html or text/plain body"));
-    }
+    let feed_html = body_from_parts(html, text)?;
 
     Ok(EmailContent {
         subject,
         from,
         date,
         message_id,
-        html,
-        text,
+        feed_html,
     })
 }
 
@@ -126,8 +134,7 @@ mod tests {
                 "<0100019c90a2308f-d58ec023-533d-4e97-bab2-57c47a94691b-000000@email.amazonses.com>"
             )
         );
-        assert!(email.html.is_some());
-        assert!(email.text.is_some());
+        assert!(!email.feed_html.is_empty());
     }
 
     #[test]
@@ -139,7 +146,7 @@ mod tests {
             "hansemerkur.gesundheitsportal-privat.de <noreply@gesundheitsportal-privat.de>"
         );
         assert_eq!(email.date.to_rfc3339(), "2026-02-20T05:00:39+00:00");
-        assert!(email.html.is_some());
+        assert!(!email.feed_html.is_empty());
     }
 
     #[test]
@@ -151,14 +158,43 @@ mod tests {
             "\"Cool Parents Make Happy Kids\" <coaching@coolparentsmakehappykids.com>"
         );
         assert_eq!(email.date.to_rfc3339(), "2026-02-22T19:03:08+00:00");
-        assert!(email.html.is_some());
+        assert!(!email.feed_html.is_empty());
     }
 
     #[test]
     fn all_samples_have_html_body() {
         for raw in [SAMPLE1, SAMPLE2, SAMPLE3] {
             let email = parse(raw).unwrap();
-            assert!(email.html.is_some());
+            assert!(!email.feed_html.is_empty());
         }
+    }
+
+    #[test]
+    fn body_from_parts_html_wins_over_text() {
+        let result = body_from_parts(
+            Some("<p>html content</p>".to_string()),
+            Some("text content".to_string()),
+        )
+        .unwrap();
+        assert!(result.contains("html content"));
+    }
+
+    #[test]
+    fn body_from_parts_html_only() {
+        let result = body_from_parts(Some("<p>only html</p>".to_string()), None).unwrap();
+        assert!(result.contains("only html"));
+    }
+
+    #[test]
+    fn body_from_parts_text_only() {
+        let result = body_from_parts(None, Some("only text".to_string())).unwrap();
+        assert!(result.contains("only text"));
+        assert!(result.contains("<p>"));
+    }
+
+    #[test]
+    fn body_from_parts_neither_returns_err() {
+        let result = body_from_parts(None, None);
+        assert!(result.is_err());
     }
 }
