@@ -164,17 +164,6 @@ pub fn run_with_source(args: AccountRunArgs<'_>) -> Vec<FeedResult> {
         }
     };
 
-    if let Some(stored_validity) = state.uid_validity(account_name)
-        && stored_validity != server_validity
-    {
-        log::warn!(
-            "account '{account_name}': UIDVALIDITY changed ({stored_validity} -> \
-             {server_validity}), resetting state"
-        );
-        state.reset_account(account_name);
-    }
-    state.set_uid_validity(account_name, server_validity);
-
     let mut results = Vec::new();
 
     for (feed_key, feed_config) in feeds {
@@ -187,6 +176,7 @@ pub fn run_with_source(args: AccountRunArgs<'_>) -> Vec<FeedResult> {
             state,
             state_path,
             dry_run,
+            server_validity,
         });
         results.push(result);
     }
@@ -203,6 +193,7 @@ struct ProcessFeedArgs<'a> {
     state: &'a mut AppState,
     state_path: &'a Path,
     dry_run: bool,
+    server_validity: u32,
 }
 
 fn process_feed(args: ProcessFeedArgs<'_>) -> FeedResult {
@@ -215,6 +206,7 @@ fn process_feed(args: ProcessFeedArgs<'_>) -> FeedResult {
         state,
         state_path,
         dry_run,
+        server_validity,
     } = args;
 
     let output_path = Path::new(&config.output_dir).join(format!("{feed_key}.xml"));
@@ -237,17 +229,15 @@ fn process_feed(args: ProcessFeedArgs<'_>) -> FeedResult {
     let entry_url = config.entry_url_for(feed_key);
 
     for sender in &feed_config.senders {
-        let last_uid = state.last_uid(account_name, sender);
+        let mut cursor = state.cursor(account_name, sender, server_validity);
 
-        let uids = match source.search_from_since_uid(sender, last_uid) {
+        let uids = match source.search_from_since_uid(sender, cursor.since_uid()) {
             Ok(u) => u,
             Err(e) => {
                 log::error!("feed '{feed_key}', sender '{sender}': search failed: {e}");
                 continue;
             }
         };
-
-        let mut highest_uid = last_uid;
 
         for uid in uids {
             let fetched = match source.fetch_email(uid) {
@@ -257,14 +247,12 @@ fn process_feed(args: ProcessFeedArgs<'_>) -> FeedResult {
                     continue;
                 }
             };
+            cursor.observed(uid);
 
             let email_content = match email::parse(&fetched.raw) {
                 Ok(c) => c,
                 Err(e) => {
                     log::error!("feed '{feed_key}': failed to parse email UID {uid}: {e}");
-                    if uid > highest_uid {
-                        highest_uid = uid;
-                    }
                     continue;
                 }
             };
@@ -279,14 +267,6 @@ fn process_feed(args: ProcessFeedArgs<'_>) -> FeedResult {
 
             append_entry(&mut feed, &email_content, &sanitized, entry_url.as_deref());
             new_entries += 1;
-
-            if uid > highest_uid {
-                highest_uid = uid;
-            }
-        }
-
-        if highest_uid > last_uid {
-            state.update_uid(account_name, sender, highest_uid);
         }
     }
 
@@ -487,7 +467,9 @@ mod tests {
         );
 
         assert_eq!(
-            state.last_uid("test", "notifications@mail.ideabrowser.com"),
+            state
+                .cursor("test", "notifications@mail.ideabrowser.com", 1)
+                .since_uid(),
             100
         );
     }
@@ -532,9 +514,11 @@ mod tests {
             "feed XML file must not exist in dry-run"
         );
 
-        let loaded = AppState::load(&state_path).unwrap();
+        let mut loaded = AppState::load(&state_path).unwrap();
         assert_eq!(
-            loaded.last_uid("test", "notifications@mail.ideabrowser.com"),
+            loaded
+                .cursor("test", "notifications@mail.ideabrowser.com", 1)
+                .since_uid(),
             0,
             "state must not be persisted in dry-run"
         );
@@ -555,8 +539,10 @@ mod tests {
             )]),
         };
         let mut state = AppState::default();
-        state.update_uid("test", "notifications@mail.ideabrowser.com", 100);
-        state.set_uid_validity("test", 1);
+        {
+            let mut c = state.cursor("test", "notifications@mail.ideabrowser.com", 1);
+            c.observed(100);
+        }
 
         let feeds: Vec<(&str, &FeedConfig)> =
             config.feeds.iter().map(|(k, v)| (k.as_str(), v)).collect();
@@ -651,11 +637,15 @@ mod tests {
         assert_eq!(results[0].new_entries, 2);
 
         assert_eq!(
-            state.last_uid("test", "notifications@mail.ideabrowser.com"),
+            state
+                .cursor("test", "notifications@mail.ideabrowser.com", 1)
+                .since_uid(),
             101
         );
         assert_eq!(
-            state.last_uid("test", "noreply@gesundheitsportal-privat.de"),
+            state
+                .cursor("test", "noreply@gesundheitsportal-privat.de", 1)
+                .since_uid(),
             102
         );
     }
@@ -769,7 +759,9 @@ mod tests {
         assert!(results[0].ok);
 
         assert_eq!(
-            state.last_uid("test", "notifications@mail.ideabrowser.com"),
+            state
+                .cursor("test", "notifications@mail.ideabrowser.com", 1)
+                .since_uid(),
             101
         );
     }
@@ -819,6 +811,86 @@ mod tests {
         assert!(
             xml.contains("https://example.com/feeds/ideabrowser.xml"),
             "expected entry link in XML: {xml}"
+        );
+    }
+
+    struct FailingFetchSource {
+        uid_validity_val: u32,
+        sender: String,
+        uids: Vec<u32>,
+        good_uid: u32,
+        good_raw: Vec<u8>,
+    }
+
+    impl EmailSource for FailingFetchSource {
+        fn uid_validity(&mut self, _mailbox: &str) -> eyre::Result<u32> {
+            Ok(self.uid_validity_val)
+        }
+
+        fn search_from_since_uid(&mut self, sender: &str, last_uid: u32) -> eyre::Result<Vec<u32>> {
+            if sender != self.sender {
+                return Ok(Vec::new());
+            }
+            let mut uids: Vec<u32> = self
+                .uids
+                .iter()
+                .copied()
+                .filter(|u| *u > last_uid)
+                .collect();
+            uids.sort();
+            Ok(uids)
+        }
+
+        fn fetch_email(&mut self, uid: u32) -> eyre::Result<FetchedEmail> {
+            if uid == self.good_uid {
+                Ok(FetchedEmail {
+                    uid,
+                    raw: self.good_raw.clone(),
+                })
+            } else {
+                Err(eyre::eyre!("mock: transient fetch failure for UID {uid}"))
+            }
+        }
+    }
+
+    #[test]
+    fn fetch_failure_does_not_advance_cursor() {
+        let dir = TestDir::new("fetch_fail_no_advance");
+        let config = single_sender_config(&dir.output_dir());
+        let state_path = dir.state_path();
+
+        let sender = "notifications@mail.ideabrowser.com".to_string();
+        let mut source = FailingFetchSource {
+            uid_validity_val: 1,
+            sender: sender.clone(),
+            uids: vec![100, 101],
+            good_uid: 100,
+            good_raw: include_bytes!("../tests/fixtures/sample1.eml").to_vec(),
+        };
+        let mut state = AppState::default();
+
+        let feeds: Vec<(&str, &FeedConfig)> =
+            config.feeds.iter().map(|(k, v)| (k.as_str(), v)).collect();
+        let account = config.accounts.get("test").unwrap();
+
+        let results = run_with_source(AccountRunArgs {
+            source: &mut source,
+            account_name: "test",
+            account,
+            feeds: &feeds,
+            config: &config,
+            state: &mut state,
+            state_path: &state_path,
+            dry_run: false,
+        });
+
+        assert_eq!(results.len(), 1);
+        assert_eq!(results[0].new_entries, 1);
+
+        assert_eq!(
+            state.cursor("test", &sender, 1).since_uid(),
+            100,
+            "cursor must not advance past a failed fetch — UID 101 should be retried next run"
         );
     }
 }
