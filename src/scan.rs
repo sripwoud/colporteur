@@ -20,8 +20,9 @@ pub fn run(config: &Config, account_filter: Option<&str>) -> Vec<ScanReport> {
 
         let mut session = match AccountSession::open(account_name, account) {
             Ok(s) => s,
-            Err(AccountOpenError::PasswordResolution(_)) => {
+            Err(AccountOpenError::PasswordResolution(e)) => {
                 log::error!("account '{account_name}': failed to resolve password");
+                log::debug!("account '{account_name}': {e}");
                 reports.push(ScanReport {
                     account: account_name.clone(),
                     senders: Vec::new(),

@@ -73,8 +73,9 @@ pub fn run(
 
         let mut session = match AccountSession::open(account_name, account) {
             Ok(s) => s,
-            Err(AccountOpenError::PasswordResolution(_)) => {
+            Err(AccountOpenError::PasswordResolution(e)) => {
                 log::error!("account '{account_name}': failed to resolve password");
+                log::debug!("account '{account_name}': {e}");
                 for (feed_key, _) in feeds {
                     all_results.push(FeedResult {
                         key: (*feed_key).to_string(),
