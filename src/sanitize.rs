@@ -21,7 +21,7 @@ static EMPTY_BLOCK_RE: LazyLock<Regex> = LazyLock::new(|| {
 static MULTI_NEWLINES_RE: LazyLock<Regex> =
     LazyLock::new(|| Regex::new(r">(?:\r?\n){3,}<").unwrap());
 
-pub fn sanitize_html(html: &str) -> String {
+pub(crate) fn sanitize_html(html: &str) -> String {
     let mut builder = Builder::new();
     builder
         .tags(HashSet::from([
@@ -169,7 +169,7 @@ fn has_attr_value(tag: &str, attr: &str, value: &str) -> bool {
     tag.contains(&double_quoted) || tag.contains(&single_quoted) || tag.contains(&unquoted)
 }
 
-pub fn text_to_html(text: &str) -> String {
+pub(crate) fn text_to_html(text: &str) -> String {
     let escaped = text
         .replace('&', "&amp;")
         .replace('<', "&lt;")

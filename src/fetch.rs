@@ -9,7 +9,6 @@ use crate::email;
 use crate::feed::{append_entry, load_or_create, trim_entries};
 use crate::fs_atomic;
 use crate::imap::{EmailSource, ImapClient};
-use crate::sanitize::{sanitize_html, text_to_html};
 use crate::state::AppState;
 
 #[derive(Debug, Serialize)]
@@ -257,15 +256,7 @@ fn process_feed(args: ProcessFeedArgs<'_>) -> FeedResult {
                 }
             };
 
-            let sanitized = match &email_content.html {
-                Some(html) => sanitize_html(html),
-                None => {
-                    let text = email_content.text.as_deref().unwrap_or("");
-                    text_to_html(text)
-                }
-            };
-
-            append_entry(&mut feed, &email_content, &sanitized, entry_url.as_deref());
+            append_entry(&mut feed, &email_content, entry_url.as_deref());
             new_entries += 1;
         }
     }
