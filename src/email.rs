@@ -14,13 +14,11 @@ pub struct EmailContent {
 }
 
 fn body_from_parts(html: Option<String>, text: Option<String>) -> eyre::Result<String> {
-    if let Some(h) = html {
-        return Ok(sanitize_html(&h));
+    match (html, text) {
+        (Some(h), _) => Ok(sanitize_html(&h)),
+        (None, Some(t)) => Ok(text_to_html(&t)),
+        (None, None) => Err(eyre::eyre!("email has no text/html or text/plain body")),
     }
-    if let Some(t) = text {
-        return Ok(text_to_html(&t));
-    }
-    Err(eyre::eyre!("email has no text/html or text/plain body"))
 }
 
 fn extract_bodies(mail: &mailparse::ParsedMail) -> eyre::Result<(Option<String>, Option<String>)> {
