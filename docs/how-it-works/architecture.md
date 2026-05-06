@@ -75,7 +75,7 @@ This allows the entire pipeline to be tested with a mock source, without any net
 
 ### Atomic writes
 
-Both feed files and state files use the write-to-temporary-then-rename pattern. This prevents partial writes from corrupting data if the process is interrupted.
+Both feed files and state files use the write-to-temporary-then-rename pattern. This prevents partial writes from corrupting data if the process is interrupted. Implemented in `fs_atomic::write_atomic`.
 
 ### Write order resilience
 
