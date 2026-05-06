@@ -36,10 +36,14 @@ impl SenderCursor<'_> {
         self.state.last_uid
     }
 
-    /// Advances the persisted high-water mark if `uid` is greater than the current one.
+    /// Records `uid` as seen, advancing the high-water mark when greater than
+    /// the current value. Out-of-order safe: lower UIDs are ignored.
     ///
-    /// Call this *before* any potentially-failing parse/sanitize step so that
-    /// attempted-but-failed UIDs still advance the cursor.
+    /// Call this once the UID has been confirmed received from the server but
+    /// before any local processing (parse, sanitize, write) — so transient
+    /// fetch errors leave the cursor untouched and the UID is retried, while
+    /// downstream processing failures still advance the cursor and will not
+    /// be retried.
     pub fn observed(&mut self, uid: u32) {
         if uid > self.state.last_uid {
             self.state.last_uid = uid;
