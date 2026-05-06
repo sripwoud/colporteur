@@ -17,6 +17,7 @@ pub struct ImapClient {
     session: Session<Connection>,
 }
 
+#[derive(Debug)]
 pub enum AccountOpenError {
     PasswordResolution(eyre::Error),
     Connection(eyre::Error),
@@ -344,25 +345,19 @@ mod tests {
                     match cmd.as_str() {
                         "LOGIN" => {
                             writer
-                                .write_all(
-                                    format!("{tag} OK LOGIN completed\r\n").as_bytes(),
-                                )
+                                .write_all(format!("{tag} OK LOGIN completed\r\n").as_bytes())
                                 .ok();
                         }
                         "LOGOUT" => {
                             writer.write_all(b"* BYE Logging out\r\n").ok();
                             writer
-                                .write_all(
-                                    format!("{tag} OK LOGOUT completed\r\n").as_bytes(),
-                                )
+                                .write_all(format!("{tag} OK LOGOUT completed\r\n").as_bytes())
                                 .ok();
                             break;
                         }
                         _ => {
                             writer
-                                .write_all(
-                                    format!("{tag} BAD unknown command\r\n").as_bytes(),
-                                )
+                                .write_all(format!("{tag} BAD unknown command\r\n").as_bytes())
                                 .ok();
                         }
                     }
@@ -406,7 +401,10 @@ mod tests {
 
         let commands = log.lock().unwrap();
         let logged_out = commands.iter().any(|c| c.to_uppercase().contains("LOGOUT"));
-        assert!(logged_out, "expected LOGOUT command; received: {commands:?}");
+        assert!(
+            logged_out,
+            "expected LOGOUT command; received: {commands:?}"
+        );
     }
 
     #[test]
