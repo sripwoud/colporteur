@@ -7,6 +7,27 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.6.1](https://github.com/sripwoud/colporteur/compare/v0.6.0...v0.6.1) - 2026-09-03
+
+### Fixed
+
+- *(deps)* update all non-major dependencies ([#60](https://github.com/sripwoud/colporteur/pull/60))
+
+### Other
+
+- *(deps)* update github/codeql-action action to v4 ([#62](https://github.com/sripwoud/colporteur/pull/62))
+- *(deps)* update amannn/action-semantic-pull-request action to v6 ([#61](https://github.com/sripwoud/colporteur/pull/61))
+- release on cargo dependency bumps ([#63](https://github.com/sripwoud/colporteur/pull/63))
+- *(deps)* update rust crate atom_syndication to v0.12.10 ([#58](https://github.com/sripwoud/colporteur/pull/58))
+- *(deps)* update rust crate ammonia to v4.1.4 ([#57](https://github.com/sripwoud/colporteur/pull/57))
+- pin mise tool versions and group non-major bumps ([#56](https://github.com/sripwoud/colporteur/pull/56))
+- Add renovate.json ([#55](https://github.com/sripwoud/colporteur/pull/55))
+- bump jdx/mise-action to v4 ([#54](https://github.com/sripwoud/colporteur/pull/54))
+- *(codeql)* add workflow_dispatch trigger ([#53](https://github.com/sripwoud/colporteur/pull/53))
+- add security policy ([#52](https://github.com/sripwoud/colporteur/pull/52))
+- *(codeql)* exclude cfg(test) code from rust analysis ([#51](https://github.com/sripwoud/colporteur/pull/51))
+- bump actions/checkout to v7 ([#50](https://github.com/sripwoud/colporteur/pull/50))
+
 ## [0.6.0](https://github.com/sripwoud/colporteur/compare/v0.5.1...v0.6.0) - 2026-05-06
 
 ### Other
