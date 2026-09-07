@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.6.2](https://github.com/sripwoud/colporteur/compare/v0.6.1...v0.6.2) - 2026-09-07
+
+### Other
+
+- *(deps)* update rust crate dirs to v7 ([#70](https://github.com/sripwoud/colporteur/pull/70))
+- *(deps)* update all non-major dependencies ([#69](https://github.com/sripwoud/colporteur/pull/69))
+- *(deps)* update all non-major dependencies ([#68](https://github.com/sripwoud/colporteur/pull/68))
+- gate release publication on binary upload ([#67](https://github.com/sripwoud/colporteur/pull/67))
+
 ## [0.6.1](https://github.com/sripwoud/colporteur/compare/v0.6.0...v0.6.1) - 2026-09-03
 
 ### Fixed
