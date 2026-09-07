@@ -18,7 +18,7 @@ ammonia = "4"
 atom_syndication = "0.12"
 chrono = { version = "0.4", features = ["serde"] }
 clap = { version = "4", features = ["derive"] }
-dirs = "6"
+dirs = "7"
 env_logger = "0.11"
 eyre = "0.6"
 imap = "3.0.0-alpha.15"
