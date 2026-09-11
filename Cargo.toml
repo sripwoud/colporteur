@@ -3,6 +3,7 @@ name = "colporteur"
 version = "0.6.3"
 edition = "2024"
 license = "AGPL-3.0-or-later"
+repository = "https://github.com/espadat-studio/colporteur"
 description = "CLI tool for converting newsletter emails to web-friendly formats"
 
 [lib]
