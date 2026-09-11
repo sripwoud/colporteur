@@ -1,5 +1,5 @@
 <p align="center">
-  <h1 align="center"><a href="https://colporteur.sripwoud.xyz">Colporteur</a></h1>
+  <h1 align="center"><a href="https://colporteur.espadat.com">Colporteur</a></h1>
 </p>
 <p align="center">
   <a href="https://crates.io/crates/colporteur">
@@ -44,13 +44,13 @@ colporteur list    # show feed sync state
 
 ## Documentation
 
-Full documentation available at [colporteur.sripwoud.xyz](https://colporteur.sripwoud.xyz):
+Full documentation available at [colporteur.espadat.com](https://colporteur.espadat.com):
 
-- [Installation](https://colporteur.sripwoud.xyz/#/getting-started/installation) - Detailed setup guide
-- [Quick Start](https://colporteur.sripwoud.xyz/#/getting-started/quick-start) - Step-by-step walkthrough
-- [CLI Reference](https://colporteur.sripwoud.xyz/#/cli-reference) - All commands documented
-- [Configuration](https://colporteur.sripwoud.xyz/#/configuration) - Config file format and options
-- [How It Works](https://colporteur.sripwoud.xyz/#/how-it-works/email-processing) - Email processing pipeline
+- [Installation](https://colporteur.espadat.com/#/getting-started/installation) - Detailed setup guide
+- [Quick Start](https://colporteur.espadat.com/#/getting-started/quick-start) - Step-by-step walkthrough
+- [CLI Reference](https://colporteur.espadat.com/#/cli-reference) - All commands documented
+- [Configuration](https://colporteur.espadat.com/#/configuration) - Config file format and options
+- [How It Works](https://colporteur.espadat.com/#/how-it-works/email-processing) - Email processing pipeline
 
 ## Requirements
 
@@ -75,5 +75,5 @@ mise run      # run tasks interactively
 
 ## Community
 
-- [Documentation](https://colporteur.sripwoud.xyz)
+- [Documentation](https://colporteur.espadat.com)
 - [Report Issues](https://github.com/sripwoud/colporteur/issues)

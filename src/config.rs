@@ -7,7 +7,7 @@ use eyre::{Context, bail};
 use serde::Deserialize;
 
 pub const SAMPLE_CONFIG: &str = r#"# colporteur configuration
-# See: https://colporteur.sripwoud.xyz/#/configuration
+# See: https://colporteur.espadat.com/#/configuration
 
 # Directory where Atom feed files are written
 output_dir = "/var/lib/colporteur/feeds"
